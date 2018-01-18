@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -86,7 +88,7 @@
                         <a href="/archives">
                             
                             
-                                Archives
+                                所有文章
                             
                         </a>
                     </li>
@@ -95,7 +97,7 @@
                         <a href="/about">
                             
                             
-                                About
+                                关于
                             
                         </a>
                     </li>
@@ -143,6 +145,7 @@
     
       <footer class="post-footer">
 		
+				
 
         
         
@@ -167,6 +170,21 @@
     
   </article>
 
+		<div class="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			placeholder: 'just go go',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
     </div>
 
       </div>
