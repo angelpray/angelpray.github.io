@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="jiarong-Chueng">
 <meta property="og:description" content="基本语法概念 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写 ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。 始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用作">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-25T15:23:19.600Z">
+<meta property="og:updated_time" content="2018-03-25T15:37:11.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基本语法概念">
 <meta name="twitter:description" content="基本语法概念 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写 ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。 始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用作">
@@ -132,7 +132,7 @@
 
     
             <div class="post-content">
-            <h1 id="基本语法概念"><a href="#基本语法概念" class="headerlink" title="基本语法概念"></a>基本语法概念</h1><ol>
+            <h1 id="基本语法概念"><a href="#基本语法概念" class="headerlink" title="基本语法概念"></a>基本语法概念</h1><ul>
 <li>ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写</li>
 <li>ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确<br>定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码<code>use strict</code>,告诉JS<br>引擎切换到严格模式。</li>
 <li><p>始终在控制语句中使用代码块，并且加上分号。</p>
@@ -160,9 +160,46 @@
 </li>
 <li>其他类型转换为Boolean类型的规则：<blockquote>
 <p>如下表格：</p>
-<p>| 数据类型  | true                       | false     |<br>| ——— | ————————– | ——— |<br>| Boolean   | true                       | false     |<br>| String    | 非空字符串                 | 空字符串  |<br>| Number    | 任何非零数字值包括无穷大小 | 0和NaN    |<br>| Object    | 任何对象                   | null      |<br>| Undefined | n/a not applicable 不适用  | undefined |</p>
 </blockquote>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>true</th>
+<th>false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>非空字符串</td>
+<td>空字符串</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>任何非零数字值包括无穷大小</td>
+<td>0和NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>任何对象</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>n/a not applicable 不适用</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>整数可以通过十进制,八进制,十六进制表示.其中八进制的第一位必须是0,后面的数字不能超过7<br>;十六进制则是0x后跟0~9和A~F.</p>
 </li>
 <li><p>不同进制相加自动转换为十进制再进行运算.</p>
@@ -172,7 +209,7 @@
 <li><code>0.1+0.2==0.3//false</code>，浮点数的最高精度是17位数，这是基于规范数值的浮点计算的通病。<br>因此，不要做测试某个特定的浮点数值.</li>
 <li>ES中保存的最小数值是Number.MIN_VALUE，能够保存的最大数值Number.MAX_VALUE，超过这<br>个范围则会转换为特殊的Infinity值。</li>
 <li>可以使用isFinite()函数来检测是否在数值范围中，是则返回true；</li>
-</ol>
+</ul>
 
             </div>
           
