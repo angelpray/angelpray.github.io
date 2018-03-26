@@ -14,7 +14,7 @@
 
 
 
-  <meta name="description" content="基本语法概念"/>
+  <meta name="description" content="JS基础概念"/>
 
 
 
@@ -40,14 +40,14 @@
 <meta name="description" content="基本语法概念 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写 ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。 始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用作">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基本语法概念">
+<meta property="og:title" content="JS基础概念">
 <meta property="og:url" content="https://angelpray.github.io/2018/03/25/基本语法概念/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="基本语法概念 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写 ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。 始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用作">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-25T15:37:11.833Z">
+<meta property="og:updated_time" content="2018-03-26T09:03:38.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基本语法概念">
+<meta name="twitter:title" content="JS基础概念">
 <meta name="twitter:description" content="基本语法概念 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写 ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。 始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用作">
 
 
@@ -73,7 +73,7 @@
 
 
 
-    <title> 基本语法概念 - Janro-Cheung </title>
+    <title> JS基础概念 - Janro-Cheung </title>
   </head>
 
   <body>
@@ -119,7 +119,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          基本语法概念
+          JS基础概念
         
       </h1>
 
@@ -132,7 +132,7 @@
 
     
             <div class="post-content">
-            <h1 id="基本语法概念"><a href="#基本语法概念" class="headerlink" title="基本语法概念"></a>基本语法概念</h1><ul>
+            <h2 id="基本语法概念"><a href="#基本语法概念" class="headerlink" title="基本语法概念"></a>基本语法概念</h2><ul>
 <li>ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写</li>
 <li>ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确<br>定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码<code>use strict</code>,告诉JS<br>引擎切换到严格模式。</li>
 <li><p>始终在控制语句中使用代码块，并且加上分号。</p>
@@ -209,7 +209,62 @@
 <li><code>0.1+0.2==0.3//false</code>，浮点数的最高精度是17位数，这是基于规范数值的浮点计算的通病。<br>因此，不要做测试某个特定的浮点数值.</li>
 <li>ES中保存的最小数值是Number.MIN_VALUE，能够保存的最大数值Number.MAX_VALUE，超过这<br>个范围则会转换为特殊的Infinity值。</li>
 <li>可以使用isFinite()函数来检测是否在数值范围中，是则返回true；</li>
+<li>NaN表示非数值Not a Number 是一个特殊的数值。有两个特点：任何涉及对NaN操作都会返回NaN<br>，NaN与任何值都不相等，包括NaN本身。<code>NaN==NaN; //false</code></li>
+<li>可以使用<code>isNaN()</code>来判断一个值是否为非数值。</li>
+<li>非数值转换为数值：<code>Number(),parseInt(),parseFloat</code>,Number()可用于任何数据类型，另<br>两个函数则用于特定字符串转换为数值。Number()转换规则:<blockquote>
+<p>如下表格：</p>
+</blockquote>
+</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>转换值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>真假值分别转换1和0</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>直接返回</td>
+</tr>
+<tr>
+<td>null</td>
+<td>0</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>数字=》十进制数值，忽略前导零；有效的浮点格式=》浮点数值；有效的十六进制=》相同大小的十进制；空字符串=》0；除上述以外=》 NaN</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>相对于Number(),parseInt()显得更强大：可以转换八进制，十六进制，只需要指定多一个进制参<br>数；可以识别含有可解析为整数的字符串，例如：’123asdf’=》123；</li>
+<li>相对于parseInt，parseFloat可以解析有效的小数点；将会忽略所有的前导零；没有指定进制的<br>参数<br>###String</li>
+</ul>
+<hr>
+<ul>
+<li><p>字符串是不可变的，一旦创建，他们的值就不能改变；想要改变变量中保存的字符串则需要销毁原<br>来的字符串，再使用一个新值字符串填充该变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var lang=&apos;java&apos;;</span><br><span class="line">lang=lang+&apos;script&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转换为字符串：</p>
+<ol>
+<li>toString，除了null和undefined都有这个方法，返回相应值得字符串表现，特点是可以添加一个输出数值的进制，实现进制之间的相同转换。</li>
+<li>String()转型函数，将所有类型的值都转换为字符串显示。null=》”null”,undefined同理。<br>否则直接调用toString();</li>
+<li>hack: 使用加号操作符与一个空字符串加在一起。</li>
+</ol>
+</li>
+</ul>
+<h2 id="object"><a href="#object" class="headerlink" title="###object"></a>###object</h2><ul>
+<li>Object类型是所有对象的基础，它所具有的任何属性和方法也存在于更具体的对象中。</li>
+<li>具有的属性：constructor，构造函数。</li>
+<li>具有的方法：hashOwnProperty(“[“)，isPrototypeOf(Object),propertyIsEnumerable(),<br>toString,valueOf();</li>
+</ul>
+<p>##操作符</p>
 
             </div>
           
