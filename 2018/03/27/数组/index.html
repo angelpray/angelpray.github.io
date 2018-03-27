@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="数组 数组是最简单的内存数据结构。  大多的语言的数组存储的是同一类型的值，在JS中，同一个数组中可以保存不同类型的值，但尽量不要这么做。   创建和初始化数组 创建数组的方式：new Array(),new Array(length),new Array(element1,element2,...),[],[element1,element2,...]  在js中，数组是一个可以修改的对象，可以">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-27T08:57:33.558Z">
+<meta property="og:updated_time" content="2018-03-27T15:58:33.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS数据结构——数组">
 <meta name="twitter:description" content="数组 数组是最简单的内存数据结构。  大多的语言的数组存储的是同一类型的值，在JS中，同一个数组中可以保存不同类型的值，但尽量不要这么做。   创建和初始化数组 创建数组的方式：new Array(),new Array(length),new Array(element1,element2,...),[],[element1,element2,...]  在js中，数组是一个可以修改的对象，可以">
@@ -135,7 +135,7 @@
             <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
 <li><p>数组是最简单的内存数据结构。</p>
 </li>
-<li><p>大多的语言的数组存储的是同一类型的值，在JS中，同一个数组中可以保存不同类型的值，但尽量不要这么做。</p>
+<li><p>大多的语言的数组存储的是同一类型的值，在JS中，同一个数组中可以保存不同类型的值，但尽量<br>不要这么做。</p>
 </li>
 </ul>
 <h3 id="创建和初始化数组"><a href="#创建和初始化数组" class="headerlink" title="创建和初始化数组"></a>创建和初始化数组</h3><ul>
@@ -145,7 +145,7 @@
 </li>
 </ul>
 <h3 id="添加-删除-替代元素"><a href="#添加-删除-替代元素" class="headerlink" title="添加/删除/替代元素"></a>添加/删除/替代元素</h3><ul>
-<li><p>添加元素：<code>Array[Array.length]=element</code>,<code>Array.push()</code>,<code>Array.unshift</code>;前者是添加元素到最靠后的元素，后者则相反。</p>
+<li><p>添加元素：<code>Array[Array.length]=element</code>,<code>Array.push()</code>,<code>Array.unshift</code>;前者是添<br>加元素到最靠后的元素，后者则相反。</p>
 </li>
 <li><p>删除元素：<code>pop()</code>,<code>shift()</code>;前者是删除最靠后的元素，后者则相反。</p>
 </li>
@@ -170,9 +170,9 @@
 </li>
 <li><p><code>forEach(function)</code>迭代整个数组，执行某个函数，没有返回值；</p>
 </li>
-<li><p><code>map(function)</code>,<code>filter(function)</code>;前者保存的是元素执行函数之后的所有结果，后者则是只保存返回true组成的元素值。</p>
+<li><p><code>map(function)</code>,<code>filter(function)</code>;前者保存的是元素执行函数之后的所有结果，后者则<br>是只保存返回true组成的元素值。</p>
 </li>
-<li><p><code>reduce(function)</code>，稍微复杂一点的是接收的函数有四个参数：previousValue,currentValue,index,array,其中previousValue表示的是上一次运算的和；<br>reduce方法停止执行后返回这个累加器。一般用于数组中的所有元素求和。<code>return previousValue+currentValue</code></p>
+<li><p><code>reduce(function)</code>，稍微复杂一点的是接收的函数有四个参数：previousValue,<br>currentValue,index,array,其中previousValue表示的是上一次运算的和；reduce方法停止执<br>行后返回这个累加器。一般用于数组中的所有元素求和。<code>return previousValue+currentValue</code></p>
 </li>
 </ul>
 <h3 id="ES6-7新增的数组功能"><a href="#ES6-7新增的数组功能" class="headerlink" title="ES6/7新增的数组功能"></a>ES6/7新增的数组功能</h3><ul>
@@ -194,7 +194,7 @@
 </li>
 <li><p>values返回只含有值的迭代器对象，跟Symbol.iterator属性一样。</p>
 </li>
-<li><p>目前有点疑惑的是：使用for…of居然可以直接输出整个迭代器对象的值，而不用next().value如此一个个进行下去。因为next()返回的是一个对象，需要输出value属性，而<br>for…of确实可以直接输出迭代器对象的值。</p>
+<li><p>目前有点疑惑的是：使用for…of居然可以直接输出整个迭代器对象的值，而不用next().value<br>如此一个个进行下去。因为next()返回的是一个对象，需要输出value属性，而for…of确实可以<br>直接输出迭代器对象的值。</p>
 </li>
 <li><p>Array.from(array,function)，根据已有的数组创建一个新数组。</p>
 </li>
@@ -202,7 +202,34 @@
 </li>
 <li><p>fill(element,index)，用静态值填充数组。创建数组并初始化值:<code>let arr=Array(6).fill(1)</code></p>
 </li>
-<li><p>copyWithin(pasteIndex,copyIndex),复制数组中的一段元素到统一数组指定的位置。<code>copyArray = [1, 2, 3, 4, 5, 6]; copyArray.copyWithin(1, 3, 5);//[1,4,5,4,5,6]</code></p>
+<li><p>copyWithin(pasteIndex,copyIndex),复制数组中的一段元素到统一数组指定的位置。<br><code>copyArray = [1, 2, 3, 4, 5, 6]; copyArray.copyWithin(1, 3, 5);//[1,4,5,4,5,6]</code></p>
+</li>
+</ul>
+<h3 id="排序元素"><a href="#排序元素" class="headerlink" title="排序元素"></a>排序元素</h3><ul>
+<li>反序：<code>reverse()</code></li>
+<li><p>降序或什序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=<span class="built_in">Array</span>.of(<span class="number">10</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line">arr.sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a-b;</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="comment">// [1, 2, 5, 6, 10]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串排序默认下，JS比较字符串是根据ASCII值来比较的，所以a将会在J后面，这不是我们想要<br>的结果，需要自定义一个比较函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.toLowerCase() &lt; b.toLowerCase())&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a.toLowerCase() &gt; b.toLowerCase())&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对本地字符或其他特殊语言做排序可以使用<code>localCompare</code>来实现。</p>
+</li>
+</ul>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><ul>
+<li><p><code>indexOf(element)</code>匹配第一个元素的索引，<code>lastIndexOf(element)</code>返回最后一个元素的索引，否则都将会返回-1。</p>
+</li>
+<li><p>ES6：<code>find(function)\findIndex(function)</code>,搜索一个满足回调函数条件的值；前者返回的是<br>值否则返回undefined，后者则是返回一个该值得索引否则返回-1。现在看来有一点可以肯定的是，<br>当数组中的返回的是值但找不到，则会返回undefined，而当返回的是索引但找不到，则返回是-1；</p>
+</li>
+<li><p>ES7：<code>includes(element)</code>,含有该元素则返回true，否则返回false；</p>
+</li>
+</ul>
+<h3 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h3><ul>
+<li><code>toString()</code>,把所有的元素输出为一个字符串。</li>
+<li><code>join(分隔符)</code>,使用一个分割符把元素隔开</li>
+</ul>
+<h3 id="类型数组"><a href="#类型数组" class="headerlink" title="类型数组"></a>类型数组</h3><ul>
+<li>JS不是强类型语言，数组当然也不会是强类型的。而类型数组是用于存储单一类型的数据，跟普通<br>数组无异。<code>据说</code>在进行位操作，处理文件和图像的时候，类型数组很关键，但我并没有做过相关实验。<br>定义一个JS的类型数组的语法如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myArray=<span class="keyword">new</span> TypedArray(length);</span><br><span class="line"><span class="comment">//其中typedArray是数组的类型：</span></span><br><span class="line"><span class="comment">//比如Int16Array-16位二进制补码整数，Uint8Array-88位无符号整数</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
