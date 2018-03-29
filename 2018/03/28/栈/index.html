@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="栈 有两种数据结构类似数组，在添加和删除元素时更可控——队列和栈。  栈是一种遵从后进先出（LIFO）原则的有序集合。新添加的或待删除的元素都保存在栈的同一端，称作栈顶，另一端叫栈底。简单说：新元素都靠近栈顶，就元素都接近栈底。   开始创建栈 声明一个Stack类: 12345function Stack()&amp;#123;  //使用数组来保存栈里的元素  let items=[];  //属性和">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-29T07:58:36.839Z">
+<meta property="og:updated_time" content="2018-03-29T08:03:42.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS数据结构——栈">
 <meta name="twitter:description" content="栈 有两种数据结构类似数组，在添加和删除元素时更可控——队列和栈。  栈是一种遵从后进先出（LIFO）原则的有序集合。新添加的或待删除的元素都保存在栈的同一端，称作栈顶，另一端叫栈底。简单说：新元素都靠近栈顶，就元素都接近栈底。   开始创建栈 声明一个Stack类: 12345function Stack()&amp;#123;  //使用数组来保存栈里的元素  let items=[];  //属性和">
@@ -172,7 +172,7 @@
 </ul>
 <h3 id="应用栈解决问题"><a href="#应用栈解决问题" class="headerlink" title="应用栈解决问题"></a>应用栈解决问题</h3><ul>
 <li>栈在实际应用中非常广泛，特别是在回溯问题中，栈将大显身手，在后面文章会写到。</li>
-<li>使用栈实现转换算法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseConverter</span>(<span class="params">decNumber,base</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> remStack=<span class="keyword">new</span> Stack(),</span><br><span class="line">  rem,</span><br><span class="line">  baseString=<span class="string">''</span>,</span><br><span class="line">  digits=<span class="string">'0123456789ABCDEF'</span>;</span><br><span class="line">  <span class="comment">//把余数放到栈中</span></span><br><span class="line">  <span class="keyword">while</span>(decNumber&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    rem=<span class="built_in">Math</span>.floor(decNumber % base);</span><br><span class="line">    remStack.push(rem);</span><br><span class="line">    decNumber=<span class="built_in">Math</span>.floor(decNumber/base);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//把余数取出来</span></span><br><span class="line">  <span class="keyword">while</span>(!remStack.isEmpty())&#123;</span><br><span class="line">    baseString +=digits[remStack.pop()];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> baseString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>使用栈实现十进制转换任意进制的算法：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseConverter</span>(<span class="params">decNumber,base</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> remStack=<span class="keyword">new</span> Stack(),</span><br><span class="line">  rem,</span><br><span class="line">  baseString=<span class="string">''</span>,</span><br><span class="line">  digits=<span class="string">'0123456789ABCDEF'</span>;</span><br><span class="line">  <span class="comment">//把余数放到栈中</span></span><br><span class="line">  <span class="keyword">while</span>(decNumber&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    rem=<span class="built_in">Math</span>.floor(decNumber % base);</span><br><span class="line">    remStack.push(rem);</span><br><span class="line">    decNumber=<span class="built_in">Math</span>.floor(decNumber / base);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//把余数取出来</span></span><br><span class="line">  <span class="keyword">while</span>(!remStack.isEmpty())&#123;</span><br><span class="line">    baseString +=digits[remStack.pop()];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> baseString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -201,6 +201,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2018/03/29/队列/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JS数据结构——队列</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2018/03/27/数组/">
