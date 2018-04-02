@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="队列 是遵循FIFO（先进先出）原则的一组有序集合。队列在尾部添加新元素，从顶部移除元素。生活中的列子有：排队上厕所，杂货店收银……排在第一位的会先接受服务。  创建队列 创建队列跟创建栈非常的相似，只是添加和移除元素的原则不同。 12345678910111213var Queue=(function()&amp;#123;  const items=new WeakMap();  class Queu">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-29T08:57:31.827Z">
+<meta property="og:updated_time" content="2018-03-29T13:01:09.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS数据结构——队列">
 <meta name="twitter:description" content="队列 是遵循FIFO（先进先出）原则的一组有序集合。队列在尾部添加新元素，从顶部移除元素。生活中的列子有：排队上厕所，杂货店收银……排在第一位的会先接受服务。  创建队列 创建队列跟创建栈非常的相似，只是添加和移除元素的原则不同。 12345678910111213var Queue=(function()&amp;#123;  const items=new WeakMap();  class Queu">
@@ -164,7 +164,9 @@
 <li>使用循环队列解决击鼓传花游戏（围成一圈，按顺序把花递给下一人，知道某一时刻停止传花，花在谁手上，谁就退出游戏）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hotPotato</span> (<span class="params">nameList, num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> queue = <span class="keyword">new</span> Queue(); <span class="comment">// &#123;1&#125;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;nameList.length; i++)&#123;</span><br><span class="line">    queue.enqueue(nameList[i]); <span class="comment">// &#123;2&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> eliminated = <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">while</span> (queue.size() &gt; <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;num; i++)&#123;</span><br><span class="line">      queue.enqueue(queue.dequeue()); <span class="comment">// &#123;3&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">    eliminated = queue.dequeue();<span class="comment">// &#123;4&#125;</span></span><br><span class="line">    <span class="built_in">console</span>.log(eliminated + <span class="string">'在击鼓传花游戏中被淘汰。'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> queue.dequeue();<span class="comment">// &#123;5&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> names = [<span class="string">'John'</span>,<span class="string">'Jack'</span>,<span class="string">'Camila'</span>,<span class="string">'Ingrid'</span>,<span class="string">'Carl'</span>];</span><br><span class="line"><span class="keyword">let</span> winner =hotPotato(names, <span class="number">7</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'The winner is: '</span> + winner);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="JS任务队列"><a href="#JS任务队列" class="headerlink" title="JS任务队列"></a>JS任务队列</h3><p>-JS处理所有的任务都是单线程，它会自动创建一个任务<strong>队列</strong>，这被称为事件循环。</p>
+<h3 id="JS任务队列"><a href="#JS任务队列" class="headerlink" title="JS任务队列"></a>JS任务队列</h3><ul>
+<li>JS处理所有的任务都是单线程，它会自动创建一个任务<strong>队列</strong>，这被称为事件循环。</li>
+</ul>
 
             </div>
           
@@ -191,6 +193,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2018/03/29/链表/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JS数据结构——链表</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2018/03/28/栈/">
