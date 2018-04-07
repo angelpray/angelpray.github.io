@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="JS数据结构——集合"/>
+
+
+
+
+  <meta name="keywords" content="数据结构," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/04/07/集合/"/>
+
+
+<meta name="description" content="集合 集合是无序且唯一的项组成的一种数据结构。  创建集合 ES6中包括了Set类的实现，下面实现的类就是基于ES6中的Set类。 12345function Set() &amp;#123;  let items = &amp;#123;&amp;#125;;  // 其他方法&amp;#125;  上面代码中，我们使用对象而不是数组来表示集合。   集合的方法 has(value)： 123this.has = functi">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS数据结构——集合">
+<meta property="og:url" content="https://angelpray.github.io/2018/04/07/集合/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="集合 集合是无序且唯一的项组成的一种数据结构。  创建集合 ES6中包括了Set类的实现，下面实现的类就是基于ES6中的Set类。 12345function Set() &amp;#123;  let items = &amp;#123;&amp;#125;;  // 其他方法&amp;#125;  上面代码中，我们使用对象而不是数组来表示集合。   集合的方法 has(value)： 123this.has = functi">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-04-07T12:50:43.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS数据结构——集合">
+<meta name="twitter:description" content="集合 集合是无序且唯一的项组成的一种数据结构。  创建集合 ES6中包括了Set类的实现，下面实现的类就是基于ES6中的Set类。 12345function Set() &amp;#123;  let items = &amp;#123;&amp;#125;;  // 其他方法&amp;#125;  上面代码中，我们使用对象而不是数组来表示集合。   集合的方法 has(value)： 123this.has = functi">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> JS数据结构——集合 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JS数据结构——集合
+        
+      </h1>
+
+      <time class="post-time">
+          4月 07 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ul>
+<li>集合是无序且唯一的项组成的一种数据结构。</li>
+</ul>
+<h3 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h3><ul>
+<li><p>ES6中包括了Set类的实现，下面实现的类就是基于ES6中的Set类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Set</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> items = &#123;&#125;;</span><br><span class="line">  <span class="comment">// 其他方法</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面代码中，我们使用对象而不是数组来表示集合。</p>
+</li>
+</ul>
+<h3 id="集合的方法"><a href="#集合的方法" class="headerlink" title="集合的方法"></a>集合的方法</h3><ul>
+<li><p>has(value)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.has = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value <span class="keyword">in</span> items;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为使用对象来存储集合的值，所以可以使用in操作符来验证给定的值是否在items中。</p>
+</li>
+<li><p>但更好的实现方式是使用hasOwnProperty方法，因为它返回的是实例属性，而in操作符返回的有可能是实例属性也有可能是原型属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.has = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> items.hasOwnProperty(value); <span class="comment">// true or false;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add(value):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.add = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!<span class="keyword">this</span>.has(value))&#123;</span><br><span class="line">    items[value]=value;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意，添加一个值的时候，把它同时作为键和值来保存，这样有利于查找这个值。</p>
+</li>
+<li><p>remove(value)和clear：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//remove</span></span><br><span class="line"><span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">vlaue</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.has(value))&#123;</span><br><span class="line">    <span class="keyword">delete</span> items[vlaue];</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//clear</span></span><br><span class="line"><span class="keyword">this</span>.clear=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  items=&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>size方法:实现size方法有三种方式：</p>
+<ol>
+<li>使用length变量，在每次remove和add中都手动控制length，有点麻烦。</li>
+<li>使用Object.keys()方法，此法最简单，返回的是一个包含给定对象的所有属性的数组。</li>
+<li>提取items对象的每一个属性，记录属性并返回这个数字,使用hasOwnProperty和for…in<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里使用最简单的一种</span></span><br><span class="line"><span class="keyword">this</span>.sizeLegacy = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.key(items).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>-values：返回所有的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种实现方法</span></span><br><span class="line"><span class="keyword">this</span>.values = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> values = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> items)&#123;</span><br><span class="line">    <span class="keyword">if</span>(items.hasOwnProperty(key))&#123;</span><br><span class="line">      values.push(items[key])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> values;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种实现方法</span></span><br><span class="line"><span class="keyword">this</span>.values = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> values = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,keys=<span class="built_in">Object</span>.key(items);i&lt;keys.length;i++)&#123;</span><br><span class="line">    values.push(items[keys[i]]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><ol>
+<li><p>并集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.union = <span class="function"><span class="keyword">function</span>(<span class="params">otherSet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> values=<span class="keyword">this</span>.values();</span><br><span class="line">  <span class="keyword">let</span> unionSet=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;values.length;i++)&#123;</span><br><span class="line">    unionSet.add(values[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  values=otherSet.values();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;values.length;i++)&#123;</span><br><span class="line">    unionSet.add(values[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> unionSet;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>交集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.intersection = <span class="function"><span class="keyword">function</span>(<span class="params">otherSet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> values=otherSet.values();</span><br><span class="line">  <span class="keyword">let</span> intersectionSet=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;values.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.has(values[i]))&#123;</span><br><span class="line">      intersectionSet.add(values[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> intersectionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>差集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.difference = <span class="function"><span class="keyword">function</span>(<span class="params">otherSet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> values=<span class="keyword">this</span>.values();</span><br><span class="line">  <span class="keyword">let</span> differenceSet=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;values.length;i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!otherSet.has(values[i]))&#123;</span><br><span class="line">      differenceSet.add(values[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> differenceSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.subset=<span class="function"><span class="keyword">function</span>(<span class="params">otherSet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.size()&gt;otherSet.size())&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> values=<span class="keyword">this</span>.values();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i;i&lt;values.length;i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(!otherSet.has(values[i]))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ES6中的Set类"><a href="#ES6中的Set类" class="headerlink" title="ES6中的Set类"></a>ES6中的Set类</h3><ul>
+<li>ES2015增加了Set类，可以基于它开发我们的Set类</li>
+<li><p>有几点区别：</p>
+<ol>
+<li>原生values方法返回的是一个Iterator，而不是数组</li>
+<li>size是一个属性而不是一个方法</li>
+<li>使用delete方法删除元素而不是remove方法。</li>
+<li>并没有实现集合的各种操作，需要自己再模拟。</li>
+</ol>
+</li>
+<li><p>模拟并集操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unionAb=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> setA) unionAb.add(x);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> setB) unionAb.add(x);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟交集操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> intersection=<span class="function"><span class="keyword">function</span>(<span class="params">setA,setB</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> intersectionSet=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> setA)&#123;</span><br><span class="line">    <span class="keyword">if</span>(setB.has(x))&#123;</span><br><span class="line">      intersectionSet.add(x)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> intersectionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟差集操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> difference=<span class="function"><span class="keyword">function</span>(<span class="params">setA,setB</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> differenceSet=<span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> SetA)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!setB.has(x))&#123;</span><br><span class="line">      differenceSet.add(x);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> differenceSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟子集操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> subset=<span class="function"><span class="keyword">function</span>(<span class="params">setA,setB</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(setB.size&gt;setA.size)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> setB)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!setA.has(x))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/数据结构/">数据结构</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/数据结构和算法/">数据结构和算法</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/29/链表/">
+        <span class="next-text nav-default">JS数据结构——链表</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
