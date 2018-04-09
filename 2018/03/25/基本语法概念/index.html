@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="基础语法 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写  ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。  始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-29T08:01:16.862Z">
+<meta property="og:updated_time" content="2018-04-09T08:11:38.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS基础概念">
 <meta name="twitter:description" content="基础语法 ES采用驼峰大小写格式，第一个字母小写，剩下的单词首字母大写  ES5引入了严格模式的概念，为JS定义了一种不同的解析和执行模型，在严格模式下，一些不确定的行为得到处理，一些不安全的操作也会抛出错误。使用方法：添加代码use strict,告诉JS引擎切换到严格模式。  始终在控制语句中使用代码块，并且加上分号。  关键字是具有特定用途的关键字；保留字暂时还没有特定用途，但将来可能被用">
@@ -282,7 +282,7 @@
 </li>
 <li><p>转换为字符串：</p>
 <ol>
-<li>toString，除了null和undefined都有这个方法，返回相应值得字符串表现，特点是可以添加一个输出数值的进制，实现进制之间的相同转换。</li>
+<li>toString，除了null和undefined都有这个方法，返回相应值得字符串表现，特点是可以添加<br>一个输出数值的进制，实现进制之间的相同转换。</li>
 <li>String()转型函数，将所有类型的值都转换为字符串显示。null=》”null”,undefined同理。<br>否则直接调用toString();</li>
 <li>hack: 使用加号操作符与一个空字符串加在一起。</li>
 </ol>
@@ -296,7 +296,30 @@
 <li><p>具有的方法：hashOwnProperty(“[“)，isPrototypeOf(Object),propertyIsEnumerable(),<br>toString,valueOf();</p>
 </li>
 </ul>
-<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li><p>一元操作符，加和减操作符：对非数值应用一元加操作符跟Number()转型函数一样对值进行转换。</p>
+</li>
+<li><p>位操作符按内存中表示数值的位来操作数值。对于有符号的整数，32位的最高位是符号位，其余用<br>于表示整数的值的有效位。如0x27+10010,表示的就是十进制的18，简洁写法是10010，省略掉前面<br>27个0，5个都是有效位。</p>
+</li>
+<li><p>位操作符，对于负数使用的是二进制补码。</p>
+</li>
+<li><p>计算一个数值的补码过程</p>
+<ol>
+<li>求该数的绝对值二进制</li>
+<li>求二进制的反码，将0替换为1，将1替换为0</li>
+<li>得到的二进制反码加1</li>
+</ol>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li><p>JS的函数不在意传递的参数个数，也不在意参数是什么数据类型。函数内部使用数组存储这些参数<br>。在函数体内可以用arguments对象来访问参数数组。<strong>arguments对象只是长得跟数组像，可以</strong><br><strong>使用方括号访问元素，使用length来确定参数长度</strong>，但它并不是Array实例！</p>
+</li>
+<li><p>没有传递值得命名参数会自动被赋予undefined。</p>
+</li>
+<li><p>函数签名：接收的参数的类型和数量不同就是不同的函数，可以实现重载。但是在JS中，不存在。<br>要实现重载，只能检查参数的类型和数量然后做出不同的反应。</p>
+</li>
+</ul>
+
             </div>
           
 
