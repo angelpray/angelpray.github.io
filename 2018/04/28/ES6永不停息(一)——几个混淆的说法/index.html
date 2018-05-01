@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="ES6永不停息(一)——几个混淆的说法"/>
+
+
+
+
+  <meta name="keywords" content="JavaScript,ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/04/28/ES6永不停息(一)——几个混淆的说法/"/>
+
+
+<meta name="description" content="初次见面 ES6理解几个说法 ECMAScript和JavaScript的关系：前者是后者的规格，后者是前者的一种实现。另外的ECMAScript方言还有Jscript和ActionScript。日常，这两个名词可以互换。  ES6和ECMAScript 2015的关系：在以往会ES的版本号比如ES1，ES2，ES5……，2011年ES5.1正式发布后就开始制定了6.0版本。所以，ES6原来的意思">
+<meta name="keywords" content="JavaScript,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6永不停息(一)——几个混淆的说法">
+<meta property="og:url" content="https://angelpray.github.io/2018/04/28/ES6永不停息(一)——几个混淆的说法/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="初次见面 ES6理解几个说法 ECMAScript和JavaScript的关系：前者是后者的规格，后者是前者的一种实现。另外的ECMAScript方言还有Jscript和ActionScript。日常，这两个名词可以互换。  ES6和ECMAScript 2015的关系：在以往会ES的版本号比如ES1，ES2，ES5……，2011年ES5.1正式发布后就开始制定了6.0版本。所以，ES6原来的意思">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-04-28T15:54:07.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6永不停息(一)——几个混淆的说法">
+<meta name="twitter:description" content="初次见面 ES6理解几个说法 ECMAScript和JavaScript的关系：前者是后者的规格，后者是前者的一种实现。另外的ECMAScript方言还有Jscript和ActionScript。日常，这两个名词可以互换。  ES6和ECMAScript 2015的关系：在以往会ES的版本号比如ES1，ES2，ES5……，2011年ES5.1正式发布后就开始制定了6.0版本。所以，ES6原来的意思">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> ES6永不停息(一)——几个混淆的说法 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ES6永不停息(一)——几个混淆的说法
+        
+      </h1>
+
+      <time class="post-time">
+          4月 28 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="初次见面-ES6"><a href="#初次见面-ES6" class="headerlink" title="初次见面 ES6"></a>初次见面 ES6</h2><h3 id="理解几个说法"><a href="#理解几个说法" class="headerlink" title="理解几个说法"></a>理解几个说法</h3><ul>
+<li><p><strong>ECMAScript和JavaScript的关系：</strong>前者是后者的规格，后者是前者的一种实现。另外的ECMAScript<br>方言还有Jscript和ActionScript。日常，这两个名词可以互换。</p>
+</li>
+<li><p><strong>ES6和ECMAScript 2015的关系：</strong>在以往会ES的版本号比如ES1，ES2，ES5……，2011年ES5.1<br>正式发布后就开始制定了6.0版本。所以，<strong>ES6原来的意思就是指JS的下一个版本</strong>。后来，发布<br>标准的那帮家伙决定每年的6月份正式发布一次标准作为当年的正式版本，<strong>不再需要以前的版本号了。</strong><br>因此，ES6的第一个版本就是ES2015。ES6是一个泛指，就是指5.1版本后的JS的下一代标准。所以<br>不会再有ES7之类的版本号了，只会有年份号，比如ES2015,ES2016,ES2017……。</p>
+</li>
+<li><p><strong>Babel转码器：</strong> Babel 是一个广泛使用的 ES6 转码器，可以将 ES6 代码转为 ES5 代码，<br>从而在现有环境执行。这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。</p>
+</li>
+<li><strong>Traceur转码器：</strong>Google 公司的Traceur转码器，也可以将 ES6 代码转为 ES5 代码。</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/JavaScript/">JavaScript</a>
+		  
+			<a href="/tags/ES6/">ES6</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/28/ES6永不停息(二)——let/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ES6永不停息(二)——let</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/04/19/善于利用正则表达式做很酷的事/">
+        <span class="next-text nav-default">在JS中善用正则表达式做些很酷的事</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

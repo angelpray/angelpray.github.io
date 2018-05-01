@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="正则表达式定义 Regular Expression，使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。 简单理解：按照某种规则去匹配符合条件的字符串。  创建一个正则表达式 字面量方式创建,const regex = /ab+c/g, RegExp对象,const regex = new RegExp(&amp;#39;ab+c&amp;#39;,&amp;#39;g&amp;#39;)  正则表达式中的专有名词 元字">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-04-22T03:08:21.327Z">
+<meta property="og:updated_time" content="2018-04-28T05:57:04.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在JS中善用正则表达式做些很酷的事">
 <meta name="twitter:description" content="正则表达式定义 Regular Expression，使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。 简单理解：按照某种规则去匹配符合条件的字符串。  创建一个正则表达式 字面量方式创建,const regex = /ab+c/g, RegExp对象,const regex = new RegExp(&amp;#39;ab+c&amp;#39;,&amp;#39;g&amp;#39;)  正则表达式中的专有名词 元字">
@@ -141,17 +141,30 @@
 <li>RegExp对象,<code>const regex = new RegExp(&#39;ab+c&#39;,&#39;g&#39;)</code></li>
 </ol>
 <h3 id="正则表达式中的专有名词"><a href="#正则表达式中的专有名词" class="headerlink" title="正则表达式中的专有名词"></a>正则表达式中的专有名词</h3><ul>
-<li><strong>元字符</strong>，在正则表达式匹配时需要更多条件的时候，就需要用到元字符（有特殊意义）<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">MDN</a></li>
-<li><strong>量词</strong>，可以在正则表达式中使量词来表示重复多次的规则，比如表示4个字符<code>/\w\w\w\w/</code>，<br>用量词：<code>/\w{4}/</code>。量词也可以表示一个规则的范围{4,10}，表示4到10个。</li>
-<li><strong>字符类</strong>，使用[]，来构建一个简单类，是一个符合某些特性的对象，一个泛指。[abc]类表示<br>abc其中一个。（字符类跟“|”或的用法是一样的，假设不加全局标志，都只是匹配成功就结束）</li>
-<li><strong>范围类</strong>，使用字符类匹配数字或字母，有时候需要一个范围内的数字或字母，比如123456，<br>或者efgh。可以使用破折号表示一个范围，表示为[1-6]和[e-h],另外组成的类内部可以连写如[a-zA-Z0-9]。<br>在范围类中。</li>
-<li><strong>分组</strong>，通俗说就是使用括号括起来的子表达式，如<code>/(\b+)\w*(?=\s)/</code>,前一个括号是一个分组。</li>
-<li><strong>贪婪模式</strong>，让正则表达式尽可能多的匹配，比如<code>/\d{3,6}/</code>会尽可能匹配到6个数字。</li>
-<li><strong>非贪婪模式</strong>，让正则表达式尽可能少的匹配，在量词后加上“？”，代表就是非贪婪模式。</li>
-<li><strong>反向引用</strong>，反向引用指的是跟分组配合使用，指的是使用分组可以记忆，使用$n来表示，n代表第几个分组。</li>
-<li><strong>前瞻</strong>，正则表达式从文本头部向尾部解析，文本尾部方向称为“前”。因此前瞻指的就是正则。<br>表达式匹配到规则的时候，向前检查是否符合<strong>断言</strong>。符合断言的是正向匹配，不符合则负向匹配。<br>比如，一个正向匹配。判断一个字符是数字并且它后面跟着的是字母，<code>/\d(?=[a-zA-Z])/</code>。是数字<br>并且后面不是字母/\d(?![a-zA-Z])/。</li>
+<li><p><strong>元字符</strong>，在正则表达式匹配时需要更多条件的时候，就需要用到元字符（有特殊意义）<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">MDN</a></p>
+</li>
+<li><p><strong>量词</strong>，可以在正则表达式中使量词来表示重复多次的规则，比如表示4个字符<code>/\w\w\w\w/</code>，<br>用量词：<code>/\w{4}/</code>。量词也可以表示一个规则的范围{4,10}，表示4到10个。</p>
+</li>
+<li><p><strong>字符类</strong>，使用[]，来构建一个简单类，是一个符合某些特性的对象，一个泛指。[abc]类表示<br>abc其中一个。（字符类跟“|”或的用法是一样的，假设不加全局标志，都只是匹配成功就结束）</p>
+</li>
+<li><p><strong>范围类</strong>，使用字符类匹配数字或字母，有时候需要一个范围内的数字或字母，比如123456，<br>或者efgh。可以使用破折号表示一个范围，表示为[1-6]和[e-h],另外组成的类内部可以连写如[a-zA-Z0-9]。<br>在范围类中。</p>
+</li>
+<li><p><strong>分组</strong>，通俗说就是使用括号括起来的子表达式，如<code>/(\b+)\w*(?=\s)/</code>,前一个括号是一个分组。</p>
+</li>
+<li><p><strong>贪婪模式</strong>，让正则表达式尽可能多的匹配，比如<code>/\d{3,6}/</code>会尽可能匹配到6个数字。</p>
+</li>
+<li><p><strong>非贪婪模式</strong>，让正则表达式尽可能少的匹配，在量词后加上“？”，代表就是非贪婪模式。</p>
+</li>
+<li><p><strong>反向引用</strong>，反向引用指的是跟分组配合使用，指的是使用分组可以记忆，使用$n来表示，n代表第几个分组。</p>
+</li>
+<li><p><strong>前瞻</strong>，正则表达式从文本头部向尾部解析，文本尾部方向称为“前”。因此前瞻指的就是正则。<br>表达式匹配到规则的时候，向前检查是否符合<strong>断言</strong>。符合断言的是正向匹配，不符合则负向匹配。<br>比如，一个正向匹配。判断一个字符是数字并且它后面跟着的是字母，<code>/\d(?=[a-zA-Z])/</code>。是数字<br>并且后面不是字母/\d(?![a-zA-Z])/。</p>
+</li>
 </ul>
-<h3 id="正则表达式标志"><a href="#正则表达式标志" class="headerlink" title="正则表达式标志"></a>正则表达式标志</h3><p>g global全局搜索<br>i ignoreCase 忽略大小写<br>m multiple 多行搜索</p>
+<h3 id="正则表达式标志"><a href="#正则表达式标志" class="headerlink" title="正则表达式标志"></a>正则表达式标志</h3><ul>
+<li>g global全局搜索</li>
+<li>i ignoreCase 忽略大小写</li>
+<li>m multiple 多行搜索</li>
+</ul>
 <h3 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h3><ul>
 <li>正则表达式一般用在两个地方，RegExp对象和String对象中，如下表格</li>
 </ul>
@@ -215,6 +228,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/28/ES6永不停息(一)——几个混淆的说法/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ES6永不停息(一)——几个混淆的说法</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
       <a class="next" href="/2018/04/11/善用JSON做些有趣的事/">

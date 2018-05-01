@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="在Node.JS的路上"/>
+
+
+
+
+  <meta name="keywords" content="Node.js," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/04/09/在Node.js在路上/"/>
+
+
+<meta name="description" content="Node.JS - start querystring和bodyparse的区别在于：querystring大多是用在post上，解析传过来的请求数据然后返回一个查询对象；而bodyparse则是搭配着Connect或其他高级框架直接对请求做解析。12345678910111213// querystringlet body=&apos;&apos;;req.on(&apos;date&apos;, function(chunk) &amp;#">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Node.JS的路上">
+<meta property="og:url" content="https://angelpray.github.io/2018/04/09/在Node.js在路上/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="Node.JS - start querystring和bodyparse的区别在于：querystring大多是用在post上，解析传过来的请求数据然后返回一个查询对象；而bodyparse则是搭配着Connect或其他高级框架直接对请求做解析。12345678910111213// querystringlet body=&apos;&apos;;req.on(&apos;date&apos;, function(chunk) &amp;#">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-04-28T05:52:51.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Node.JS的路上">
+<meta name="twitter:description" content="Node.JS - start querystring和bodyparse的区别在于：querystring大多是用在post上，解析传过来的请求数据然后返回一个查询对象；而bodyparse则是搭配着Connect或其他高级框架直接对请求做解析。12345678910111213// querystringlet body=&apos;&apos;;req.on(&apos;date&apos;, function(chunk) &amp;#">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 在Node.JS的路上 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          在Node.JS的路上
+        
+      </h1>
+
+      <time class="post-time">
+          4月 09 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="Node-JS-start"><a href="#Node-JS-start" class="headerlink" title="Node.JS - start"></a>Node.JS - start</h2><ul>
+<li>querystring和bodyparse的区别在于：querystring大多是用在post上，解析传过来的请求数据然后返回一个查询对象；而bodyparse则是搭配着Connect或其他高级框架直接对请求做解析。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// querystring</span></span><br><span class="line"><span class="keyword">let</span> body=<span class="string">''</span>;</span><br><span class="line">req.on(<span class="string">'date'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123; body+=chunk &#125;);</span><br><span class="line">req.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = qs.parse(body);</span><br><span class="line">  <span class="comment">//obj此时就有请求数据的一些字段。</span></span><br><span class="line">  &#125;);</span><br><span class="line"><span class="comment">// bodyParser</span></span><br><span class="line">connect()</span><br><span class="line">.use(bodyParser.urlencoded())</span><br><span class="line">.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.end(req.body.xx)<span class="comment">// xx为传过来的字段名</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/Node-js/">Node.js</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/服务器端/">服务器端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/11/善用JSON做些有趣的事/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">善用JSON做些有趣的事</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/04/07/集合/">
+        <span class="next-text nav-default">JS数据结构——集合</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
