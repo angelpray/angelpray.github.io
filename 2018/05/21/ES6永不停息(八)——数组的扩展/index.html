@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="ES6永不停息(二)——const"/>
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/05/21/ES6永不停息(八)——数组的扩展/"/>
+
+
+<meta name="description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6永不停息(二)——const">
+<meta property="og:url" content="https://angelpray.github.io/2018/05/21/ES6永不停息(八)——数组的扩展/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-05-26T15:49:10.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6永不停息(二)——const">
+<meta name="twitter:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> ES6永不停息(二)——const - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ES6永不停息(二)——const
+        
+      </h1>
+
+      <time class="post-time">
+          5月 21 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><ul>
+<li><p>rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都<br>可以扩展为真正的数组。比如：arguments，NodeList<br><code>[...document.querySelectorAll(&#39;div&#39;)]</code>// [<div>, <div>, <div>]</div></div></div></p>
+</li>
+<li><p>该运算符主要用于函数调用。<code>function push(array,...items){}</code></p>
+</li>
+<li><p>替代apply（详情看明明白白系列之call，apply，bind），apply在数组中的应用场景主要是：<br><strong>展开数组</strong>，比如说:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example-1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x, y ,z</span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">f(...args);</span><br><span class="line"><span class="comment">// example-2</span></span><br><span class="line"><span class="comment">/* Math.max.apply(null,[14, 3, 77]) */</span></span><br><span class="line"><span class="built_in">Math</span>.max(...[<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因此有了扩展运算符，在数组也就不用像以往一样为了展开数组不得不用apply方法，因为apply<br>主要作用是设置this作用域而不是“特意展开数组”。</p>
+</li>
+<li><p>应用：复制数组，合并数组,将字符串转化为真正的数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 复制数组 */</span></span><br><span class="line">  <span class="comment">//es5</span></span><br><span class="line">  <span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">  <span class="keyword">const</span> a2 = a1.concat();</span><br><span class="line">  <span class="comment">//es6</span></span><br><span class="line">  <span class="keyword">const</span> a3 = [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">  <span class="keyword">const</span> a4 = [...a3];</span><br><span class="line">  <span class="comment">/* 合并数组 */</span></span><br><span class="line">  <span class="comment">// es5</span></span><br><span class="line">  a1.concat(a2, a3, a4);</span><br><span class="line">  <span class="comment">// es6</span></span><br><span class="line">  [...a1,...a2,...a3]</span><br><span class="line">  <span class="comment">// 字符串</span></span><br><span class="line">  [...<span class="string">'hello'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Array.from用于将类似数组的对象和可遍历的对象转为真正的数组。</p>
+</li>
+<li>Array.of用于将一组值转换为数组。</li>
+<li>copyWithin(target,start,end)，在当前数组内部，将指定位置的成员复制到其他位置，然后<br>返回当前数组，使用这个方法会修改当前数组。</li>
+<li>find(function(value, index, arr),Object),返回第一个符合条件的数组成员。</li>
+<li>findIndex(function(value, index, arr),Object),返回第一个符合条件的数组成员的位置。</li>
+<li>上述两个方法都接受第二个参数，用来绑定回调函数的this对象。</li>
+<li>fill(value,start,end)使用给定值，填充一个数组</li>
+<li>entries(),keys(),values()用于遍历数组。keys对键名进行遍历，values和entries都是对键<br>值进行遍历。</li>
+<li>includes(value, start)方法返回一个布尔值，表示某个数组是否包含给定值。类似字符串的include()</li>
+<li>数组的空位，数组的某个位置没有任何值。空位不是undefined是没有任何值。</li>
+<li>prop in objectName 运算符，如果指定的属性在指定的对象或者其原型链中，则in运算符返回true。</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/ES6/">ES6</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/05/22/polyfill和shim的区别/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ployfill和shim的区别</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/05/18/bind,call,apply【明明白白系列】/">
+        <span class="next-text nav-default">bind,call,apply【搞个明明白白系列】</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

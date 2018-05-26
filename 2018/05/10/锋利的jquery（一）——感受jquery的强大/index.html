@@ -14,12 +14,12 @@
 
 
 
-  <meta name="description" content="精通CSS(一)——不想设计不是好的前端工程师"/>
+  <meta name="description" content="感受jquery的强大"/>
 
 
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="jquery," />
 
 
 
@@ -34,21 +34,21 @@
 
 
 
-<link rel="canonical" href="https://angelpray.github.io/2018/05/08/精通CSS(一)——不想设计不是好的前端工程师/"/>
+<link rel="canonical" href="https://angelpray.github.io/2018/05/10/锋利的jquery（一）——感受jquery的强大/"/>
 
 
-<meta name="description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
-<meta name="keywords" content="CSS">
+<meta name="description" content="JQ的优势  $就是jQuery的一个简写形式，$(#Foo)===jQuery(#FOO)  $(document).ready(function(){})和window.onload()的简单区别       window.onload $(document).ready()           JQ的代码风格  DOM对象和JQ对象  JQ和其他库的冲突  表单元素刷新后默认会保存值，但这">
+<meta name="keywords" content="jquery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="精通CSS(一)——不想设计不是好的前端工程师">
-<meta property="og:url" content="https://angelpray.github.io/2018/05/08/精通CSS(一)——不想设计不是好的前端工程师/index.html">
+<meta property="og:title" content="感受jquery的强大">
+<meta property="og:url" content="https://angelpray.github.io/2018/05/10/锋利的jquery（一）——感受jquery的强大/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
+<meta property="og:description" content="JQ的优势  $就是jQuery的一个简写形式，$(#Foo)===jQuery(#FOO)  $(document).ready(function(){})和window.onload()的简单区别       window.onload $(document).ready()           JQ的代码风格  DOM对象和JQ对象  JQ和其他库的冲突  表单元素刷新后默认会保存值，但这">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-16T08:41:04.085Z">
+<meta property="og:updated_time" content="2018-05-15T14:46:06.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="精通CSS(一)——不想设计不是好的前端工程师">
-<meta name="twitter:description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
+<meta name="twitter:title" content="感受jquery的强大">
+<meta name="twitter:description" content="JQ的优势  $就是jQuery的一个简写形式，$(#Foo)===jQuery(#FOO)  $(document).ready(function(){})和window.onload()的简单区别       window.onload $(document).ready()           JQ的代码风格  DOM对象和JQ对象  JQ和其他库的冲突  表单元素刷新后默认会保存值，但这">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -73,7 +73,7 @@
 
 
 
-    <title> 精通CSS(一)——不想设计不是好的前端工程师 - Janro-Cheung </title>
+    <title> 感受jquery的强大 - Janro-Cheung </title>
   </head>
 
   <body>
@@ -119,12 +119,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          精通CSS(一)——不想设计不是好的前端工程师
+          感受jquery的强大
         
       </h1>
 
       <time class="post-time">
-          5月 08 2018
+          5月 10 2018
       </time>
     </header>
 
@@ -132,16 +132,39 @@
 
     
             <div class="post-content">
-            <h2 id="更好的CSS"><a href="#更好的CSS" class="headerlink" title="更好的CSS"></a>更好的CSS</h2><ul>
-<li>margin</li>
-<li><p>块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。</p>
+            <ul>
+<li><p>JQ的优势</p>
 </li>
-<li><p>当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。</p>
+<li><p>$就是jQuery的一个简写形式，<code>$(#Foo)===jQuery(#FOO)</code></p>
 </li>
-<li><p>如果想要让背景图片设置位置的时候正负都可以的话，建议可以repeat，在设置了宽度和长度的基础上。</p>
+<li><p><code>$(document).ready(function(){})</code>和<code>window.onload()</code>的简单区别</p>
 </li>
 </ul>
-<p>-</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>window.onload</th>
+<th>$(document).ready()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>JQ的代码风格</p>
+</li>
+<li><p>DOM对象和JQ对象</p>
+</li>
+<li><p>JQ和其他库的冲突</p>
+</li>
+<li><p>表单元素刷新后默认会保存值，但这个特性是具有浏览器的差异的。</p>
+</li>
+</ul>
 
             </div>
           
@@ -152,7 +175,7 @@
 		<div class="post-tags">
 		  标签: 
 		  
-			<a href="/tags/CSS/">CSS</a>
+			<a href="/tags/jquery/">jquery</a>
 		  
 		</div>
 		
@@ -169,15 +192,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2018/05/10/锋利的jquery（一）——感受jquery的强大/">
+      <a class="prev" href="/2018/05/10/锋利的jquery（二）——选择器怎么说/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">感受jquery的强大</span>
+        <span class="prev-text nav-default">锋利的jquery（二）——选择器怎么说</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2018/05/02/ES6永不停息(六)——正则表达式的扩展/">
-        <span class="next-text nav-default">ES6永不停息(六)——正则表达式的扩展</span>
+      <a class="next" href="/2018/05/08/精通CSS(一)——不想设计不是好的前端工程师/">
+        <span class="next-text nav-default">精通CSS(一)——不想设计不是好的前端工程师</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>

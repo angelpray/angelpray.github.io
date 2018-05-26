@@ -14,12 +14,12 @@
 
 
 
-  <meta name="description" content="精通CSS(一)——不想设计不是好的前端工程师"/>
+  <meta name="description" content="ployfill和shim的区别"/>
 
 
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="polyfill," />
 
 
 
@@ -34,21 +34,21 @@
 
 
 
-<link rel="canonical" href="https://angelpray.github.io/2018/05/08/精通CSS(一)——不想设计不是好的前端工程师/"/>
+<link rel="canonical" href="https://angelpray.github.io/2018/05/22/polyfill和shim的区别/"/>
 
 
-<meta name="description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
-<meta name="keywords" content="CSS">
+<meta name="description" content="shim shim是将api封装成一种，是一个库，比如JQ的$.ajax封装了XHR对象。原理就是将一个新的API引入到一个旧的环境中，仅靠旧的环境中已有的手段实现。一般为了跟shim作对比，shim的api都会特指不时遵循标准的，而是自己设计的。  polyfill polyfill是用在浏览器api上的shim，它特指shim成的api是遵循标准的。比如，IE浏览器增加的windown.XML">
+<meta name="keywords" content="polyfill">
 <meta property="og:type" content="article">
-<meta property="og:title" content="精通CSS(一)——不想设计不是好的前端工程师">
-<meta property="og:url" content="https://angelpray.github.io/2018/05/08/精通CSS(一)——不想设计不是好的前端工程师/index.html">
+<meta property="og:title" content="ployfill和shim的区别">
+<meta property="og:url" content="https://angelpray.github.io/2018/05/22/polyfill和shim的区别/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
+<meta property="og:description" content="shim shim是将api封装成一种，是一个库，比如JQ的$.ajax封装了XHR对象。原理就是将一个新的API引入到一个旧的环境中，仅靠旧的环境中已有的手段实现。一般为了跟shim作对比，shim的api都会特指不时遵循标准的，而是自己设计的。  polyfill polyfill是用在浏览器api上的shim，它特指shim成的api是遵循标准的。比如，IE浏览器增加的windown.XML">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-16T08:41:04.085Z">
+<meta property="og:updated_time" content="2018-05-22T03:15:51.521Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="精通CSS(一)——不想设计不是好的前端工程师">
-<meta name="twitter:description" content="更好的CSS margin 块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。  当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。  如果想要让背景图片设置位置的时候正负都可以的">
+<meta name="twitter:title" content="ployfill和shim的区别">
+<meta name="twitter:description" content="shim shim是将api封装成一种，是一个库，比如JQ的$.ajax封装了XHR对象。原理就是将一个新的API引入到一个旧的环境中，仅靠旧的环境中已有的手段实现。一般为了跟shim作对比，shim的api都会特指不时遵循标准的，而是自己设计的。  polyfill polyfill是用在浏览器api上的shim，它特指shim成的api是遵循标准的。比如，IE浏览器增加的windown.XML">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -73,7 +73,7 @@
 
 
 
-    <title> 精通CSS(一)——不想设计不是好的前端工程师 - Janro-Cheung </title>
+    <title> ployfill和shim的区别 - Janro-Cheung </title>
   </head>
 
   <body>
@@ -119,12 +119,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          精通CSS(一)——不想设计不是好的前端工程师
+          ployfill和shim的区别
         
       </h1>
 
       <time class="post-time">
-          5月 08 2018
+          5月 22 2018
       </time>
     </header>
 
@@ -132,16 +132,12 @@
 
     
             <div class="post-content">
-            <h2 id="更好的CSS"><a href="#更好的CSS" class="headerlink" title="更好的CSS"></a>更好的CSS</h2><ul>
-<li>margin</li>
-<li><p>块级元素的垂直相邻外边距会合并，而行内元素实际上不占上下外边距。行内元素的的左右外边距不会合并。同样地，浮动元素的外边距也不会合并。允许指定负的外边距值，不过使用时要小心。</p>
-</li>
-<li><p>当一个行内元素+块级元素叠加在一起的时候，块级元素会入侵到行内元素的真正内容区域而不关你有没有设置padding，而且行内元素设置上下边距是无效的。</p>
-</li>
-<li><p>如果想要让背景图片设置位置的时候正负都可以的话，建议可以repeat，在设置了宽度和长度的基础上。</p>
-</li>
+            <h2 id="shim"><a href="#shim" class="headerlink" title="shim"></a>shim</h2><ul>
+<li>shim是将api封装成一种，是一个库，比如JQ的$.ajax封装了XHR对象。原理就是将一个新的API<br>引入到一个旧的环境中，仅靠旧的环境中已有的手段实现。一般为了跟shim作对比，shim的api都<br>会特指不时遵循标准的，而是自己设计的。</li>
 </ul>
-<p>-</p>
+<h2 id="polyfill"><a href="#polyfill" class="headerlink" title="polyfill"></a>polyfill</h2><ul>
+<li>polyfill是用在浏览器api上的shim，它特指shim成的api是遵循标准的。比如，IE浏览器增加<br>的windown.XMLHttpRequest，内部实现使用ActiveXObject。这里的ActiveXObject就是一个<br>polyfill。</li>
+</ul>
 
             </div>
           
@@ -152,7 +148,7 @@
 		<div class="post-tags">
 		  标签: 
 		  
-			<a href="/tags/CSS/">CSS</a>
+			<a href="/tags/polyfill/">polyfill</a>
 		  
 		</div>
 		
@@ -169,15 +165,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2018/05/10/锋利的jquery（一）——感受jquery的强大/">
+      <a class="prev" href="/2018/05/23/遇到不会的知识点记录了解一下/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">感受jquery的强大</span>
+        <span class="prev-text nav-default">遇到不会的知识点就记录一下</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2018/05/02/ES6永不停息(六)——正则表达式的扩展/">
-        <span class="next-text nav-default">ES6永不停息(六)——正则表达式的扩展</span>
+      <a class="next" href="/2018/05/21/ES6永不停息(八)——数组的扩展/">
+        <span class="next-text nav-default">ES6永不停息(二)——const</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
