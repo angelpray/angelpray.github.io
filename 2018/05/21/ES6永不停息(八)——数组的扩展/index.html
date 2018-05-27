@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-26T15:49:10.972Z">
+<meta property="og:updated_time" content="2018-05-27T03:24:00.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6永不停息(二)——const">
 <meta name="twitter:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
@@ -155,8 +155,7 @@
 <li>fill(value,start,end)使用给定值，填充一个数组</li>
 <li>entries(),keys(),values()用于遍历数组。keys对键名进行遍历，values和entries都是对键<br>值进行遍历。</li>
 <li>includes(value, start)方法返回一个布尔值，表示某个数组是否包含给定值。类似字符串的include()</li>
-<li>数组的空位，数组的某个位置没有任何值。空位不是undefined是没有任何值。</li>
-<li>prop in objectName 运算符，如果指定的属性在指定的对象或者其原型链中，则in运算符返回true。</li>
+<li>数组的空位，数组的某个位置没有任何值。空位不是undefined是没有任何值。扩展运算符会连空<br>位也一起拷贝。</li>
 </ul>
 
             </div>
