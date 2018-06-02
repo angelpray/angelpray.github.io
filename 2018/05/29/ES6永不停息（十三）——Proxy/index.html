@@ -14,7 +14,7 @@
 
 
 
-  <meta name="description" content="ES6永不停息(九)——对象的扩展"/>
+  <meta name="description" content="ES6永不停息(十二)——Map和WeakMap"/>
 
 
 
@@ -34,21 +34,21 @@
 
 
 
-<link rel="canonical" href="https://angelpray.github.io/2018/05/27/ES6永不停息(九)——对象的扩展/"/>
+<link rel="canonical" href="https://angelpray.github.io/2018/05/29/ES6永不停息（十三）——Proxy/"/>
 
 
-<meta name="description" content="属性的简洁表示法 直接写入变量和函数作为对象的属性和方法。  属性名表达式 ES5定义对象的属性有两种方法：直接用标识符作为属性名，用表达式放到方括号中作为属性名。 使用对象字面量定义对象时，ES5只能使用方法一(标识符)。ES6允许方法二。  方法的name属性Object.cteate(proto,props)">
+<meta name="description" content="This is JC&apos;s blog">
 <meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6永不停息(九)——对象的扩展">
-<meta property="og:url" content="https://angelpray.github.io/2018/05/27/ES6永不停息(九)——对象的扩展/index.html">
+<meta property="og:title" content="ES6永不停息(十二)——Map和WeakMap">
+<meta property="og:url" content="https://angelpray.github.io/2018/05/29/ES6永不停息（十三）——Proxy/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="属性的简洁表示法 直接写入变量和函数作为对象的属性和方法。  属性名表达式 ES5定义对象的属性有两种方法：直接用标识符作为属性名，用表达式放到方括号中作为属性名。 使用对象字面量定义对象时，ES5只能使用方法一(标识符)。ES6允许方法二。  方法的name属性Object.cteate(proto,props)">
+<meta property="og:description" content="This is JC&apos;s blog">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-29T02:16:38.444Z">
+<meta property="og:updated_time" content="2018-05-29T02:58:37.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6永不停息(九)——对象的扩展">
-<meta name="twitter:description" content="属性的简洁表示法 直接写入变量和函数作为对象的属性和方法。  属性名表达式 ES5定义对象的属性有两种方法：直接用标识符作为属性名，用表达式放到方括号中作为属性名。 使用对象字面量定义对象时，ES5只能使用方法一(标识符)。ES6允许方法二。  方法的name属性Object.cteate(proto,props)">
+<meta name="twitter:title" content="ES6永不停息(十二)——Map和WeakMap">
+<meta name="twitter:description" content="This is JC&apos;s blog">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -73,7 +73,7 @@
 
 
 
-    <title> ES6永不停息(九)——对象的扩展 - Janro-Cheung </title>
+    <title> ES6永不停息(十二)——Map和WeakMap - Janro-Cheung </title>
   </head>
 
   <body>
@@ -119,12 +119,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          ES6永不停息(九)——对象的扩展
+          ES6永不停息(十二)——Map和WeakMap
         
       </h1>
 
       <time class="post-time">
-          5月 27 2018
+          5月 29 2018
       </time>
     </header>
 
@@ -132,14 +132,7 @@
 
     
             <div class="post-content">
-            <h3 id="属性的简洁表示法"><a href="#属性的简洁表示法" class="headerlink" title="属性的简洁表示法"></a>属性的简洁表示法</h3><ul>
-<li>直接写入变量和函数作为对象的属性和方法。</li>
-</ul>
-<h3 id="属性名表达式"><a href="#属性名表达式" class="headerlink" title="属性名表达式"></a>属性名表达式</h3><ul>
-<li>ES5定义对象的属性有两种方法：直接用标识符作为属性名，用表达式放到方括号中作为属性名。</li>
-<li>使用对象字面量定义对象时，ES5只能使用方法一(标识符)。ES6允许方法二。</li>
-</ul>
-<h3 id="方法的name属性"><a href="#方法的name属性" class="headerlink" title="方法的name属性"></a>方法的name属性</h3><h3 id="Object-cteate-proto-props"><a href="#Object-cteate-proto-props" class="headerlink" title="Object.cteate(proto,props)"></a>Object.cteate(proto,props)</h3>
+            
             </div>
           
 
@@ -166,15 +159,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2018/05/27/ES6永不停息(十)——symbol/">
+      <a class="prev" href="/2018/05/29/ES6从零开始——项目构建(一)/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">ES6永不停息(十)——Symbol</span>
+        <span class="prev-text nav-default">慕课课程笔记——项目构建(一)</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2018/05/23/遇到不会的知识点记录了解一下/">
-        <span class="next-text nav-default">遇到不会的知识点就记录一下</span>
+      <a class="next" href="/2018/05/29/ES6永不停息（十二）——Map和WeakMap/">
+        <span class="next-text nav-default">ES6永不停息(十二)——Map和WeakMap</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>

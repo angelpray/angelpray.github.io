@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-05-27T03:24:00.331Z">
+<meta property="og:updated_time" content="2018-05-29T00:36:07.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6永不停息(二)——const">
 <meta name="twitter:description" content="扩展运算符 rest参数的逆运算，将一个数组转为逗号分隔的参数序列。其实，任何Iterator接口的对象都可以扩展为真正的数组。比如：arguments，NodeList[...document.querySelectorAll(&amp;#39;div&amp;#39;)]// [, , ]  该运算符主要用于函数调用。function push(array,...items){}  替代apply（详情看明明">
@@ -145,9 +145,9 @@
 <li><p>应用：复制数组，合并数组,将字符串转化为真正的数组</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 复制数组 */</span></span><br><span class="line">  <span class="comment">//es5</span></span><br><span class="line">  <span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">  <span class="keyword">const</span> a2 = a1.concat();</span><br><span class="line">  <span class="comment">//es6</span></span><br><span class="line">  <span class="keyword">const</span> a3 = [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">  <span class="keyword">const</span> a4 = [...a3];</span><br><span class="line">  <span class="comment">/* 合并数组 */</span></span><br><span class="line">  <span class="comment">// es5</span></span><br><span class="line">  a1.concat(a2, a3, a4);</span><br><span class="line">  <span class="comment">// es6</span></span><br><span class="line">  [...a1,...a2,...a3]</span><br><span class="line">  <span class="comment">// 字符串</span></span><br><span class="line">  [...<span class="string">'hello'</span>]</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Array.from用于将类似数组的对象和可遍历的对象转为真正的数组。</p>
+<li><p>Array.from(obj,mapfn)用于将类似数组的对象和可遍历的对象转为真正的数组。</p>
 </li>
-<li>Array.of用于将一组值转换为数组。</li>
+<li>Array.of()用于将一组值转换为数组。</li>
 <li>copyWithin(target,start,end)，在当前数组内部，将指定位置的成员复制到其他位置，然后<br>返回当前数组，使用这个方法会修改当前数组。</li>
 <li>find(function(value, index, arr),Object),返回第一个符合条件的数组成员。</li>
 <li>findIndex(function(value, index, arr),Object),返回第一个符合条件的数组成员的位置。</li>
