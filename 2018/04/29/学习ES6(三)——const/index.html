@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="学习ES6(三)——const"/>
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/04/29/学习ES6(三)——const/"/>
+
+
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习ES6(三)——const">
+<meta property="og:url" content="https://angelpray.github.io/2018/04/29/学习ES6(三)——const/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+<meta property="og:updated_time" content="2018-06-05T06:52:17.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习ES6(三)——const">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 学习ES6(三)——const - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          学习ES6(三)——const
+        
+      </h1>
+
+      <time class="post-time">
+          4月 29 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p><img src="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png" alt=""><br><a id="more"></a></p>
+<h2 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h2><ul>
+<li><p>const声明一个只读常量，一旦声明了，就不能改变，那就是说，常量一旦声明了就必须立刻初始<br>化，不能留到以后在赋值（相当于改变常量）。</p>
+</li>
+<li><p>const和let除了“只读”之外，很相似。</p>
+</li>
+</ul>
+<ol>
+<li>只在声明所在的块级作用域内有效。</li>
+<li>声明不提升</li>
+<li>存在暂时性死区，只能在声明的位置后面使用</li>
+<li>不可重复声明。</li>
+</ol>
+<ul>
+<li><p>const实际上保证的不是变量的值不得改动，而是变量指向的内存地址不得改动。这对简单数据类<br>类型来说值就是变量指向的内存地址。但是对于复杂类型来说（对象，数组），变量指向的内存地址<br>是一个指针，const只是保证这个指针是固定的，不会保证指针本身指向的数据是不是可变的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a =<span class="number">2</span>;</span><br><span class="line">a = <span class="number">1</span>; <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj =&#123;&#125;;</span><br><span class="line">obj.test = <span class="string">"es6"</span>;<span class="comment">// 不会出错</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果是需要保证对象不变，则需要使用Object.freeze方法。</p>
+</li>
+<li><p>ES6有六种声明变量的方法：<code>var, function, let, const, import, class</code>。</p>
+</li>
+<li><p>顶层对象在浏览器汇总是window对象，在node中是global。在ES5中顶层对象的属性和全局变量<br>是等价的。从ES6开始，使用let，const，class命令声明的全局变量是不属于顶层对象的属性。</p>
+</li>
+<li><p>JS中，在各个不同的运行环境都有不同的顶层对象……但是因为顶层对象的命名各不一样，有时候代<br>码需要在各个不同的环境中运行，这就有问题了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 勉强能取到个中环境下的顶层对象</span></span><br><span class="line"><span class="keyword">var</span> getGlobal = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> self !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> self; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> <span class="built_in">window</span>; &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> global; &#125;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'unable to locate global object'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/ES6/">ES6</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/04/29/学习ES6(四)——变量的解构赋值/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">学习ES6(四)——变量的解构赋值</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/04/29/善用IIFE写出高质量代码/">
+        <span class="next-text nav-default">用IIFE写出高质量代码</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

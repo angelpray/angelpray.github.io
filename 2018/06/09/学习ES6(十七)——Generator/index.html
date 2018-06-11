@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="学习ES6(十七)——Generator"/>
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/06/09/学习ES6(十七)——Generator/"/>
+
+
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习ES6(十七)——Generator">
+<meta property="og:url" content="https://angelpray.github.io/2018/06/09/学习ES6(十七)——Generator/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+<meta property="og:updated_time" content="2018-06-09T06:29:21.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习ES6(十七)——Generator">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 学习ES6(十七)——Generator - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          学习ES6(十七)——Generator
+        
+      </h1>
+
+      <time class="post-time">
+          6月 09 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p><img src="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png" alt=""><br><a id="more"></a></p>
+<h1 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h1><ul>
+<li>基本概念： 解决异步编程的一种方式</li>
+</ul>
+<h1 id="next函数的用法"><a href="#next函数的用法" class="headerlink" title="next函数的用法"></a>next函数的用法</h1><h1 id="yield-的语法"><a href="#yield-的语法" class="headerlink" title="yield*的语法"></a>yield*的语法</h1><h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基本用法 */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> tell = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'a'</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'b'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'c'</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">let</span> k = tell();</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(k.next())</span><br><span class="line">  <span class="built_in">console</span>.log(k.next())</span><br><span class="line">  <span class="built_in">console</span>.log(k.next())</span><br><span class="line">  <span class="built_in">console</span>.log(k.next())</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 对象遍历 */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">  obj[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> value <span class="keyword">of</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'value'</span>, value);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(obj);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 状态机 */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> state = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'A'</span>;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'B'</span>;</span><br><span class="line">      <span class="keyword">yield</span> <span class="string">'C'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> status = state();</span><br><span class="line">  <span class="built_in">console</span>.log(status.next())</span><br><span class="line">  <span class="built_in">console</span>.log(status.next())</span><br><span class="line">  <span class="built_in">console</span>.log(status.next())</span><br><span class="line">  <span class="built_in">console</span>.log(status.next())</span><br><span class="line">  <span class="built_in">console</span>.log(status.next())</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Generator使用案例 */</span></span><br><span class="line"><span class="comment">/* 抽奖 */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> draw = <span class="function"><span class="keyword">function</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//具体抽奖逻辑</span></span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">`剩余<span class="subst">$&#123;count&#125;</span>次`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> residue = <span class="function"><span class="keyword">function</span>* (<span class="params">count</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(count&gt; <span class="number">0</span>) &#123;</span><br><span class="line">      count--;</span><br><span class="line">      <span class="keyword">yield</span> drraw(count);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> start = residue(<span class="number">5</span>);</span><br><span class="line">  <span class="keyword">let</span> btn = <span class="built_in">document</span>.createElement(<span class="string">'button'</span>);</span><br><span class="line">  btn.id = <span class="string">'start'</span>;</span><br><span class="line">  btn.textContent= <span class="string">'抽奖'</span>;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(btn);</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'start'</span>).addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    start.next();</span><br><span class="line">    &#125;, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 长轮询 */</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> ajax = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        resolve(&#123; <span class="attr">code</span>:<span class="number">1</span> &#125;)</span><br><span class="line">        &#125;, <span class="number">200</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> pull = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> generator = ajax();</span><br><span class="line">    <span class="keyword">let</span> step = generator.next();</span><br><span class="line">    step.value.then(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(d.code != <span class="number">0</span>) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'wait'</span>);</span><br><span class="line">          pull()</span><br><span class="line">          &#125;, <span class="number">1000</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(d);</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  pull();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/ES6/">ES6</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/06/09/学习ES6(十八)——模块化/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">学习ES6(十八)——模块化</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/06/09/学习ES6(十六)——Iterator/">
+        <span class="next-text nav-default">学习ES6(十六)——Iterator</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

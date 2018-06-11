@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="理解JS中的作用域、作用域链、变量、"/>
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/06/05/理解JS的作用域/"/>
+
+
+<meta name="description" content="作用域函数作用域 function scope 函数作用域是指在函数内声明的所有变量在函数体内始终都是可见的。这意味着变量在声明之前就是可用的了。这就产生了声明提前hoisting。  声明提前：var声明的所有变量（不涉及赋值），都被提前到了的顶部。典型例子： 123456var scope = &apos;global&apos;;let f = () =&amp;gt; &amp;#123;  console.log(scop">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解JS中的作用域、作用域链、变量、">
+<meta property="og:url" content="https://angelpray.github.io/2018/06/05/理解JS的作用域/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="作用域函数作用域 function scope 函数作用域是指在函数内声明的所有变量在函数体内始终都是可见的。这意味着变量在声明之前就是可用的了。这就产生了声明提前hoisting。  声明提前：var声明的所有变量（不涉及赋值），都被提前到了的顶部。典型例子： 123456var scope = &apos;global&apos;;let f = () =&amp;gt; &amp;#123;  console.log(scop">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/f8edb33aba72ba3c34a9354d05a6bd89.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/a34c9f4ee4db40e3041d69589c79bbac.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/d788a2d1b9b4cf0af041134de052bbe6.png">
+<meta property="og:updated_time" content="2018-06-05T11:41:17.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解JS中的作用域、作用域链、变量、">
+<meta name="twitter:description" content="作用域函数作用域 function scope 函数作用域是指在函数内声明的所有变量在函数体内始终都是可见的。这意味着变量在声明之前就是可用的了。这就产生了声明提前hoisting。  声明提前：var声明的所有变量（不涉及赋值），都被提前到了的顶部。典型例子： 123456var scope = &apos;global&apos;;let f = () =&amp;gt; &amp;#123;  console.log(scop">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/f8edb33aba72ba3c34a9354d05a6bd89.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 理解JS中的作用域、作用域链、变量、 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          理解JS中的作用域、作用域链、变量、
+        
+      </h1>
+
+      <time class="post-time">
+          6月 05 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><h2 id="函数作用域-function-scope"><a href="#函数作用域-function-scope" class="headerlink" title="函数作用域 function scope"></a>函数作用域 <code>function scope</code></h2><ul>
+<li><p>函数作用域是指<strong>在函数内声明的所有变量在函数体内始终都是可见的</strong>。这意味着变量在声明之前就是可用的了。这就产生了声明提前<code>hoisting</code>。</p>
+</li>
+<li><p>声明提前：var声明的所有变量（不涉及赋值），都被提前到了的顶部。典型例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="keyword">let</span> f = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(scope); <span class="comment">// undefined</span></span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(scope); <span class="comment">// local</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="全局作用域-global-scope"><a href="#全局作用域-global-scope" class="headerlink" title="全局作用域 global scope"></a>全局作用域 <code>global scope</code></h2><ul>
+<li><p>全局作用域是指<strong>在全局作用域内声明的变量在JS代码中的任何地方都是可见的</strong>。</p>
+</li>
+<li><p>给一个未声明var的变量赋值，JS会把该变量作为全局对象的属性使用。</p>
+</li>
+</ul>
+<h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><ul>
+<li>ES6中可以使用let，const创建一个块级作用域，简单理解块级作用域指的就是花括号内的每一段代码都具有各自的作用域。</li>
+</ul>
+<h1 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h1><ul>
+<li>作用域链是一个对象列或链表（变量对象），这组对象定义了这段代码“作用域中”的变量。</li>
+<li>作用域的用途是保证执行环境有权访问的所有变量和函数的有序访问。</li>
+<li>作用于的前端始终都是当前执行的代码所在环境的变量对象。作用域链中的下一个变量对象来自包含外部环境，如此类推下去。</li>
+<li><strong>标识符解析</strong>指的就是沿着作用域链一级一级地搜索标识符的过程。</li>
+<li>典型的作用域链：<br><img src="http://p9h1w9ht8.bkt.clouddn.com/f8edb33aba72ba3c34a9354d05a6bd89.png" alt=""></li>
+</ul>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><ul>
+<li>三种不同的数据类型：基本类型、引用类型、Symbol类型。</li>
+<li>基本类型： null、undefined、Number、String、Boolean。按值访问，可以操作保存在变量中实际的值。</li>
+<li>引用类型：Object。按引用访问。</li>
+</ul>
+<h2 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h2><ul>
+<li>基本类型：在变量对象上创建一个新值，然后把该值赋值到新变量分配的位置上。</li>
+<li><img src="http://p9h1w9ht8.bkt.clouddn.com/a34c9f4ee4db40e3041d69589c79bbac.png" alt=""></li>
+<li>引用类型：同样在变量对象上创建一个新值，但这个值是一个指针，指向存储在内存中的对象。这意味着两个变量实际上引用同一个对象，改变其中一个变量就会影响另一个变量。</li>
+<li><img src="http://p9h1w9ht8.bkt.clouddn.com/d788a2d1b9b4cf0af041134de052bbe6.png" alt=""></li>
+</ul>
+<h2 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h2><ul>
+<li>在JS中，所有函数的参数都是按值传递的。这意味着，把外部的值传给函数的形参的时候就相当于变量的复制：基本类型变量的赋值以及引用类型变量的复制。一个典型的例子：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> setName = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">  obj.name = <span class="string">'zjr'</span>;</span><br><span class="line">  obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  obj.name = <span class="string">'zsq'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name); <span class="comment">// 'zjr'</span></span><br></pre></td></tr></table></figure>
+<h2 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h2><ul>
+<li>一般而言，<strong>检查基本类型用typeof操作符</strong>，可以确定一个变量是字符串，数值，布尔值还是undefined。值得注意的是不能判断null和object，因为null本质上也是Object。<strong>检查引用类型用instanceof操作符</strong>，可以确定一个变量是否为一个引用类型的实例（根据<em>原型链</em>判断）。</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/JavaScript/">JavaScript</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/06/07/活法摘录/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">活法摘录</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/06/04/学习Express/">
+        <span class="next-text nav-default">学习Express(一)——理解并翻译api文档</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

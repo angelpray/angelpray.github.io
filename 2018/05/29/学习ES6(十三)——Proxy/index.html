@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="学习ES6(十三)——Proxy和Reflect"/>
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/05/29/学习ES6(十三)——Proxy/"/>
+
+
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习ES6(十三)——Proxy和Reflect">
+<meta property="og:url" content="https://angelpray.github.io/2018/05/29/学习ES6(十三)——Proxy/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+<meta property="og:updated_time" content="2018-06-09T01:26:19.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习ES6(十三)——Proxy和Reflect">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 学习ES6(十三)——Proxy和Reflect - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          学习ES6(十三)——Proxy和Reflect
+        
+      </h1>
+
+      <time class="post-time">
+          5月 29 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p><img src="http://p9h1w9ht8.bkt.clouddn.com/06a78054528a8305c5c68ec81d001eb9.png" alt=""><br><a id="more"></a></p>
+<ul>
+<li>Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。原意就是代理，这里表示用它代理某些操作，可以理解是一个代理商。</li>
+<li>Reflect对象与Proxy对象一样，也是 ES6 为了操作对象而提供的新 API。</li>
+</ul>
+<h2 id="使用Proxy以及Reflect"><a href="#使用Proxy以及Reflect" class="headerlink" title="使用Proxy以及Reflect"></a>使用Proxy以及Reflect</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;</span><br><span class="line">    time: <span class="string">'2017-03-11'</span>,</span><br><span class="line">    name: <span class="string">'net'</span>,</span><br><span class="line">    _r:<span class="number">123</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> monitor = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="comment">/* 拦截（代理）对象属性的读取 */</span></span><br><span class="line">    get(target, key) &#123;</span><br><span class="line">      <span class="keyword">return</span> target[key].replace(<span class="string">'2017'</span>,<span class="string">'2018'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* 拦截对象设置属性 */</span></span><br><span class="line">    set(target, key, value) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key === <span class="string">'name'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key] = value;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* 拦截key in object 操作 */</span></span><br><span class="line">    has(target, key, value) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key === <span class="string">'name'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* 拦截delete操作 */</span></span><br><span class="line">    deleteProperty(target, key) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key.indexOf(<span class="string">'_'</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">delete</span> target[key];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* 拦截Object.keys,Object.getOwnPropertySymbols,Object.getOwnPropertyNames */</span></span><br><span class="line">    ownKeys(target) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Object</span>.keys(target).filter(<span class="function"><span class="params">item</span> =&gt;</span> item!=<span class="string">'time'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'get'</span>, monitor.time);</span><br><span class="line"></span><br><span class="line">  monitor.time = <span class="string">'2018'</span>;</span><br><span class="line">  monitor.name = <span class="string">'zjr'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'set'</span>, monitor);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'has'</span>,<span class="string">'name'</span> <span class="keyword">in</span> monitor,<span class="string">'time'</span> <span class="keyword">in</span> monitor);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> monitor.time;</span><br><span class="line">  <span class="keyword">delete</span> monitor._r;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'delete'</span>, monitor);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'ownKeys'</span>,<span class="built_in">Object</span>.keys(monitor))</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;</span><br><span class="line">    time: <span class="string">'2017-03-11'</span>,</span><br><span class="line">    name: <span class="string">'net'</span>,</span><br><span class="line">    _r:<span class="number">123</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Reflect get'</span>,<span class="built_in">Reflect</span>.get(obj, <span class="string">'time'</span>));</span><br><span class="line">  <span class="built_in">Reflect</span>.set(obj,<span class="string">'name'</span>,<span class="string">'zjr'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Reflect set'</span>,obj);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'has'</span>,<span class="built_in">Reflect</span>.has(obj, <span class="string">'name'</span>));</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">validator</span>(<span class="params">target, validator</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, &#123;</span><br><span class="line">      _validator:validator,</span><br><span class="line">      set(target, key, value, proxy) &#123;</span><br><span class="line">        <span class="keyword">if</span>(target.hasOwnproperty(key)) &#123;</span><br><span class="line">          <span class="keyword">let</span> va = <span class="keyword">this</span>._validator[key];</span><br><span class="line">          <span class="keyword">if</span>(!!va(value)) &#123;</span><br><span class="line">            <span class="comment">/* set方法的第四个参数receiver，指的是原始的操作行为所在的那个对象，一般情况下是proxy实例本身 */</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(target, key, value, proxy);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">`不能设置<span class="subst">$&#123;key&#125;</span>到<span class="subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">`<span class="subst">$&#123;key&#125;</span> 不存在`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> personValidators = &#123;</span><br><span class="line">    name(val) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">typeof</span> val === <span class="string">'string'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    age(val) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">typeof</span> val === <span class="string">'number'</span> &amp;&amp; val &gt; <span class="number">18</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* 直接添加一个验证手机号 */</span></span><br><span class="line">    <span class="comment">/* 后续代码的整洁性，可维护性  */</span></span><br><span class="line">    moile(val) &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">this</span>.age = age;</span><br><span class="line">      <span class="keyword">this</span>.phone = <span class="string">'111'</span>;</span><br><span class="line">      <span class="keyword">return</span> validator(<span class="keyword">this</span>, personValidators);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> person = <span class="keyword">new</span> Person(<span class="string">'zjr'</span>, <span class="number">22</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.info(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/ES6/">ES6</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/06/04/学习Express/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">学习Express(一)——理解并翻译api文档</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/05/29/学习ES6(十二)——Map和WeakMap/">
+        <span class="next-text nav-default">学习ES6(十二)——Map和WeakMap</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

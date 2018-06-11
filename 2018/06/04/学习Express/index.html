@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="学习Express(一)——理解并翻译api文档"/>
+
+
+
+
+  <meta name="keywords" content="Express," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/06/04/学习Express/"/>
+
+
+<meta name="description" content="Expressexpressapplicationapp.use([path],function [,function…]) 在路径上安装中间件函数，如果没有指定路径，则默认为’/‘  一条路径将匹配任何路径，该路径紧跟在“/”后面。例如:use(‘/apple’，……)将匹配” /apple “、” /apple/images “、” /apple/images/ images/news “等。">
+<meta name="keywords" content="Express">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Express(一)——理解并翻译api文档">
+<meta property="og:url" content="https://angelpray.github.io/2018/06/04/学习Express/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="Expressexpressapplicationapp.use([path],function [,function…]) 在路径上安装中间件函数，如果没有指定路径，则默认为’/‘  一条路径将匹配任何路径，该路径紧跟在“/”后面。例如:use(‘/apple’，……)将匹配” /apple “、” /apple/images “、” /apple/images/ images/news “等。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-06-11T04:06:38.632Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Express(一)——理解并翻译api文档">
+<meta name="twitter:description" content="Expressexpressapplicationapp.use([path],function [,function…]) 在路径上安装中间件函数，如果没有指定路径，则默认为’/‘  一条路径将匹配任何路径，该路径紧跟在“/”后面。例如:use(‘/apple’，……)将匹配” /apple “、” /apple/images “、” /apple/images/ images/news “等。">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 学习Express(一)——理解并翻译api文档 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          学习Express(一)——理解并翻译api文档
+        
+      </h1>
+
+      <time class="post-time">
+          6月 04 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h1><h2 id="express"><a href="#express" class="headerlink" title="express"></a>express</h2><h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><h3 id="app-use-path-function-function…"><a href="#app-use-path-function-function…" class="headerlink" title="app.use([path],function [,function…])"></a>app.use([path],function [,function…])</h3><ul>
+<li><p>在路径上安装中间件函数，如果没有指定路径，则默认为’/‘</p>
+</li>
+<li><p>一条路径将匹配任何路径，该路径紧跟在“/”后面。例如:use(‘/apple’，……)将匹配” /apple “、” /apple/images “、” /apple/images/ images/news “等。</p>
+</li>
+<li><p>在中间件中req.originalUrl是req.baseUrl和req.path的组合，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="string">'/admin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// GET 'http://www.example.com/admin/new'</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.originalUrl); <span class="comment">// '/admin/new'</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.baseUrl); <span class="comment">// '/admin'</span></span><br><span class="line">  <span class="built_in">console</span>.log(req.path); <span class="comment">// '/new'</span></span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于路径默认为“/”，因此将对每个请求执行没有路径的中间件</p>
+</li>
+<li><p>中间件功能按顺序执行，因此中间件包含的顺序是重要的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个中间件不允许请求超过他，也就是说这个请求到这个中间件就算响应完了。</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'Hello World'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求永远不会到达此路径</span></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">'Welcome'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路径可以是表示路径的字符串、路径模式、匹配路径的正则表达式或其组合的数组。</p>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2></li>
+</ul>
+<h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/Express/">Express</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/06/05/理解JS的作用域/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">理解JS中的作用域、作用域链、变量、</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/05/29/学习ES6(十三)——Proxy/">
+        <span class="next-text nav-default">学习ES6(十三)——Proxy和Reflect</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
