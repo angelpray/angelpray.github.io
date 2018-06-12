@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="学习vue——MVVM模式"/>
+
+
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/06/11/学习vue——MVVM模式/"/>
+
+
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习vue——MVVM模式">
+<meta property="og:url" content="https://angelpray.github.io/2018/06/11/学习vue——MVVM模式/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/7afaa0e5053b6ebd0c5dfb2df179272d.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/5320a1cc5261ec06d6467a6c0b555bb2.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/9fd19eff9ad3c7cc4de5fbb3c8c23072.png">
+<meta property="og:updated_time" content="2018-06-12T12:27:24.329Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习vue——MVVM模式">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/7afaa0e5053b6ebd0c5dfb2df179272d.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 学习vue——MVVM模式 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          学习vue——MVVM模式
+        
+      </h1>
+
+      <time class="post-time">
+          6月 11 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p><img src="http://p9h1w9ht8.bkt.clouddn.com/7afaa0e5053b6ebd0c5dfb2df179272d.png" alt=""><br><a id="more"></a></p>
+<h1 id="传统MVP模式"><a href="#传统MVP模式" class="headerlink" title="传统MVP模式"></a>传统MVP模式</h1><p><img src="http://p9h1w9ht8.bkt.clouddn.com/5320a1cc5261ec06d6467a6c0b555bb2.png" alt=""></p>
+<ul>
+<li>model层：数据层</li>
+<li>presenter层： 呈现层，业务逻辑相关的控制层</li>
+<li>view层：视图层，页面上的DOM展示</li>
+</ul>
+<h2 id="JQ实现MVP模式，一个todolist例子："><a href="#JQ实现MVP模式，一个todolist例子：" class="headerlink" title="JQ实现MVP模式，一个todolist例子："></a>JQ实现MVP模式，一个todolist例子：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MVP模式： M 数据（这段代码还没有数据） V 视图层 P 控制层</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span> dir=<span class="string">"ltr"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;script src=<span class="string">"./script/jquery321.js"</span> charset=<span class="string">"utf-8"</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">  &lt;body&gt;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ V 视图层：与P控制层做交互</span></span><br><span class="line"><span class="regexp">    &lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;input type="text" name="" id="input"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button id="btn"&gt;提交&lt;/</span>button&gt;</span><br><span class="line">      &lt;ul id=<span class="string">"list"</span> &gt;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="comment">//  P控制器：业务逻辑</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Page</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $.extend(Page.prototype, &#123;</span><br><span class="line">          init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.bindEvents();</span><br><span class="line">          &#125;,</span><br><span class="line">          bindEvents: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> btn = $(<span class="string">'#btn'</span>);</span><br><span class="line">            btn.on(<span class="string">'click'</span>, $.proxy(<span class="keyword">this</span>.handleBtnClick,<span class="keyword">this</span>))</span><br><span class="line">          &#125;,</span><br><span class="line">          handleBtnClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> inputValue = $(<span class="string">'#input'</span>).val();</span><br><span class="line">            <span class="keyword">var</span> ulElem = $(<span class="string">"#list"</span>);</span><br><span class="line">            ulElem.append(<span class="string">'&lt;li&gt;'</span>+inputValue+ <span class="string">'&lt;/li&gt;'</span>);</span><br><span class="line">            $(<span class="string">'#input'</span>).val(<span class="string">''</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">var</span> page = <span class="keyword">new</span> Page();</span><br><span class="line">        page.init();</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>MVP模式实际上主要就是在P控制层，而P控制层主要也就是操作DOM。非常的繁琐。</li>
+</ul>
+<h1 id="MVVM模式"><a href="#MVVM模式" class="headerlink" title="MVVM模式"></a>MVVM模式</h1><p><img src="http://p9h1w9ht8.bkt.clouddn.com/9fd19eff9ad3c7cc4de5fbb3c8c23072.png" alt=""></p>
+<ul>
+<li>M数据层，V视图层，ViewModel并不用我们自己编写，VUE内置的。也就是我们主要关注数据层和视图层，而VM层是VUE帮我们做了。</li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/vue/">vue</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/06/11/学习vue——前端组件化/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">学习vue——前端组件化</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/06/11/学习并使用webpack(五)——懒加载/">
+        <span class="next-text nav-default">学习并使用webpack(五)——懒加载</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
