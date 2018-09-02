@@ -1,0 +1,147 @@
+/* 表单容器 */
+.narutoForm {
+    font-size: 1.2em;
+    color: #fff;
+    max-width: 760px;
+    /* 渐变背景色，从透明到有色，从而显示出背景图片 */
+    background: linear-gradient(to bottom, transparent, cadetblue 60%);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #fff;
+}
+.title {
+    background-image: url(../img/my.PNG);
+    margin: -20px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.narutoForm h1 {
+    text-align: center;
+    font-family: "movie", "Arial", "sans-serif";
+    padding: 20px 0;
+    margin: -20px;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: titleEnter 1s ease forwards;
+    text-shadow: 4px 4px 5px brown;
+}
+h1 strong {
+    font-size: 1.5em;
+    font-style: italic;
+    margin-left: 20px;
+    border-bottom: 2px solid brown;
+    cursor: pointer;
+}
+.box {
+    /* display: none; */
+    visibility: hidden;
+    border-radius: 5px;
+    padding: 7px;
+    border: 1px solid #fff;
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    font-size: .7em;
+    font-weight: normal;
+    text-shadow: none;
+}
+.arrow {
+    position: absolute;
+    left: -21px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+}
+.narutoForm p {
+    margin-bottom: 50px;
+}
+
+.label {
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    margin-right: 10px;
+    vertical-align: top;
+    color: rgba(255, 255, 255, 1);
+}
+
+input[type="submit"] {
+    margin-left: 220px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, pink, red);
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 500px;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0 0 5px #fff;
+}
+select {
+    color: #000;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #fff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    color: #000;
+    background: #FAFFBD;
+}
+
+body {
+    background-color: #666;
+}
+
+.pageWrapper {
+    width: 800px;
+    margin: 20px auto;
+    border-radius: 20px;
+    background-image: url(../img/naruto.jpg);
+    background-position: 0px 92px;
+    box-sizing: border-box;
+    background-origin: padding-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@keyframes titleEnter {
+    from {
+        margin-left: -800px;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes blinking {
+    0%,
+    100% {
+        filter:drop-shadow(0 0 3px rgba(255, 255, 255, 1)) ;
+    }
+    50% {
+        filter:drop-shadow(0 0 10px rgba(255, 255, 255, 1)) ;
+    }
+}
+
+input[type="submit"]:hover {
+    animation: blinking 1s ease infinite;
+}
+.title:hover .box{
+    visibility: visible;
+}
