@@ -34,17 +34,17 @@
 
 
 
-<link rel="canonical" href="https://angelpray.github.io/2018/09/02/learn Sass/"/>
+<link rel="canonical" href="https://angelpray.github.io/2018/09/02/LEARN SASS/"/>
 
 
 <meta name="keywords" content="SASS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LEARN SASS">
-<meta property="og:url" content="https://angelpray.github.io/2018/09/02/learn Sass/index.html">
+<meta property="og:url" content="https://angelpray.github.io/2018/09/02/LEARN SASS/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-09-02-18-14-37.png">
-<meta property="og:updated_time" content="2018-09-02T11:46:46.583Z">
+<meta property="og:updated_time" content="2018-09-05T10:33:33.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LEARN SASS">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-09-02-18-14-37.png">
@@ -132,7 +132,78 @@
     
             <div class="post-content">
             <p><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-09-02-18-14-37.png" alt="2018-09-02-18-14-37"><br><a id="more"></a></p>
-<h2 id="编译SASS"><a href="#编译SASS" class="headerlink" title="编译SASS"></a>编译SASS</h2>
+<h2 id="编译SASS"><a href="#编译SASS" class="headerlink" title="编译SASS"></a>编译SASS</h2><ol>
+<li><p>单文件转换: <code>sass input.scss output.css</code></p>
+</li>
+<li><p>单文件监听: <code>sass --watch input.scss:output.css</code></p>
+</li>
+<li><p>目录监听：<code>sass --watch dir:dir</code></p>
+</li>
+<li><p>局部scss文件：<em>_filename</em>，以下划线开头，sass会忽略这些文件，除非我们明确调用他们。</p>
+</li>
+<li><p>sass导入局部scss文件：<code>@import &#39;filename&#39;</code>，可以省略下划线和后缀scss。</p>
+</li>
+<li><p>sass局部文件的组织方式：简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sass/</span><br><span class="line">|    -- helpers/ # 特殊的SASS文件</span><br><span class="line">|        --_variables.scss</span><br><span class="line">|        --_mixins.scss</span><br><span class="line">|    -- base/  # 项目的基础文件 </span><br><span class="line">|        --_reset.scss</span><br><span class="line">|        --_grid.scss</span><br><span class="line">|    -- layout/ # 装饰页面各个区域的文件</span><br><span class="line">|        --_header.scss</span><br><span class="line">|        --_footer.scss</span><br><span class="line">|        --_form.scss</span><br><span class="line">|    -- components/ # UI组件的文件 </span><br><span class="line">|        -- _buttons.scss</span><br><span class="line">|        --_dropdown.scss</span><br><span class="line">|    -- style.scss # sass主文件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="SASS变量"><a href="#SASS变量" class="headerlink" title="SASS变量"></a>SASS变量</h2><ol>
+<li><p><code>$var: val</code>，一次赋值，多次使用。</p>
+</li>
+<li><p>为了方便其他sass文件共用变量，可以创建一个scss文件，专门用于存放变量，比如：_variable.scss。为了使用变量，必须在其他sass文件之前加载变量sass文件。</p>
+</li>
+<li><p>颜色变量通常使用方法：首先定义一组变量，得到一组调色板，根据具体用途，把变量再赋值给另一个变量。类似的有，字体栈。</p>
+</li>
+<li><p>变量如果是相同单位可以进行简单的计算,<strong>加减时要使用相同的度量单位</strong>。</p>
+</li>
+</ol>
+<h2 id="嵌套选择符"><a href="#嵌套选择符" class="headerlink" title="嵌套选择符"></a>嵌套选择符</h2><ol>
+<li><p>用花括号把子元素放在父元素中，这就是SASS的嵌套。</p>
+</li>
+<li><p>引用父辈选择符：<strong>&amp;</strong>，使用“&amp;”代表父辈选择符。</p>
+</li>
+<li><p>多层嵌套，sass是程序，支持多层嵌套，只需要在子元素中再包含它的子元素。</p>
+</li>
+</ol>
+<h2 id="继承或扩展属性"><a href="#继承或扩展属性" class="headerlink" title="继承或扩展属性"></a>继承或扩展属性</h2><ol>
+<li><p>继承样式: <code>@extends selector</code></p>
+</li>
+<li><p>占位选择符：<code>%name</code>，表示只能用作其他样式基底的样式。解决继承功能太霸道的问题。</p>
+</li>
+<li><p>只扩展相关的元素。</p>
+</li>
+</ol>
+<h2 id="混入"><a href="#混入" class="headerlink" title="混入"></a>混入</h2><ol>
+<li><p>混入指代一组想重复多次使用的CSS属性，可重用。</p>
+</li>
+<li><p>创建混入：<code>@mixin name{}</code>，在花括号中添加样式代码。</p>
+</li>
+<li><p>使用混入：<code>@include name</code></p>
+</li>
+<li><p>混入函数：<code>@mixin name($var) {}</code>，在花括号中添加样式代码。</p>
+</li>
+<li><p>混入库，比如neat，bourbon，compass（不仅仅是混入库，包含其他很多功能），susy。</p>
+</li>
+<li><p>插值（interpolation）：<code>#{$var}</code></p>
+</li>
+<li><p>可选参数：<code>@mixin name($var1, $var2: null, $var3: null)</code>，这里var2和var3都是可选的，当我们不提供他们的值的时候，sass会忽略这些值。</p>
+</li>
+<li><p>参数默认值：<code>@mixin name($var1, $var2: 1.2em, $var3: red)</code>，这里var2和var3都指定了默认值，当我们省略他们不写的时候，会使用这些默认值，否则会覆盖默认值。</p>
+</li>
+<li><p>明确传值形参：<code>@include name(2em, $color: red)</code></p>
+</li>
+</ol>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><ol>
+<li><p>sass原生支持在选择符中使用媒体查询</p>
+</li>
+<li><p>媒体查询一般会配合混入使用，如下是移动优先的媒体查询：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* _variable.scss */</span></span><br><span class="line">@screen-small: 400px;</span><br><span class="line">@screen-medium: 760px;</span><br><span class="line">@screen-large: 1000px;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* layout.scss */</span></span><br><span class="line">@<span class="keyword">mixin</span> mq-small &#123;</span><br><span class="line">    @media(min-width: $screen-small) and (max-width: $screen-medium - 1px) &#123;</span><br><span class="line">        @<span class="keyword">content</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">mixin</span> mq-small-up &#123;</span><br><span class="line">    @media(min-width: $screen-small);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS源码映射"><a href="#CSS源码映射" class="headerlink" title="CSS源码映射"></a>CSS源码映射</h2><ol>
+<li>源码映射：浏览器把样式与源头对应起来,告诉浏览器如何从编译得到的css文件中的样式追溯到原本的sass文件中定义的样式。</li>
+</ol>
+
             </div>
           
 
