@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="响应式web设计"/>
+
+
+
+
+  <meta name="keywords" content="响应式设计," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/10/19/响应式API/"/>
+
+
+<meta name="description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
+<meta name="keywords" content="响应式设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="响应式web设计">
+<meta property="og:url" content="https://angelpray.github.io/2018/10/19/响应式API/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-10-19T14:26:52.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="响应式web设计">
+<meta name="twitter:description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 响应式web设计 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          响应式web设计
+        
+      </h1>
+
+      <time class="post-time">
+          10月 19 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="响应式web设计"><a href="#响应式web设计" class="headerlink" title="响应式web设计"></a>响应式web设计</h1><ol>
+<li><p>max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。</p>
+</li>
+<li><p>断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。<strong>断点应该由内容和设计本身决定而不是那些流行的设备！</strong></p>
+</li>
+<li><p>媒体查询：根据设备的能力应用特定的css样式。</p>
+</li>
+<li><p>规范批准流程：WD【working draft】,CR【candidate recommendation 候选推荐】,PR【proposed recommendation 建议推荐】,REC【recommendation 推荐标准】.</p>
+</li>
+<li><p>在link标签中使用媒体查询，media=”screen and (min-width=550px)”,通过and将多个媒体查询串在一起。</p>
+</li>
+<li><p>在@import使用媒体查询，@import url(style.css) screen and (max-width:550px);使用@import会增加HTTP请求英雄加载速度。</p>
+</li>
+<li><p>在CSS中使用媒体查询，@media screen and (max-device-width: 400px){style},默认是针对所有设备，因此可以省略screen。</p>
+</li>
+<li><p>媒体查询可以测试的特性：width（最常用了）、height、device-width（设备屏幕宽度，废弃）、device-height（设备屏幕高度）、orientation（设备方向）、aspect-ratio（视口宽高比）、resolution（分辨路）。都可以加上min和max前缀指定范围。</p>
+</li>
+<li><p>所有的CSS文件都会被下载下来，只是下载下来不必立即应用，优先级比较低而已。</p>
+</li>
+<li><p><strong>阻塞渲染</strong>是指该资源是否会暂停浏览器的首次页面渲染。</p>
+</li>
+<li><p>视口的meta标签：<code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0,width=device-width&quot;&gt;</code></p>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/响应式设计/">响应式设计</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
