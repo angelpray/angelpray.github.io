@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/19/响应式API/"/>
 
 
-<meta name="description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
 <meta name="keywords" content="响应式设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="响应式web设计">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/19/响应式API/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-20T14:47:10.548Z">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png">
+<meta property="og:updated_time" content="2018-10-21T14:22:44.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式web设计">
-<meta name="twitter:description" content="响应式web设计 max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。  断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。断点应该由内容和设计本身决定而不是那些流行的设备！  媒体查询：根据设备的能力应用特定的css样式。  规范批准流程：WD【working">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -132,7 +132,8 @@
 
     
             <div class="post-content">
-            <h1 id="响应式web设计"><a href="#响应式web设计" class="headerlink" title="响应式web设计"></a>响应式web设计</h1><ol>
+            <p><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png" alt="2018-10-21-22-22-01"><br><a id="more"></a></p>
+<h1 id="响应式web设计"><a href="#响应式web设计" class="headerlink" title="响应式web设计"></a>响应式web设计</h1><ol>
 <li><p>max-width: 100%和width:100%的区别，max-width会考虑自身的宽度，只有容器比图片宽度笑才会缩放占满可用空间，而width无论什么情况下都会占满可用空间。</p>
 </li>
 <li><p>断点：就是某个宽度临界点，跨过这个点布局就会发生显著变化。<strong>断点应该由内容和设计本身决定而不是那些流行的设备！</strong></p>
@@ -158,6 +159,31 @@
 <li><p>区块转换成弹性比例大小：目标/上下文。</p>
 </li>
 </ol>
+<h2 id="Flexbox布局"><a href="#Flexbox布局" class="headerlink" title="Flexbox布局"></a>Flexbox布局</h2><ol>
+<li><p>Flexbox，有的需要前缀。自动加前缀，autoprefixer。</p>
+</li>
+<li><p>魔法属性，如果指定了flex布局，margin-left,margin-right指定为auto值的时，它让最后一项用上改侧所有可用的外边距。</p>
+</li>
+<li><p>flex-direction,flex-wrap,flex-flow</p>
+</li>
+<li><p>inline-flex，行内伸缩，比如a标签，可以在行内进行伸缩而不用变成块级。</p>
+</li>
+<li><p>Flexbox的方向：align-items、align-self（可以覆盖align-items）、justify-content、<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png" alt="2018-10-21-14-49-11"></p>
+</li>
+<li><p>使用列+min-height=100%（HTML,BODY）可以实现页脚粘附。</p>
+</li>
+<li><p>把主内容放在页面的开头是个聪明的做法,结合使用order，甚至可以模仿所谓的“圣杯布局”</p>
+</li>
+</ol>
+<h2 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h2><ol>
+<li><p>根据分辨率切换不同分辨率的图片:通过srcset属性+size属性联合切换。（少见到，忽略）</p>
+</li>
+<li><p>根据不同的视口大小使用不同的图片：picture元素，picture元素只是一个容器，需要使用source(srcset)配合img使用。在source中可以使用media媒体查询属性。</p>
+</li>
+<li><p>图片格式的替换，type + srcset，结合使用。type指明优先使用的图片格式image/后缀</p>
+</li>
+</ol>
+<h2 id="HTML5与响应式设计"><a href="#HTML5与响应式设计" class="headerlink" title="HTML5与响应式设计"></a>HTML5与响应式设计</h2><p>1. </p>
 
             </div>
           
