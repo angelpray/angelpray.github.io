@@ -45,7 +45,8 @@
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png">
-<meta property="og:updated_time" content="2018-10-21T14:22:44.254Z">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-22-17-37-20.png">
+<meta property="og:updated_time" content="2018-10-24T13:45:31.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式web设计">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
@@ -140,7 +141,7 @@
 </li>
 <li><p>媒体查询：根据设备的能力应用特定的css样式。</p>
 </li>
-<li><p>规范批准流程：WD【working draft】,CR【candidate recommendation 候选推荐】,PR【proposed recommendation 建议推荐】,REC【recommendation 推荐标准】.</p>
+<li><p>规范批准流程：<code>WD</code>【working draft】,<code>CR</code>【candidate recommendation 候选推荐】,<code>PR</code>【proposed recommendation 建议推荐】,<code>REC</code>【recommendation 推荐标准】.</p>
 </li>
 <li><p>在link标签中使用媒体查询，media=”screen and (min-width=550px)”,通过and将多个媒体查询串在一起。</p>
 </li>
@@ -168,7 +169,9 @@
 </li>
 <li><p>inline-flex，行内伸缩，比如a标签，可以在行内进行伸缩而不用变成块级。</p>
 </li>
-<li><p>Flexbox的方向：align-items、align-self（可以覆盖align-items）、justify-content、<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png" alt="2018-10-21-14-49-11"></p>
+<li><p>Flexbox的方向：align-items、align-self（可以覆盖align-items）、justify-content、</p>
+</li>
+<li><p>flex的默认值：0 1 auto；表示宽度由里面的内容自动确定。<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png" alt="2018-10-21-14-49-11"></p>
 </li>
 <li><p>使用列+min-height=100%（HTML,BODY）可以实现页脚粘附。</p>
 </li>
@@ -183,7 +186,100 @@
 <li><p>图片格式的替换，type + srcset，结合使用。type指明优先使用的图片格式image/后缀</p>
 </li>
 </ol>
-<h2 id="HTML5与响应式设计"><a href="#HTML5与响应式设计" class="headerlink" title="HTML5与响应式设计"></a>HTML5与响应式设计</h2><p>1. </p>
+<h2 id="HTML5与响应式设计"><a href="#HTML5与响应式设计" class="headerlink" title="HTML5与响应式设计"></a>HTML5与响应式设计</h2><ol>
+<li><p>可以把多个元素放到a标签里</p>
+</li>
+<li><p>腻子脚本：用腻子可以填补墙上的坑洼不平来比喻填补老版本浏览器的功能缺失。</p>
+</li>
+<li><p>HTML5响应式视频：删除width属性，添加 max-width:100%;height:auto;</p>
+</li>
+<li><p>学习了添加B站的视频</p>
+</li>
+<li><p>离线应用，localstorage，service workers</p>
+</li>
+</ol>
+<h2 id="CSS3新特性"><a href="#CSS3新特性" class="headerlink" title="CSS3新特性"></a>CSS3新特性</h2><ol>
+<li><p>响应式多列布局：column-count、cloumn-gap、column-rule、column-width</p>
+</li>
+<li><p>断字：word-wrap: break-word;</p>
+</li>
+<li><p>截断文本：text-overflow[ellipsis],width,white-space;</p>
+</li>
+<li><p>CSS分支,特性查询 <code>@support (attrub: value)</code> ，使用 Modernizr进行特性检测。</p>
+</li>
+<li><p>属性选择符，属性是当做一个字符串。比如 src=”1.jpg 2.jpg”,开头是1.jpg,不能以2.jpg开头去查找属性。</p>
+</li>
+<li><p>CSS calc(),可以使用CSS calc方法进行简单的计算。比如计算父元素的宽度的一半减去10像素。<code>.thing{width: calc(50%-10px)}</code></p>
+</li>
+<li><p>CSS4选择器，工作草案，只是了解即可。比如：a:has(p){width:100px;},这个规则可以给一个包含p段落的a标签设置宽度是100px.</p>
+</li>
+<li><p>相对视口的长度【相对单位】： vw vh vmin vmax vmax。 可以使用这些相对单位。<br>vw视口宽度， 1vw = 1% 视口宽度，<br>vh视口高度， 1vh = 1% 视口高度<br>vmin视口中的最小值，等于vw或vh中较小的值的1%<br>vmax视口中的最大值，等于vm或vh中最大的值的1%</p>
+</li>
+<li><p>HSL, 色相，饱和度，亮度 hue saturation lightless<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-22-17-37-20.png" alt="2018-10-22-17-37-20"></p>
+</li>
+<li><p>HSLA RGBA 不透明度 ， 0是透明  1是不透明  </p>
+</li>
+<li><p>opacity是不同明度，他与上面的区别在于：opacity会影响整个元素，而上面的只会影响元素特定的方面，比如背景。</p>
+</li>
+<li><p>css计数器</p>
+</li>
+<li><p>var(),CSS自定义属性和变量</p>
+</li>
+</ol>
+<h1 id="CSS3高级技术"><a href="#CSS3高级技术" class="headerlink" title="CSS3高级技术"></a>CSS3高级技术</h1><ol>
+<li><p>文字阴影 <code>text-shadow: x y 模糊程度 颜色</code>【通过逗号分隔，可以添加多个阴影效果】</p>
+</li>
+<li><p>盒阴影 <code>box-shadow: 内阴影 x y 模糊程度 阴影尺寸 颜色</code>【同理，通过逗号分隔，可以添加多重阴影效果】</p>
+</li>
+<li><p>背景渐变：<code>background: linear-gradient(方向，颜色1，颜色2)</code>，为了兼容不支持渐变效果的浏览器，可以定义一个背景颜色。</p>
+</li>
+<li><p>色标：定义颜色什么时候开始和结束，用于把渐变中的某个点设定为特定颜色。<code>颜色 颜色位置</code></p>
+</li>
+<li><p>通过高分辨率的媒体查询加载高分辨率背景图片。</p>
+</li>
+<li><p>CSS滤镜：<br><code>drop-shadow</code>【跟box-shadow有相同的参数，drop-shadow可以给元素或图片非透明区域添加投影】<br><code>blue</code>【模糊背景，px】<br><code>brightness</code>【高亮，全黑0-1正常，大于1则是更亮】<br><code>contrast</code>【对比度，跟上同理】<br><code>grayscale</code>【灰度化，跟上同理，但不能超过1，1表示完全灰度化】<br><code>invert</code>【元素反色，跟上同理】<br><code>opacity</code>【不透明度，跟上同理】<br>..CCS滤镜是基于SVG滤镜</p>
+</li>
+<li><p>可以同时使用多个滤镜，不同的滤镜只需要用空格分开</p>
+</li>
+</ol>
+<h2 id="SVG与响应式设计"><a href="#SVG与响应式设计" class="headerlink" title="SVG与响应式设计"></a>SVG与响应式设计</h2><ol>
+<li><p>矢量图是使用相对点来保存数据，可以缩放到任意大小而不会损失清晰度。</p>
+</li>
+<li><p>视口：描述在设备上能够观看内容的面积。</p>
+</li>
+<li><p>视框：定义了SVG中所有形状都需要遵循的坐标系。<code>viewbox = x轴的位置  y轴的位置 坐标系的宽度 坐标系的高度</code></p>
+</li>
+<li><p>title, desc提高SVG文档的可读性</p>
+</li>
+<li><p>defs标签，用于存储所有可以复用的元素定义的地方，如梯度，符号、路径等</p>
+</li>
+<li><p>g元素，把其他元素组合起来</p>
+</li>
+<li><p>SVG形状，有现成形状： path rect circle ellipse line polyline polygon</p>
+</li>
+<li><p>SVG路径，由任意数量的连接点组成的，可以自由创造你想要的形状。</p>
+</li>
+<li><p>使用图像编辑器生成SVG。</p>
+</li>
+<li><p>不需要自己完全做出一个SVG，网络很多资源。</p>
+</li>
+</ol>
+<h3 id="在web页面中插入SVG"><a href="#在web页面中插入SVG" class="headerlink" title="在web页面中插入SVG"></a>在web页面中插入SVG</h3><ol>
+<li><p>img标签，SVG能做的和其他插入的图片差不多。</p>
+</li>
+<li><p>object标签，object标签是W3C推荐用于装载非HTML内容的容器。可以使用这个标签插入SVG。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">object</span> <span class="attr">data</span>=<span class="string">"img/svgfile.svg"</span> <span class="attr">type</span>=<span class="string">"image/svg+xml"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fassback-info"</span>&gt;</span>你的浏览器不支持SVG<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>type是内容弄的mime类型。采用这种插入方式可以被JavaScript访问。而且能在浏览器不支持的时候做出简单的反馈。</p>
+<ol>
+<li><p>background-image：url(“img/filename.svg”);如果对SVG的需要只是静态背景图片或者图标，那么尽量通过背景图像的方式插入SVG文件。</p>
+</li>
+<li><p>data URI，统一资源标识符，用于引入外部资源，如图像。</p>
+</li>
+<li><p>base64编码：base64是一种基于64个可打印字符来表示二进制数据的表示方法。</p>
+</li>
+</ol>
 
             </div>
           
