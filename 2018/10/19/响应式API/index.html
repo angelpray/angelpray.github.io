@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-22-17-37-20.png">
-<meta property="og:updated_time" content="2018-10-24T13:45:31.709Z">
+<meta property="og:updated_time" content="2018-10-25T04:57:38.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式web设计">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
@@ -275,10 +275,57 @@
 <ol>
 <li><p>background-image：url(“img/filename.svg”);如果对SVG的需要只是静态背景图片或者图标，那么尽量通过背景图像的方式插入SVG文件。</p>
 </li>
-<li><p>data URI，统一资源标识符，用于引入外部资源，如图像。</p>
+<li><p>data URI，统一资源标识符，用于引入外部资源，如图像。<br>优点：<br>访问外部资源很麻烦或者受限<br>图片是在服务器端用程序动态生成，每个用户显示都不一样<br>图片体积太小，占用一个HTTP请求不是很值得，能节省一次网络请求</p>
 </li>
+</ol>
+<p>缺点：<br>Base64编码的数据体积通常是原数据的体积4/3，也就是Data URL形式的图片会比二进制格式的图片体积大1/3。<br>Data URL形式的图片不会被浏览器缓存，这意味着每次访问这样页面时都被下载一次。这是一个使用效率方面的问题——尤其当这个图片被整个网站大量使用的时候。【CSS中background-image可以解决这个问题，浏览器都会积极的缓存CSS文件来提高页面加载效率】</p>
+<p>格式：<br><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code>[base64 只是声明 data 使用 base64 编码而已，非必须]</p>
+<ol>
 <li><p>base64编码：base64是一种基于64个可打印字符来表示二进制数据的表示方法。</p>
 </li>
+<li><p>对SVG编码尽量不要base64编码，因为base64编码对浏览器解码本身就是一种损耗，SVG转换成base64反而会变大！推荐使用SVGO压缩图片或者使用dataURI而不使用base64。 </p>
+</li>
+<li><p>内联SVG：最好的使用SVG方式是当做背景图片插入。但是如果需要为SVG加上动画效果或者使用JavaScript插入数据，最好还是把SVG内联到HTML上。</p>
+</li>
+<li><p>使用defs+symbol定义好符号，并且使用display:none，只是使用SVG作为容器放置我们的图形对象的符号。</p>
+</li>
+<li><p>use元素，使用定义好的图形对象，通过xlink属性来选择引入的对象。use元素可以复用所有的SVG内容，梯度，形状，符号等</p>
+</li>
+<li><p>改变SVG颜色，在需要多个版本的图标时非常有用。使用CSS的fill属性可以改变SVG的填充颜色。</p>
+</li>
+<li><p>创造双色图标，在指定的path中设定fill属性为currentColor变量，在CSS中的color属性设定这个元素的颜色，没有设置fill属性的其他路径将会使用css中的fill值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-left-right</span>&#123;<span class="attribute">color</span>:<span class="number">#ccc</span>;<span class="attribute">fill</span>:<span class="number">#f90</span>;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以上这种方式内联SVG，每个页面都需要添加庞大的符号集合，那是非常烦人的。而且浏览器无法对SVG代码进行缓存，这是影响性能的。</p>
+</li>
+<li><p>可以复用外部图形对象资源<code>&lt;use xlink:href=&quot;defs.svg#icon-drag-left-right&quot;&gt;&lt;/use&gt;</code>，这里表示使用外部的defs.svg然后确定文件中我们想要使用的符号ID是icon-drag-left-right。这样可以让资源和其他外部图像一样可以被缓存。</p>
+</li>
+<li><p>浏览器兼容性问题：IE不能引用外部SVG资源，IE不允许通过CSS为SVG添加动画。</p>
+</li>
+<li><p>SMIL动画，SMIL，同步多媒体集成语言【IE、EDGE都不支持】，使用animate标签。</p>
+</li>
+<li><p>使用CSS为SVG添加样式【只支持内联或者object标签插入的情况】，使用CSS为SVG添加动画,使用内联样式需要放在dfs中【IE不支持,edge支持,】</p>
+</li>
+<li><p>使用JavaScript添加SVG动画，可以添加交互功能，支持IE以及同步时间。【用JavaScript控制SVG，只能在SVG是内联或者OBJECT标签引入的时候才有效】</p>
+</li>
+<li><p>使用GreenSock添加SVG动画</p>
+</li>
+<li><p>优化SVG，去掉不需要的元素.SVGO,SVGOMG.</p>
+</li>
+<li><p>SVG滤镜技术：CSS滤镜技术是基于SVG的，但CSS滤镜在IE系列都不支持，但我们可以使用SVG创建滤镜。</p>
+</li>
+<li><p>SVG可以进行媒体查询.</p>
+</li>
+<li><p>SVG总结：<br>1.对于不使用SVG动画的，最好使用图片精灵或者dataURI。<br>2.在项目中插入SVG中，尽可能只用一种调用方式，否则会很乱<br>3.对于简单的动画，使用css【没必要在所有浏览器都表现一样】；对于复杂的可以使用JS库。</p>
+</li>
+<li><p>为什么要用SVG</p>
+</li>
+<li>体积小，加载更快</li>
+<li>SEO更好，因为用XML编写，可以使用title，desc等对图片进行描述</li>
+<li>具备矢量功能，在任何高清设备都很高清</li>
+</ol>
+<h2 id="CSS3过渡、变形和动画"><a href="#CSS3过渡、变形和动画" class="headerlink" title="CSS3过渡、变形和动画"></a>CSS3过渡、变形和动画</h2><ol>
+<li>首先理解一点，CSS实现动画效果需要三个主要属性：transition过渡，transform变形，animation动画。但是真正很动画相关的是transition和animation。transform只是让我们改变元素的外观。</li>
 </ol>
 
             </div>
