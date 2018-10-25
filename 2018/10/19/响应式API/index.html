@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-22-17-37-20.png">
-<meta property="og:updated_time" content="2018-10-25T04:57:38.277Z">
+<meta property="og:updated_time" content="2018-10-25T14:54:06.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式web设计">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
@@ -327,6 +327,51 @@
 <h2 id="CSS3过渡、变形和动画"><a href="#CSS3过渡、变形和动画" class="headerlink" title="CSS3过渡、变形和动画"></a>CSS3过渡、变形和动画</h2><ol>
 <li>首先理解一点，CSS实现动画效果需要三个主要属性：transition过渡，transform变形，animation动画。但是真正很动画相关的是transition和animation。transform只是让我们改变元素的外观。</li>
 </ol>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><ol>
+<li><p>理解一点：过渡声明是<strong>应用在初始状态而不是结束状态上</strong>。</p>
+</li>
+<li><p>过渡相关属性：<br><code>transition-property</code>：要过渡的css属性的名字【all可以过渡所有可以过渡的属性，多个属性使用逗号相隔】<br><code>transition-duration</code>：定义过渡的时长【单位是s】<br><code>transition-timing-function</code>：定义过渡期间的速度变化【ease、linear、ease-in、ease-out、ease-in-out或者cubic-bezier】<br><code>transition-delay</code>：过渡开始前的延迟时间。【单位s】<br>简写属性<code>transition</code>：all 1s ease 0s;</p>
+</li>
+<li><p>定义那些你真的需要的过渡属性，定义all会增加浏览器的负担。</p>
+</li>
+<li><p>可以在不同时间段内过渡不同属性</p>
+</li>
+<li><p>理解速度函数：其实他们都是定义好的贝塞尔曲线，本质就是缓动函数。过渡效果应该尽可能快，默认过渡效果ease就是最好的。</p>
+</li>
+<li><p>有趣的过渡：<code>*{transition: all 1s}</code>，这样可以让页面内所有的元素都有过渡效果。包括媒体查询，窗口大小改变，页面排列方式改变等等。。</p>
+</li>
+</ol>
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><ol>
+<li>CSS3变形（transformation）包含了2种变形：2D变形、3D变形。</li>
+</ol>
+<h3 id="2D变形"><a href="#2D变形" class="headerlink" title="2D变形"></a>2D变形</h3><p>scale：放大和缩小<br>translate：在屏幕上移动元素，上下左右<br>rotate：按照一定的角度旋转元素（单位为度）<br>skew：沿X或者Y轴对元素进行斜切【二维坐标系x，y调换即可】<br>martix：以像素精度来控制变形效果【所谓的矩阵，能让其他变形组合成单个声明】<br><strong>变形是在文档流外发生的，一个变形的元素不影响文档附近的任何元素的位置。</strong></p>
+<ol>
+<li><p>可以使用translate实现居中绝对定位元素</p>
+</li>
+<li><p>transform-origin属性：变形原点，默认是元素中心。【SVG的是左上角】</p>
+</li>
+</ol>
+<h3 id="3D变形"><a href="#3D变形" class="headerlink" title="3D变形"></a>3D变形</h3><ol>
+<li><p>perspective属性：设置用户视点到3D场景的距离。【可以省略】</p>
+</li>
+<li><p>transform-style: preserve-3d</p>
+</li>
+<li><p>backface-visibility:hidden;【在真正变形的元素中添加】</p>
+</li>
+<li><p>transform3d属性：rotate3d(),scale3d(),translate3d();</p>
+</li>
+<li><p>使用变形实现渐进增强：<strong>在制作交互模式的时候，最有用的方法是从最低级的功能开始，逐步增强。</strong>【把这个作为制作交互网页的原则】</p>
+</li>
+</ol>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ol>
+<li><p>CSS3动画由两部分组成：首先是关键帧声明，然后是在动画属性中使用这个关键帧声明。</p>
+</li>
+<li><p>关键帧选择器：百分比。【或者是from和to，但支持不是很好，最好使用百分比】</p>
+</li>
+<li><p>动画属性：</p>
+</li>
+</ol>
+<p><code>animation-name:</code><br><code>animation-duration:</code><br><code>animation-delay:</code><br><code>animation-interation-count:</code>[infinite]<br><code>animation-play-state:</code>[running,paused]<br><code>animation-play-mode:</code>[both,forwards,backwards,none]<br><code>animation-direction:</code>[normal,reverse,alternate,alternatereverse]<br>``</p>
 
             </div>
           
