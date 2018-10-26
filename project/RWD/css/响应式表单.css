@@ -70,7 +70,7 @@ header h1 {
 }
 .inputWrapper > input:not([type="range"]):focus {
     box-shadow: 0 0 1px 1px #ebebeb, inset 0 -3px rgb(204, 50, 50);
-    transform: scale(1.1,1.1);
+    transform: scale(1.05,1.05);
     border: 1px solid #cc3232;
     animation: blinks 2s ease infinite;
 }
