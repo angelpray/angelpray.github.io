@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="This is JC's blog"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/project/RWD/响应式表单.html"/>
+
+
+<meta name="description" content="响应式表单                     Oscar Redemption         Here&apos;s your chance to set the record straight:             tell us what year the wrong film got noninated,             and which fi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Janro-Cheung">
+<meta property="og:url" content="https://angelpray.github.io/project/RWD/响应式表单.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="响应式表单                     Oscar Redemption         Here&apos;s your chance to set the record straight:             tell us what year the wrong film got noninated,             and which fi">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-10-26T10:49:57.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Janro-Cheung">
+<meta name="twitter:description" content="响应式表单                     Oscar Redemption         Here&apos;s your chance to set the record straight:             tell us what year the wrong film got noninated,             and which fi">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title>  - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title">
+                    
+                </h1>
+            </header>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-widht">
+    <title>响应式表单</title>
+    <link rel="stylesheet" href="./css/响应式表单.css">
+</head>
+<body>
+    <header>
+        <h1>Oscar Redemption</h1>
+        <p class="description">Here's your chance to set the record straight:
+            tell us what year the wrong film got noninated,
+            and which film should have received a nod...
+        </p>
+    </header>
+    <main>
+        <form action="#" method="GET">
+            <fieldset class="filmPart part1">
+                <legend>About the offending film(part 1 of 3)</legend>
+                <div class="inputWrapper">
+                    <input type="text" name="question" id="question" placeholder="e.g. King Kong" required autofocus>
+                    <!-- for属需要和input的ID绑定 -->
+                    <label for="question">The film in question</label>
+                </div>
+                <div class="inputWrapper">
+                    <input type="number" name="year" id="year">
+                    <label for="year">Year Of Crime</label>
+                </div>
+                <div class="inputWrapper">
+                    <input type="text" name="award" id="award" list="adwardWon" placeholder="e.g. Best Picture" required>
+                    <label for="award">Award Won</label>
+                    <datalist id="adwardWon">
+                        </datalist><select>
+                            <option value="Best Picture">Best Picture</option>
+                            <option value="Best Director">Best Director</option>
+                            <option value="Best adapted Screenplay">Best adapted Screenplay</option>
+                            <option value="Best original Screenplay">Best original Screenplay</option>
+                        </select>
+                    
+                </div>
+                <div class="inputWrapper">
+                    <textarea name="comments" id="comments" placeholder="I fell asleep within 20 minute"></textarea>
+                    <label for="comments">Tell us why that's wrong?</label>
+                </div>
+                <div class="inputWrapper">
+                    <span>
+                        <input type="range" name="rate" id="rate" value="5" min="1" max="10">
+                        <span>5</span>
+                    </span>
+                    <label for="rate">How you rate it(1 is woeful, 10 is great)</label>
+                </div>
+            </fieldset>
+            <fieldset class="filmPart part2">
+                    <legend>What should have won? (part 2 of 3)</legend>
+                    <div class="inputWrapper">
+                        <input type="text" name="question" id="question" placeholder="e.g. Cable Guy" required>
+                        <!-- for属需要和input的ID绑定 -->
+                        <label for="question">The film that should have won?</label>
+                    </div>
+                    <div class="inputWrapper">
+                        <textarea name="comments" id="comments" placeholder="Hello?"></textarea>
+                        <label for="comments">Tell us why it should have won?</label>
+                    </div>
+                </fieldset>
+                <button type="submit" class="subBtn">
+                    <span class="rotateWrapper">
+                        <span class="panel front">填好了吗？</span>
+                        <span class="panel back">提交</span>
+                    </span>
+                </button>
+        </form>
+    </main>
+</body>
+
+</html>
+            </div>
+        </article>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
