@@ -95,6 +95,12 @@ header h1 {
     body {
         padding: 0 30px;
     }
+    .subBtn:focus .rotateWrapper{
+        transform: rotatex(0deg);
+    }
+    .subBtn:hover .rotateWrapper{
+        transform: rotatex(180deg);
+    }
 }
 
 .part2 {
@@ -151,6 +157,6 @@ header h1 {
 .front {
 	background-color:indigo;
 }
-.subBtn:hover .rotateWrapper{
+.subBtn:focus .rotateWrapper{
     transform: rotatex(180deg);
 }
