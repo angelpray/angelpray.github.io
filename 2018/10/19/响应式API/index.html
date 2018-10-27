@@ -46,7 +46,9 @@
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-14-49-11.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-22-17-37-20.png">
-<meta property="og:updated_time" content="2018-10-26T10:58:51.889Z">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-26-22-14-54.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-26-23-00-15.png">
+<meta property="og:updated_time" content="2018-10-27T13:39:22.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式web设计">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-21-22-22-01.png">
@@ -159,8 +161,8 @@
 </li>
 <li><p>区块转换成弹性比例大小：目标/上下文。</p>
 </li>
-</ol>
-<h2 id="Flexbox布局"><a href="#Flexbox布局" class="headerlink" title="Flexbox布局"></a>Flexbox布局</h2><ol>
+<li><p>媒体查询：only【only兼容老浏览器】，and，or，not</p>
+<h2 id="Flexbox布局"><a href="#Flexbox布局" class="headerlink" title="Flexbox布局"></a>Flexbox布局</h2></li>
 <li><p>Flexbox，有的需要前缀。自动加前缀，autoprefixer。</p>
 </li>
 <li><p>魔法属性，如果指定了flex布局，margin-left,margin-right指定为auto值的时，它让最后一项用上改侧所有可用的外边距。</p>
@@ -372,6 +374,26 @@
 </li>
 </ol>
 <p><code>animation-name:</code><br><code>animation-duration:</code><br><code>animation-delay:</code><br><code>animation-interation-count:</code>[infinite]<br><code>animation-play-state:</code>[running,paused]<br><code>animation-play-mode:</code>[both,forwards,backwards,none]<br><code>animation-direction:</code>[normal,reverse,alternate,alternatereverse]<br>``</p>
+<h2 id="viewport视口"><a href="#viewport视口" class="headerlink" title="viewport视口"></a>viewport视口</h2><ol>
+<li>布局视口：虚拟视口，把网页先虚拟出来，不会改变的</li>
+<li>可视视口：手机的浏览器窗口，会随机着缩放而改变，没法控制</li>
+<li><p>理想视口：就是布局视口在一个设备上的最佳尺寸，为构建手机浏览器优化的页面而添加的。<code>content=&quot;width=device-width&quot;</code></p>
+</li>
+<li><p>禁止缩放：<code>user-scalable=no maximum-scale=1.0 minimum-scale=1.0</code></p>
+</li>
+</ol>
+<h2 id="网站开发前的工作"><a href="#网站开发前的工作" class="headerlink" title="网站开发前的工作"></a>网站开发前的工作</h2><ol>
+<li>需求调研，UI设计、评审，原型设计<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-26-22-14-54.png" alt="2018-10-26-22-14-54"></li>
+</ol>
+<h2 id="RWD实践原则"><a href="#RWD实践原则" class="headerlink" title="RWD实践原则"></a>RWD实践原则</h2><ol>
+<li>渐进增加，progressive enhancement【先在简单的基本效果，逐渐增加好的功能，让老的浏览器能用，让新的浏览器更好用，<strong>可用性优先</strong>，反人类】</li>
+<li><p>优雅降级，graceful degradation【先做漂亮。再对低版本进行修修补补，这个更符合我们的开发原则！】</p>
+</li>
+<li><p>断点选择<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-26-23-00-15.png" alt="2018-10-26-23-00-15"></p>
+</li>
+<li><p>约定优于配置:convention over configuration，约定代码结构或命名规范来减少配置数量。</p>
+</li>
+</ol>
 
             </div>
           
