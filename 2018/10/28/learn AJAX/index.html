@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="AJAX编程"/>
+
+
+
+
+  <meta name="keywords" content="AJAX," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn AJAX/"/>
+
+
+<meta name="description" content="AJAX一种无需重新加载整个网页的情况之下能够更新部分网页的技术。使用AJAX的网页通过在后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。 同步 异步 XMLHttpRequest对象var xhr = new XMLHttpRequest() HTTP通信协议，无状态协议。HTTP请求过程，7步骤  建立TCP连接 web浏览器向Web服务器发送请求命令。 web浏览器发送请求头信息">
+<meta name="keywords" content="AJAX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX编程">
+<meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn AJAX/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="AJAX一种无需重新加载整个网页的情况之下能够更新部分网页的技术。使用AJAX的网页通过在后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。 同步 异步 XMLHttpRequest对象var xhr = new XMLHttpRequest() HTTP通信协议，无状态协议。HTTP请求过程，7步骤  建立TCP连接 web浏览器向Web服务器发送请求命令。 web浏览器发送请求头信息">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-09-09-22-56.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-09-09-24-37.png">
+<meta property="og:updated_time" content="2018-10-28T15:23:00.412Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX编程">
+<meta name="twitter:description" content="AJAX一种无需重新加载整个网页的情况之下能够更新部分网页的技术。使用AJAX的网页通过在后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。 同步 异步 XMLHttpRequest对象var xhr = new XMLHttpRequest() HTTP通信协议，无状态协议。HTTP请求过程，7步骤  建立TCP连接 web浏览器向Web服务器发送请求命令。 web浏览器发送请求头信息">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-09-09-22-56.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> AJAX编程 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          AJAX编程
+        
+      </h1>
+
+      <time class="post-time">
+          10月 28 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p>一种无需重新加载整个网页的情况之下能够更新部分网页的技术。<br>使用AJAX的网页通过在后台跟服务器进行少量的数据交换，网页就可以实现异步局部更新。</p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-09-09-22-56.png" alt="2018-10-09-09-22-56"></p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-09-09-24-37.png" alt="2018-10-09-09-24-37"></p>
+<h2 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h2><p><code>var xhr = new XMLHttpRequest()</code></p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>通信协议，无状态协议。<br>HTTP请求过程，7步骤</p>
+<ol>
+<li>建立TCP连接</li>
+<li>web浏览器向Web服务器发送请求命令。</li>
+<li>web浏览器发送请求头信息</li>
+<li>WEB服务器应答</li>
+<li>web服务器发送头信息</li>
+<li>web服务器向浏览器发送数据</li>
+<li>web服务器关闭TCP连接</li>
+</ol>
+<p>HTTP请求四个部分：</p>
+<ol>
+<li>http请求的方法或动作，比如是GET还是POST.</li>
+<li>正在请求的URL</li>
+<li>请求头，客户端信息，验证信息</li>
+<li>请求体，客户端的查询字符串，表单信息</li>
+</ol>
+<p>GET: 【幂等：查询多少次都是一样的】<br>一般用于信息获取<br>使用URL传递参数<br>对所发送信息的数量也有限制，一般在2000个字符</p>
+<p>POST：数据在请求体中<br>一般用于修改服务器上的资源<br>对所发送信息的数量是没有限制的</p>
+<p>HTTP响应</p>
+<ol>
+<li>数字和文字组成的状态码</li>
+<li>响应头，对应于请求头，有服务器类型，日期时间。</li>
+<li>响应体，响应正文，HTML代码，字符串等</li>
+</ol>
+<p>HTTP状态码：【首位数组定义了状态的类型】<br>1xx：信息类，收到web浏览器请求，正在处理中。<br>2xx：成功，服务器成功处理请求<br>3xx：重定向，请求没成功，客户端采取进一步动作。<br>4xx：客户端错误，客户端提交的请求有错误<br>5xx：服务器错误，服务器不能处理请求</p>
+<h2 id="XHR发送请求"><a href="#XHR发送请求" class="headerlink" title="XHR发送请求"></a>XHR发送请求</h2><ol>
+<li>open(method,url,async=true)</li>
+<li>send(string),GET为null，POST需要数据</li>
+<li>setRequestHeader(“key”,”value”) 【表单enctype有三种：application/x-www-form-urlencoded默认,multipart/form-data,text/plain】，必须写在send之前，open之后</li>
+</ol>
+<h2 id="XHR取得响应"><a href="#XHR取得响应" class="headerlink" title="XHR取得响应"></a>XHR取得响应</h2><ol>
+<li>responseText: 获得字符串形式的响应数据</li>
+<li>responseXML：获得XML形式的响应数据</li>
+<li>status和statusText：以数字和文本形式返回HTTP状态码</li>
+<li>getAllResponseHeader():获取所有的响应报头</li>
+<li>getResponseHeader(key):查询响应中的某个字段的值</li>
+</ol>
+<p><strong>readyState属性：</strong>这个属性的变化代表服务器响应的变化</p>
+<ol>
+<li>0：请求未初始化，open还没有调用</li>
+<li>1：服务器连接已建立，open已经调用</li>
+<li>2：请求已经接收，接收到请求头信息了</li>
+<li>3：请求处理中，接收到了响应主体了</li>
+<li>4：请求完成，响应已就绪，响应完成了</li>
+</ol>
+<p>使用<code>onreadystatechange</code>进行监听readystate属性的变化，当readystate变化就会触发这个事件。（部分浏览器的readystate属性变化触发不到），我们只需要当readystate=4以及status=200就可以判断是响应成功了。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/AJAX/">AJAX</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/10/28/learn HTML5/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">HTML5编程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/10/28/learn VUE/">
+        <span class="next-text nav-default">Vue.js框架编程</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

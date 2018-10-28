@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="JavaScript编程"/>
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn JS/"/>
+
+
+<meta name="description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript编程">
+<meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn JS/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-10-28T15:28:27.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript编程">
+<meta name="twitter:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> JavaScript编程 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JavaScript编程
+        
+      </h1>
+
+      <time class="post-time">
+          10月 28 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h3 id="数字到字符串"><a href="#数字到字符串" class="headerlink" title="数字到字符串"></a>数字到字符串</h3><ol>
+<li><code>toString(radix)：</code>进制转换，十进制转其他进制。</li>
+<li><code>toFixed(n)：</code>小数点后指定位数。</li>
+<li><code>toExponential(n):</code>使用指数计数法,小数点前只有一位，指定小数点后的位数。</li>
+<li><code>toPrecision(n)：</code>指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。<br>(以上方法都会进行四舍五入或填充0)</li>
+</ol>
+<h3 id="字符串到数字"><a href="#字符串到数字" class="headerlink" title="字符串到数字"></a>字符串到数字</h3><ol>
+<li>Number(n)：转换成整数或浮点数直接量。不能出现非法的尾随字符。</li>
+<li>parseInt(number,radix)：只解析整数，提供第二参数，则以这个指定的进制转换基数。其他进制转换成十进制。会跳过空格，忽略后面的非数字内容。</li>
+<li>parseFloat(number):解析浮点数和整数，没有进制参数。</li>
+</ol>
+<h3 id="对象转换为原始值"><a href="#对象转换为原始值" class="headerlink" title="对象转换为原始值"></a>对象转换为原始值</h3><ol>
+<li>对象转换成布尔值：所有对象(不包含null)都是true。</li>
+<li>对象转换成字符串：首先toString(),没有则使用valueOf()，否则错误。</li>
+<li>对象转换成数字：先valueOf(),没有则使用toString()，否则错误。</li>
+</ol>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>每个对象都和另一个对象关联，另一个对象就是“原型”，每个对象都从原型中继承属性。</p>
+<h2 id="创建对象的三个方法"><a href="#创建对象的三个方法" class="headerlink" title="创建对象的三个方法"></a>创建对象的三个方法</h2><ol>
+<li>对象直接量： <code>var o = {x:1};</code></li>
+<li>关键字new： <code>var o = new Object();</code></li>
+<li><code>Object.create()</code>:<code>var o = Object.create(prototype, [)</code></li>
+</ol>
+<h2 id="属性查询和设置"><a href="#属性查询和设置" class="headerlink" title="属性查询和设置"></a>属性查询和设置</h2><ol>
+<li><p>使用.或方括号来获取属性值。.右侧是一个简单标识符，[]内必须是一个计算结果为字符串的表达式。</p>
+</li>
+<li><p>以方括号的方式查询属性看起来更像数组，只是使用字符串索引而不是数字索引，这种数组就是<em>关联数组</em>，也叫散列，映射，字典。</p>
+</li>
+<li><p>查询一个不存在的属性会返回undefined。</p>
+</li>
+</ol>
+<h2 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h2><p><code>delete expression</code>:expression是属性访问表达式。</p>
+<ol>
+<li>不能删除那些可配置性为false的属性。</li>
+<li>不能删除通过变量声明和函数声明创建的全局对象的属性。</li>
+</ol>
+<h2 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h2><p>4种方法检测属性：</p>
+<ol>
+<li>in运算符：继承属性或自有属性都返回true</li>
+<li>hasOwnPropery(str)方法：自有属性才返回true</li>
+<li>propertyIsEnumerable(str)方法：自有属性并且可枚举返回true</li>
+<li>属性查询：通过.或方括号查询属性，判断是否全等undefined</li>
+</ol>
+<h2 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h2><p>3中方法枚举属性</p>
+<ol>
+<li>for/in循环：for(key in obj) {obj[key]}</li>
+<li>Object.keys(obj)：返回对象中可枚举并且是自有属性的数组</li>
+<li>Object.getOwnPropertyNames(obj):返回对象中所有的自有属性，而不仅仅是可枚举属性</li>
+</ol>
+<h2 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h2><p>getter和setter定义的属性称为“存取器属性”，同时具有setter方法和getter方法，则具有读/写属性，否则只具备其中之一。<br>getter：当尝试查询get属性时，将调用get函数。<br>setter：当尝试设置set属性时，将调用set函数。</p>
+<h2 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h2><h3 id="存取器属性"><a href="#存取器属性" class="headerlink" title="存取器属性"></a>存取器属性</h3><ol>
+<li>get,set,configurable,enumerable</li>
+</ol>
+<h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><ol>
+<li>value, writable, configurable, enumerable</li>
+</ol>
+<h3 id="读取特性"><a href="#读取特性" class="headerlink" title="读取特性"></a>读取特性</h3><ol>
+<li>Object.getOwnPropertyDescriptor(obj, prop)</li>
+<li>Object.getOwnPropertyDescriptors(obj)</li>
+</ol>
+<h3 id="设置特性"><a href="#设置特性" class="headerlink" title="设置特性"></a>设置特性</h3><ol>
+<li>Object.definePropery(obj, prop, {attrib})</li>
+<li>Object.defineProperty(obj, {prop: {attrib},})</li>
+</ol>
+<h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><h3 id="原型属性"><a href="#原型属性" class="headerlink" title="原型属性"></a>原型属性</h3><ol>
+<li>Object.getPrototypeOf(obj)：查询原型属性</li>
+<li>isPrototype(obj): 检测一个对象是否是另一个对象的原型（类似instanceof元素符<em>运算符不用驼峰写法，而方法则需要</em>）</li>
+</ol>
+<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>表示对象的类型信息。略。</p>
+<h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>表示是否可以给对象添加新属性。默认都是显式可扩展的。</p>
+<ol>
+<li>Object.isExtensible():判断该对象是否可扩展。</li>
+<li>Object.preventExtensions():设置对象不可扩展。不可逆转。</li>
+<li>Object.seal():类似preventExtensions(),还将设置所有的自由属性为不可配置，封闭。不可逆转。</li>
+<li>Object.freeze()：类似seal()，还将设置所有的数据属性为只读，冻结。</li>
+<li>isSeal(),isFrozen()：检测是否封闭，冻结。</li>
+</ol>
+<h2 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h2><p>对象序列化（serialization）指将对象的状态转换为字符串，也可以字符串还原为对象。</p>
+<ol>
+<li>JSON.stringify():序列化</li>
+<li>JSON.parse():还原</li>
+</ol>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="Function-prototype-apply-thisArg-argsArray"><a href="#Function-prototype-apply-thisArg-argsArray" class="headerlink" title="Function.prototype.apply(thisArg, argsArray)"></a>Function.prototype.apply(thisArg, argsArray)</h3><p><em>apply()方法调用一个函数，其具有一个指定的this值和一个数组(或者类数组对象)作为的参数。</em><br><strong>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。</strong><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
+<h3 id="Function-prototype-call-thisArg-arg1-arg2…"><a href="#Function-prototype-call-thisArg-arg1-arg2…" class="headerlink" title="Function.prototype.call(thisArg, arg1, arg2…)"></a>Function.prototype.call(thisArg, arg1, arg2…)</h3><p><em>call()方法调用一个函数，其具有一个指定的this值和分别提供的参数(参数列表)。</em><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
+<h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p><em>bind()方法创建一个新的函数，这个新函数被调用时，新函数的this设置为提供的值，新函数的参数列表前几项设置为提供的参数列表。</em><br>返回由指定的this值和初始化参数改造的原函数拷贝。<br>**区别apply，call，返回原函数拷贝而不是原函数的返回值。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ol>
+<li><p>简单讲，闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
+</li>
+<li><p>当闭包被返回或者被调用的时候，一定要注意this的值，这个值一般都是指向window的。</p>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/JavaScript/">JavaScript</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/10/28/learn NodeJS/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Node.js语言编程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/10/28/learn ES6/">
+        <span class="next-text nav-default">ES6语言编程</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

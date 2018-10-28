@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="CSS样式语言编程"/>
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn CSS/"/>
+
+
+<meta name="description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS样式语言编程">
+<meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn CSS/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-08-22-16-29-22.png">
+<meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-25-23-16-35.png">
+<meta property="og:updated_time" content="2018-10-28T15:27:31.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS样式语言编程">
+<meta name="twitter:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-08-22-16-29-22.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> CSS样式语言编程 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          CSS样式语言编程
+        
+      </h1>
+
+      <time class="post-time">
+          10月 28 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="我的CSS-API"><a href="#我的CSS-API" class="headerlink" title="我的CSS API"></a>我的CSS API</h1><h2 id="CSS字体api"><a href="#CSS字体api" class="headerlink" title="CSS字体api"></a>CSS字体api</h2><ol>
+<li><p><code>@font-face{}</code>:包括<code>font-family: name</code> <code>src: url(path),url(path)...;</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'MyWebFont'</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'myfont.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>), <span class="comment">/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */</span></span><br><span class="line">       <span class="built_in">url</span>(<span class="string">'myfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>); <span class="comment">/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><ol>
+<li><p>通配符选择器</p>
+</li>
+<li><p>元素选择器</p>
+</li>
+<li><p>类选择器</p>
+</li>
+<li><p>id选择器</p>
+</li>
+<li><p>后代选择器</p>
+</li>
+<li><p>子元素选择器：<code>father &gt; children</code>，只能选择某元素的子元素。</p>
+</li>
+<li><p>相邻兄弟元素选择器：<code>element + sibling</code>，选择紧接在另一元素后的元素，他们具有相同的父元素。</p>
+</li>
+<li><p>通用兄弟选择器：<code>element ~ sibling</code>，选择某元素后面的<code>所有兄弟元素</code>，他们具有相同的父元素。</p>
+</li>
+</ol>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>三种情况：<br>以什么开头^=，包含什么*，以什么结尾$</p>
+<ul>
+<li>对带有指定属性的HTML元素设置样式</li>
+</ul>
+<ol>
+<li><p>为带有attribute属性的element元素设置样式：<code>Element[attribute]</code></p>
+</li>
+<li><p>为attribute=value属性的element元素设置样式: <code>Elment[attribute=&quot;value&quot;]</code></p>
+</li>
+<li><p>选择attribute属性中包含“value”的元素设置样式: <code>Element[attribute ~= &quot;value&quot;]</code>,是*=的子集。</p>
+</li>
+<li><p>选择attribute属性以“value”开头的元素设置样式：<code>Elment[attribute ^= &quot;value&quot;]</code></p>
+</li>
+<li><p>选择attribute属性以“value”结尾的元素设置样式：<code>Element[atttribute $=&quot;value&quot;]</code></p>
+</li>
+<li><p>选择属性值包含“value”的元素设置样式：<code>Element[attribute *= &quot;value&quot;]</code>，跟~去在于，可以是在一个字符串中包含。</p>
+</li>
+<li><p>等于“value”或“value-”开头的元素：<code>Element[attribute |= &quot;value&quot;]</code>，,是^=的子集。</p>
+</li>
+</ol>
+<p>###伪类选择器</p>
+<ul>
+<li>CSS伪类\伪元素用于向某些选择器添加特殊的效果。</li>
+</ul>
+<ol>
+<li><p>动态伪类：<code>:link :visited :hover :active :focus</code>[遵守love hate 原则]</p>
+</li>
+<li><p>UI元素状态伪类：<code>:enabled :disabled :checked</code></p>
+</li>
+<li><p>结构类：<code>first-child last-child :nth-child() :nth-last-child() :only-child :only-of-type :empty【可以选择那些内容是空的元素，空格不能算是空】 :nth-of-type() :nth-last-of-type() :first-of-type :last-of-type :only-of-type :only-child</code></p>
+</li>
+<li><p>first/last-child, nth-child, nth-last-child<br>first/last-of-type, nth-of-type, nth-last-of-type<br>找的是当前元素的兄弟元素。</p>
+</li>
+<li><p>nth-of-type和nth-child的区别：**nth-child选择的是同级DOM中的子元素，与元素类型无关。而nth-of-type则要继续区分元素类型。</p>
+</li>
+<li><p><strong>N是一个简单表达式，取值从0开始。但是CSS元素排列是从1开始</strong>N一定要在前面</p>
+</li>
+<li><p>:empty匹配没有子元素（包括文本节点）的每个元素。</p>
+</li>
+<li><p>否定选择器:<code>:not</code>,选择器匹配非指定元素的每个元素。</p>
+</li>
+<li><p>伪元素：<code>::first-line ::first-letter ::before ::after ::selection</code>，伪元素有两个冒号，伪类只有一个，before、after配合content使用，selection在FF中添加-moz，IE9+.</p>
+</li>
+<li><p>CSS权重，权重决定哪种规定生效。简单理解权重计算：行内=1000 &gt; ID=100 &gt; 类，属性选择器，伪类选择器=10 &gt; 元素和伪元素=1 &gt; 0。 </p>
+</li>
+</ol>
+<h2 id="css图像api"><a href="#css图像api" class="headerlink" title="css图像api"></a>css图像api</h2><ol>
+<li><p>背景图像：<code>background-image：url(src)</code> [src：文件路径，可以是绝对URL,比如一个图片的url；也可以是相对文档，相对根目录]</p>
+</li>
+<li><p>背景平铺：<code>background-repeat: repeat no-repeat repeat-x repeat-y;</code></p>
+</li>
+<li><p>背景位置：<code>background-position: horizontal vertical</code> [水平位置：left center right；垂直位置：top center bottom;另外可以使用px，em，百分比作为单位，如果没有指定方向则默认值从左上偏移]</p>
+</li>
+<li><p>背景固定：<code>background-attatchment: scroll fixed</code>[scroll随着其他内容一起滚动，fixed固定在某个位置不受其他内容影响]</p>
+</li>
+<li><p>背景的起点：<code>background-origin: border-box padding-box: content-box</code>[这个属性在<code>background-attachment：fixed</code>的时候无效]</p>
+</li>
+<li><p>限制背景出现的位置：<code>background-clip: border-box padding-box content-box</code>[这个属性跟<code>background-origin</code>有点类似，不同的是这个属性会对背景进行剪裁，而前者不会,这两个属性可以配合使用。]</p>
+</li>
+<li><p>设置图片大小：<code>background-size: width height contain cover</code>[宽高可以是px，也可以百分比，contain和cover的区别只在于：contain会显示完整的图片，而cover则会让图片宽度先铺满容器再保留纵横比]</p>
+</li>
+<li><p>背景混合模式：<code>background-blend-mode：</code>，还没理解。</p>
+</li>
+<li><p>多背景：<code>background: url(),url(),url()...;</code>[用逗号分隔，每一个都可以作为一个简写的background,顺序很重要，先出现的显示优先级最高，依次递减]。</p>
+</li>
+<li><p>线性渐变：<code>background-image: linear-gradient(to direction, color1 pistion[, color2 postion[,...)</code>[direction:方向，可以是关键字top，bottom，left，right，也可以是角度0-360deg;postion是颜色从哪个位置开始显示]。</p>
+</li>
+<li><p>平铺线性渐变：<code>background-image: reapeating-linear-gradient(to direction, color1 position[, color2 position[,...)</code>[平铺线性渐变，会以一段渐变为单位去平铺，position一般会用px，一般使用平铺径向渐变都会让起始颜色和结束颜色相同，达到比较衔接的效果]。</p>
+</li>
+<li><p>径向渐变：<code>background-image: radial-gradient(size[ circle[ at[ postion], color1 position[, color2 position[)</code>[ 默认显示一个圆形，渐变中心在元素的中心点上。circle创建一个圆形的渐变【也可以是ellipse椭圆形】，at关键字可以设置渐变中心的中心，size则是渐变的尺寸，有四个关键字：closest-side，closest-corner，farthest-side，farthest-corner ]。</p>
+</li>
+<li><p>平铺径向渐变：<code>background-image: repeating-gradient(size circle[ at[ position],color1 postion, color2 position)</code>[position用px，一般使用平铺径向渐变都会让起始颜色和结束颜色相同，达到比较衔接的效果]</p>
+</li>
+</ol>
+<h2 id="链接API"><a href="#链接API" class="headerlink" title="链接API"></a>链接API</h2><ol>
+<li>链接状态伪类：<code>:link :visited :hover :active :focus</code> [未访问 已访问 鼠标悬浮 单击链接 Tab键进入表单字段或链接,排列顺序为爱恨原则LoVe/HAte]</li>
+</ol>
+<h2 id="CSS变形、过渡、动画"><a href="#CSS变形、过渡、动画" class="headerlink" title="CSS变形、过渡、动画"></a>CSS变形、过渡、动画</h2><h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><ol>
+<li><p>旋转: <code>transform: rotate(deg)</code>[deg为提供的角度]</p>
+</li>
+<li><p>缩放：<code>transform: scale(x，y)</code>, <code>transform: scaleX(n)</code>, <code>transform: scaleY(n)</code> [x,y分别为纵横放大的倍数,如果只提供一个值则宽高放大同样的倍数，元素和里面的全部内容会一起缩放。scaleX和scaleY分别为宽高各自放大的倍数。scale(x,y) 可以理解为x是元素左右边线到元素中心点的距离，y是元素上下边线到元素中心点的距离。x值越大元素的左边线越靠左，右边线越靠右x值为0时，左边线和右边线会重合。x值为负数时，元素的左边线会移到元素中心点的右侧，右边线会移到元素中心点的左侧。这样就水平反转了。]</p>
+</li>
+<li><p>平移：<code>transfrom: translate(x, y)</code>，<code>transform: translateX(x)</code>,<code>transform: translateY(y)</code></p>
+</li>
+<li><p>倾斜：<code>transform: skew(xdeg, ydeg)</code>,<code>transform:skewX</code>,<code>transform:skewY</code>[倾斜中的X，Y跟我们以往的坐标系刚好相反，就好理解了]</p>
+</li>
+<li><p>多重变形：<code>transform: rotate scale translate skew</code>[各个变形函数的书写顺序就是浏览器应用效果的顺序]</p>
+</li>
+<li><p>变形原点：<code>transform-origin: x y</code> [单位可以是像素，关键字，em，百分比]</p>
+</li>
+<li><p>3D变形，有待学习，非常重要。</p>
+</li>
+</ol>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><ol>
+<li><p>过渡属性：<code>transition-property: key-word</code> [all或者其他css属性，多个属性用逗号相隔]</p>
+</li>
+<li><p>持续时间: <code>transition-duration: time</code></p>
+</li>
+<li><p>时序函数: <code>transition-timing-function: key-word</code> [ease, ease-in, ease-out,ease-in-out,linear,cubic-bezier]</p>
+</li>
+<li><p>延迟: <code>transition-delay: time</code></p>
+</li>
+<li><p>按照顺序简写：<code>transition:</code></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3></li>
+<li><p>名字：<code>animation-name: name</code></p>
+</li>
+<li><p>持续时间：<code>animation-duration: time</code></p>
+</li>
+<li><p>时序函数：<code>animation-timing-function: key-word</code></p>
+</li>
+<li><p>次数：<code>animation-iteration-count: number</code></p>
+</li>
+<li><p>方向：<code>animation-direction: alternate</code></p>
+</li>
+<li><p>延迟：<code>animation-delay: time</code></p>
+</li>
+<li><p>填充模式：<code>animation-fill-mode: forwards</code></p>
+</li>
+<li><p>关键帧：<code>@keyframe name {from{...} percentage{} to{...}}</code></p>
+</li>
+<li><p>按照顺序简写：<code>animation:</code></p>
+</li>
+</ol>
+<h2 id="表格API"><a href="#表格API" class="headerlink" title="表格API"></a>表格API</h2><ol>
+<li><p>添加内边距 <code>padding</code></p>
+</li>
+<li><p>纵向对齐：<code>vertical-align:top baseline middle bottom</code>[不可继承]</p>
+</li>
+<li><p>横向对齐：<code>text-algin: left right center justify</code>[可继承]</p>
+</li>
+<li><p>单元格间隙：<code>border-spacing:</code>[问题：造成边框宽度重叠两倍]</p>
+</li>
+<li><p>去双重边框：<code>border-collapse: collapse</code>[设置了border-collapse，则border-spacing无效]</p>
+</li>
+<li><p>圆角：<code>border-radius: number</code>[同上]</p>
+</li>
+<li><p>隐藏空单元格：<code>empty-cells: hide;</code>[同上]</p>
+</li>
+<li><p>隔行条纹：<code>tr:nth-of-type(odd) tr:nth-of-type(even)</code></p>
+</li>
+<li><p>表单伪类：<code>:focus :checked :disabled :enabled</code></p>
+</li>
+</ol>
+<h2 id="布局api"><a href="#布局api" class="headerlink" title="布局api"></a>布局api</h2><ol>
+<li><p>固定宽度布局：不管浏览器窗口有多宽，页面的宽度始终一致。常见的是居中显示，最常用的宽度是960px。因为移动设备的普及，这种方式已经不流行了。</p>
+</li>
+<li><p>流式布局：流式布局能自动调节，匹配浏览器的宽度，其宽度使用百分比设定的。优点是可以利用浏览器窗口的可用空间，但不能保证在所有的窗口中都好看，比如，屏幕太大的时候，文本行太长。</p>
+</li>
+<li><p>响应式web设计：支持不同宽度的浏览器，响应式web设计不为所有设备提供一样的布局，而是提供不同的布局。</p>
+</li>
+<li><p>浮动：<code>float: left right none</code></p>
+</li>
+<li><p>定位：<code>position: absolute relative fixed static</code></p>
+</li>
+<li><p>绝对定位：相对于最近的祖辈定位元素（fixed，relative，absolute）的边界而定，否则相对于浏览器窗口而定。【脱离文档流】</p>
+</li>
+<li><p>隐藏页面部分内容：visibility:visible hidden。hidden和display:none的作用一样，但none会让元素彻底消失，而hidden只会不显示元素，但是元素原来的位置还是会留空。</p>
+</li>
+<li><p>通过定位的right，left属性可以自动设置元素长度。</p>
+</li>
+<li><p>相对定位：相对于元素在HTML流中的当前位置而定。它的主要用途不是移动元素，而是为其中需要绝对定位的元素设置参考点。</p>
+</li>
+<li><p>固定定位：固定的元素钉在屏幕的某个位置。</p>
+</li>
+</ol>
+<h2 id="responsive-web-design-响应式设计"><a href="#responsive-web-design-响应式设计" class="headerlink" title="responsive web design 响应式设计"></a>responsive web design 响应式设计</h2><ol>
+<li><p><code>@import url(src) (key: value)</code>命令必须放在样式表的开头，不能放在任何样式的后面,否则无效。</p>
+</li>
+<li><p><code>@media (key: value){style}</code>媒体查询，相当于一个容器，把满足查询条件的样式围住。</p>
+</li>
+<li><p><code>弹性栅格</code>与<code>流式布局</code>类似，网页的整体宽度都会随着屏幕的宽度而变化调节。</p>
+</li>
+<li><p><code>width=auto</code>的作用与设置100%差不多，作用是让元素和容器一样宽。</p>
+</li>
+<li><p><code>PPI(pixel per inch)</code>每英寸所包含像素点数目，标准屏幕PPI是160,苹果6是326属于超高密度ppi。</p>
+</li>
+<li><p><code>DPR</code>= 设备像素 / 设备独立像素，设备像素比，代表设备独立像素到设备像素的转换关系。可以通过window.devicePixelRatio获取。</p>
+</li>
+<li><p><code>设备像素</code>：指的是设备像素，设备能控制显示的最小单位<br><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-08-22-16-29-22.png" alt="2018-08-22-16-29-22"></p>
+</li>
+<li><p><code>CSS像素</code>：指我们在代码中设置的逻辑像素值，是一个抽象概念，实际不存在。</p>
+</li>
+<li><p><code>DPI</code>每英寸包含点的数量 </p>
+</li>
+<li><p><code>DPPX</code>每像素包含点的数量 96dpi = 1dppx </p>
+</li>
+<li><p><code>设备独立像素</code>：与设备无关的逻辑像素，指通过程序控制的虚拟像素，包含了CSS像素。</p>
+</li>
+</ol>
+<ol>
+<li><p><code>图片缩放大小</code> = 图片CSS大小 * DPR</p>
+</li>
+<li><p><strong>行内元素会忽略宽高以及上下内外边距</strong></p>
+</li>
+<li><p>设置断点，通常的做法是设置三个，小于480，480~768，大于768.判断的标准其实是：从某一点开始，网站的外观可能会变差。</p>
+</li>
+<li><p>设置<code>width: auto</code>与设置为100%作用是相同的。</p>
+</li>
+</ol>
+<h2 id="CSS栅格系统"><a href="#CSS栅格系统" class="headerlink" title="CSS栅格系统"></a>CSS栅格系统</h2><ol>
+<li><p>栅格：一种把内容组织到行和列中的方式，而且各列的宽度是一致的。</p>
+</li>
+<li><p>容器：容器用于设置整个栅格系统的宽度，通常使用max-width属性。</p>
+</li>
+<li><p>行：放在容器中，一行可以由多个div标签，标记各列。</p>
+</li>
+<li><p>列：一列就是一行里的div标签，一行可以由一列或多列。</p>
+</li>
+<li><p>定义容器，行，列，只需要为div设置相应的类名，不同的栅格系统有不一样的命名。</p>
+</li>
+</ol>
+<h2 id="弹性盒"><a href="#弹性盒" class="headerlink" title="弹性盒"></a>弹性盒</h2><ol>
+<li><p>弹性容器：<code>display: flex;</code></p>
+</li>
+<li><p>弹性项目：直接嵌套在弹性容器里的标签叫弹性项目。</p>
+</li>
+<li><p>项目宽度相等并且填满整个容器：<code>flex: 1;</code>。</p>
+</li>
+</ol>
+<h3 id="弹性容器的属性"><a href="#弹性容器的属性" class="headerlink" title="弹性容器的属性"></a>弹性容器的属性</h3><ol>
+<li><p>弹性项目的排列方向以及是否换行：<code>flex-flow: direction[row row-reverse column column-reverse] newline[nowrap wrap wrap-reverse]</code></p>
+</li>
+<li><p>设置弹性项目显示在一行的位置【需要符合flex属性】：<code>justify-content: flex-start【靠左对齐】 flex-end【靠右对齐】 center space-between【均匀分布各个弹性项目，最左边的靠左边，最右边的靠右边，左右边不留空白】 space-around【把容器剩余的空间平均分给各个项目，包括最左边和最右边，左右边会留空白】</code> </p>
+</li>
+<li><p>设置弹性项目在弹性容器里的纵向对齐方式：<code>align-items:flex-start flex-end center baseline stretch[默认]</code></p>
+</li>
+<li><p>如何放置显示为多行的弹性项目，设置的是所有的多行弹性项目。【1.必须允许换行；2.弹性容器的高度必须大于多行显示的弹性项目】<code>align-content: flex-start flex-end center space-between space-around stretch【默认】</code></p>
+</li>
+</ol>
+<h3 id="弹性项目的属性"><a href="#弹性项目的属性" class="headerlink" title="弹性项目的属性"></a>弹性项目的属性</h3><ol>
+<li><p>控制项目的显示顺序：<code>order：num</code>，指定每一个项目的数字后，页面会从小到大排序。</p>
+</li>
+<li><p>控制单个项目的纵向对齐方式：<code>align-self [align-items属性值]</code>，可以覆盖掉align-items</p>
+</li>
+<li><p>弹性项目的外边距不折叠,可以把外边距的值设为auto，让浏览器根据可用空间调整外边距的值</p>
+</li>
+<li><p>控制弹性项目的宽度：<code>flex:</code>flex-grow<code>：num[相对宽度，表示弹性项目如何变宽，只要大于0整个宽度就会被占满。等于0则由自身的宽度决定。]</code>flex-shrink<code>：[当项目的宽度之和大于容器的宽度，弹性项目收窄多少，跟flex-grow一样是相对宽度。flex-flow为nowrap才起作用，可以始终1。为0就是不收缩]</code>flex-basis<code>：px、em、%[设置弹性项目的基准宽度，当flex-grow为0时，宽度等于设置的值，否则有可能大于设置的值也有可能小于。允许换行时才真正起作用。为了跟flex-grow一致。应该按照grow的比例设置值。用于确定何时换行。根据这个基准来计算宽度。]</code></p>
+</li>
+</ol>
+<h2 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h2><p>// <link rel="shortcut icon" href="https://static.segmentfault.com/v-5b8f9b7e/global/img/favicon.ico"></p>
+<h2 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h2><ol>
+<li><p>文本阴影:text-shadow: x y blur-radius(模糊程度) color</p>
+</li>
+<li><p>盒子阴影:box-shadow: inset x y blur-radius(模糊程度) spread-radius【阴影延伸长度】 color</p>
+</li>
+</ol>
+<h2 id="多栏文本"><a href="#多栏文本" class="headerlink" title="多栏文本"></a>多栏文本</h2><ol>
+<li>column-count</li>
+<li>column-width</li>
+</ol>
+<h2 id="清除浮动5个方法"><a href="#清除浮动5个方法" class="headerlink" title="清除浮动5个方法"></a>清除浮动5个方法</h2><p><img src="http://p9h1w9ht8.bkt.clouddn.com/2018-10-25-23-16-35.png" alt="2018-10-25-23-16-35"></p>
+<ol>
+<li>在浮动元素后面使用一个带clear属性的空元素</li>
+<li>给浮动元素的容器添加css，overflow:hidden+zoom:1</li>
+<li>给浮动元素的容器也添加浮动，但整体都会浮动，影响布局。</li>
+<li>使用邻接元素处理，给浮动元素后面的元素添加clear属性</li>
+<li>使用CSS的::after伪元素</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/CSS/">CSS</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/10/28/learn SQL/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">SQL数据库语言编程</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/10/28/learn NodeJS/">
+        <span class="next-text nav-default">Node.js语言编程</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
