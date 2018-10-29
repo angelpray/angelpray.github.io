@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn ES6/"/>
 
 
-<meta name="description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];">
+<meta name="description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];  对象的解构赋值：和数组解构赋值不同，数组按次序排列的，变量的">
 <meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6语言编程">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn ES6/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];">
+<meta property="og:description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];  对象的解构赋值：和数组解构赋值不同，数组按次序排列的，变量的">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-28T15:27:59.501Z">
+<meta property="og:updated_time" content="2018-10-29T16:02:36.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6语言编程">
-<meta name="twitter:description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];">
+<meta name="twitter:description" content="ES6，每天一课ES6语法糖 解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为解构（descructuring）  123456// 分别给三个变量赋值    let a = 1;    let b = 2;    let c = 3;// 数组的解构赋值    let [a, b, c] = [1, 2, 3];  对象的解构赋值：和数组解构赋值不同，数组按次序排列的，变量的">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -136,6 +136,10 @@
 <li>解构赋值:按照一定模式从数组和对象中提取值，然后对变量进行赋值，称为<strong>解构</strong>（<em>descructuring</em>）</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分别给三个变量赋值</span></span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">let</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// 数组的解构赋值</span></span><br><span class="line">    <span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<ol>
+<li>对象的解构赋值：和数组解构赋值不同，数组按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名才能取到值。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; a, b &#125; = &#123; <span class="attr">a</span>: <span class="string">"hello"</span>, <span class="attr">b</span>: <span class="string">"world"</span>&#125;;</span><br><span class="line">a;<span class="comment">// "hello"</span></span><br><span class="line">b;<span class="comment">// "world"</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">a</span>: c, <span class="attr">b</span>: d&#125; = &#123;<span class="attr">a</span>: <span class="string">"hello"</span>, <span class="attr">b</span>: <span class="string">"world"</span>&#125;;</span><br><span class="line">a; <span class="comment">// error: undefined</span></span><br><span class="line">b; <span class="comment">// error: undefined</span></span><br><span class="line">c; <span class="comment">// "hello"</span></span><br><span class="line">d; <span class="comment">// "world"</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
             </div>
           
 

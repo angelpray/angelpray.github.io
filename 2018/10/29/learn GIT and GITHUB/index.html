@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-13-40.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-41-08.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-58-40.png">
-<meta property="og:updated_time" content="2018-10-29T15:08:45.442Z">
+<meta property="og:updated_time" content="2018-10-29T15:49:14.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 GIT 和 GITHUB 提高开发效率">
 <meta name="twitter:description" content="GITHUBPull Request Pull Request是指开发者在本地对源代码进行修改后，向github中托管的git仓库请求合并的功能。  对特定用户进行评论 @用户名，对方就可以接到通知，查看Issue  @组织名/团队，可以让该团队的所有成员收到通知。  用户名/仓库名# 编号，链接到指定仓库所对应的Issue编号。# 编号，连接到当前仓库对应的Issue编号。   Github F">
@@ -251,9 +251,24 @@
 <h2 id="压缩历史"><a href="#压缩历史" class="headerlink" title="压缩历史"></a>压缩历史</h2><ol>
 <li><p>压缩历史：提交一个修改，然后将这个修改包含到前一个提交中，压缩成一个历史记录。</p>
 </li>
-<li><p>``</p>
+<li><p><code>git rebase -i HEAD~2</code>,选定当前分支中包含HEAD（最新提交）在内的两个最新历史记录为对象，也就是把两个请求合为一个请求，将pick改为fixup</p>
 </li>
 </ol>
+<h2 id="推送至远程仓库"><a href="#推送至远程仓库" class="headerlink" title="推送至远程仓库"></a>推送至远程仓库</h2><ol>
+<li><p>远程仓库，是与我们本地仓库相对独立的另一个仓库。</p>
+</li>
+<li><p>添加远程仓库: <code>git remote add origin url</code></p>
+</li>
+<li><p>推送到master分支：<code>git push -u origin master</code></p>
+</li>
+<li><p>推送至master以外的分支：<code>git push -u origin branchName</code></p>
+</li>
+<li><p>使用HTTPS协议添加仓库，每次push都要输入密码。使用SSH协议则不用。</p>
+</li>
+<li><p><code>git remote -v</code>查看git远程推送的方式。</p>
+</li>
+</ol>
+<h2 id="从远程仓库获取"><a href="#从远程仓库获取" class="headerlink" title="从远程仓库获取"></a>从远程仓库获取</h2><p>1. </p>
 
             </div>
           
