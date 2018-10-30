@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-13-40.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-41-08.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-29-18-58-40.png">
-<meta property="og:updated_time" content="2018-10-29T15:49:14.110Z">
+<meta property="og:updated_time" content="2018-10-30T06:37:18.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 GIT 和 GITHUB 提高开发效率">
 <meta name="twitter:description" content="GITHUBPull Request Pull Request是指开发者在本地对源代码进行修改后，向github中托管的git仓库请求合并的功能。  对特定用户进行评论 @用户名，对方就可以接到通知，查看Issue  @组织名/团队，可以让该团队的所有成员收到通知。  用户名/仓库名# 编号，链接到指定仓库所对应的Issue编号。# 编号，连接到当前仓库对应的Issue编号。   Github F">
@@ -243,7 +243,7 @@
 </li>
 </ol>
 <h2 id="消除冲突"><a href="#消除冲突" class="headerlink" title="消除冲突"></a>消除冲突</h2><ol>
-<li><p><code>========</code>以上的部分就当前HEAD的内容，以下部分就是想要合并的分支的内容，需要解决冲突，不然无法完成合并。</p>
+<li><p><code>========</code>以上的部分就当前HEAD的内容，以下部分就是想要合并的分支的内容，需要解决冲突，不然无法完成合并。解决冲突后在提交一次。</p>
 </li>
 <li><p>修改上一条提交信息：<code>git commit --amend</code></p>
 </li>
@@ -261,14 +261,52 @@
 </li>
 <li><p>推送到master分支：<code>git push -u origin master</code></p>
 </li>
-<li><p>推送至master以外的分支：<code>git push -u origin branchName</code></p>
+<li><p>推送至master以外的分支：<code>git push -u origin branchName</code><br>【<br>关于git push 需要注意的点：<br>1.如果是第一次推送则必须加上<code>-u origin branch</code><br>2.如果是从远程仓库中获取下来则表示已经跟远程仓库连接上了，直接push就可以</p>
 </li>
+<li>如果不是第一次推送也是可以直接push<br>】</li>
 <li><p>使用HTTPS协议添加仓库，每次push都要输入密码。使用SSH协议则不用。</p>
 </li>
 <li><p><code>git remote -v</code>查看git远程推送的方式。</p>
 </li>
 </ol>
-<h2 id="从远程仓库获取"><a href="#从远程仓库获取" class="headerlink" title="从远程仓库获取"></a>从远程仓库获取</h2><p>1. </p>
+<h2 id="从远程仓库获取"><a href="#从远程仓库获取" class="headerlink" title="从远程仓库获取"></a>从远程仓库获取</h2><ol>
+<li><p><code>git branch</code>,查看当前分支的相关信息，添加<code>-a</code>参数可以同时显示本地仓库和远程仓库的分支信息。</p>
+</li>
+<li><p>获取远程分支,<code>git checkout -b branchName oringin/branchName</code></p>
+</li>
+</ol>
+<h2 id="获取最新的远程仓库分支"><a href="#获取最新的远程仓库分支" class="headerlink" title="获取最新的远程仓库分支"></a>获取最新的远程仓库分支</h2><ol>
+<li><code>git pull origin branchName</code>获取最新的远程仓库分支<br>【git pull需要注意的地方和git push同理，除了第一次更新，其他直接pull即可】</li>
+</ol>
+<h2 id="GITHUB网站功能"><a href="#GITHUB网站功能" class="headerlink" title="GITHUB网站功能"></a>GITHUB网站功能</h2><ol>
+<li><p>站内可以用快捷键（<code>shift+/</code>查看快捷键）</p>
+</li>
+<li><p>Explore,介绍热门的软件</p>
+</li>
+<li><p>Gist，用于管理以及发布一些没必要保存在仓库中的代码，比如笑的代码片段。</p>
+</li>
+<li><p>wiki，记录开发者之间应该共享的信息或者软件文档。</p>
+</li>
+<li><p>pulse，显示仓库最近的活动信息。</p>
+</li>
+<li><p>releases，显示仓库的标签列表。</p>
+</li>
+<li><p>RAW，通过HTTPS协议获取文件。</p>
+</li>
+<li><p>Blame，按行显示最新提交的信息。</p>
+</li>
+<li><p>通过修改URL查看差别</p>
+</li>
+<li><p>issue可以通过标签（label）来进行整理。</p>
+</li>
+<li><p>还可以添加里程碑来管理issue。</p>
+</li>
+<li><p>在仓库根目录添加CONTRIBUTING.md文件，可以在描述issue的时候显示出来，用以规范issue的内容。</p>
+</li>
+<li><p><code>Tasklist语法</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 本月要做的任务</span><br><span class="line">- [x] 完成图片</span><br><span class="line">- [] 完成部署工具的设置</span><br><span class="line">- [] 完成抽签功能</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
             </div>
           
