@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-04T05:04:58.493Z">
+<meta property="og:updated_time" content="2018-11-04T09:15:39.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生JavaScript DOM编程技术">
 <meta name="twitter:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
@@ -153,7 +153,77 @@
 <h2 id="元素节点内联样式"><a href="#元素节点内联样式" class="headerlink" title="元素节点内联样式"></a>元素节点内联样式</h2><ol>
 <li><p>每个HTML元素都有一个style属性，可以用来出入针对该元素的内联CSS属性。</p>
 </li>
-<li><p>通过操作style对象的属性（也就是css样式属性），可以设置、获取、以及移除单个内联CSS属性。<br>【style对象中的属性名不含CSS属性中常见的横线。而是使用了驼峰体，比如font-size=》fontSize，如果css属性名刚好是JavaScript关键字，那么JavaScript css属性名需要加css前缀，比如：float=cssFloat】</p>
+<li><p>通过操作style对象的属性（也就是css样式属性），可以设置、获取、以及移除单个内联CSS属性。<br>【style对象中的属性名不含CSS属性中常见的横线。而是使用了驼峰体，比如font-size=》fontSize，如果css属性名刚好是JavaScript关键字，那么JavaScript css属性名需要加css前缀，比如：float=cssFloat,另外对于任何需要度量单位的css属性都要记得添加上，否则浏览器无视该属性】</p>
+</li>
+<li><p>style对象上还有三个对css属性进行操作的属性<code>setProperty(),getPropertyValue(),removeProperty()</code></p>
+</li>
+<li><p>通过<code>cssText</code>属性，和<code>getAttribute,stAttribute,remoteAttribute</code>可以获取和设置以及移除单个元素的所有内联CSS属性</p>
+</li>
+<li><p>style属性值只包含内联的CSS定义的属性，并不是计算后的样式（实际样式）。可以使用<code>getComputedStyle(ElementName)</code>来获取元素计算后的样式（就是实际的样式）。这个方法返回的对象是只读的。</p>
+</li>
+<li><p>使用<code>setAttribute()和classList.add()</code>配合class和id属性应用css属性，使用<code>remoteAttribute()和classList.remote()</code>就可以移除这些属性。</p>
+</li>
+</ol>
+<h2 id="文本节点"><a href="#文本节点" class="headerlink" title="文本节点"></a>文本节点</h2><ol>
+<li><p>当HTML文档被解析时，在HTML页面中与元素混杂在一起的文本就会被转换为文本节点。</p>
+</li>
+<li><p>记住一点：不管通过浏览器还是编程方式，空白符与文本字符都会创建文本节点。因为<strong>空白符也是字符（换行符同样）</strong></p>
+</li>
+<li><p>创建和注入文本节点：<code>creatTextNode()、appendChild()</code>,还可以在创建一个元素的同时appendChild一个文本节点。</p>
+</li>
+<li><p>使用.data或nodeValue获取文本节点值。两者都返回Text节点中的文本。length属性可以访问节点的文本长度。</p>
+</li>
+<li><p>对文本节点进行添加，删除，插入，替换，获取某一段的文本.<code>appendData() deleteData(start,deleteLength) insertData(start,string) replaceData(start,Length) subStringData(start,length)</code> 【不包含start位置的字符】</p>
+</li>
+<li><p>使用<code>textContent</code>移除文本标记并返回所有子文本节点也可以移除所有文本节点。</p>
+</li>
+<li><p><code>textContent</code>和<code>innerText</code>的区别：<br>innerText知道CSS，如果你有隐藏的内容，会忽略它。但textContent不会。<br>innerText是非标准，textContent是标准的。</p>
+</li>
+<li><p>使用normalize合并兄弟文本节点成单个文本节点。【只是相当于减少了文本节点，并无实际变化】</p>
+</li>
+<li><p>使用splitTxt()分割文本节点。【只是相当于增多了文本节点，并无实际变化】</p>
+</li>
+</ol>
+<h2 id="DocumentFragment节点"><a href="#DocumentFragment节点" class="headerlink" title="DocumentFragment节点"></a>DocumentFragment节点</h2><ol>
+<li><p>把<code>DocumentFragment</code>看做是一个空的文档模板，行为与实时DOM树相同，但它只在内存中存在，并且它的子节点可以很简单在内存中操作，而后附加到实时DOM中。【fragment的意思就是片段的意思】</p>
+</li>
+<li><p>使用<code>createDocumentFragment()</code>方法创建DocumentFragment。使用文档片段在内存中创建节点结构，注入该文档片段到实时DOM中，是高效的。<br>【为什么是高效的：自身不会被添加；可以包含任意类型的节点。】</p>
+</li>
+<li><p>同样直接appendChild，就可以添加DocumentFragment到实时DOM中。</p>
+</li>
+</ol>
+<h2 id="CSS样式表和CSS规则"><a href="#CSS样式表和CSS规则" class="headerlink" title="CSS样式表和CSS规则"></a>CSS样式表和CSS规则</h2><ol>
+<li>通过HTMLLinkElement节点引入外部样式表，通过HTMLStyleElment定义内联样式表。</li>
+</ol>
+<p>2.通过<code>document.styleSheets</code>访问DOM中所有的样式表(包含了style以及link)，这是一个实时类数组对象。或者通过获取style元素，再使用.sheet获取该CSSstyle对象。</p>
+<ol>
+<li>使用<code>cssRules</code>获取样式表的样式规则，这是一个类数组对象。使用cssText查看该条规则的内容。</li>
+</ol>
+<h2 id="DOM中的JavaScript"><a href="#DOM中的JavaScript" class="headerlink" title="DOM中的JavaScript"></a>DOM中的JavaScript</h2><ol>
+<li><p>四种方式在页面中使用JavaScript，外部js，内联js，元素内联js，JavaScript:协议。【<a href="javascript:alert('yo')" target="_blank" rel="noopener"></a>】</p>
+</li>
+<li><p>script三个可选属性：<code>async、defer、src</code></p>
+</li>
+<li><p>默认情况下，DOM在解析时遇到<code>script</code>元素的时候，它将停止解析文档。阻止任何进一步的渲染和下载，并执行JavaScript。因此这个行为是阻塞的，并且不允许并行执行DOM或者执行JavaScript，所以这个行为是同步的。如果是外部JS那么阻塞更加严重，需要先下载完再解析。比如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 停止文档解析，阻塞文档解析，加载JS，执行js，然后继续文档的解析 --&gt;</span><br><span class="line">&lt;script src=<span class="string">"./index.js"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 停止文档解析，阻塞文档解析，执行js，然后继续文档的解析 --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    console.log('hi');</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>script</code>元素默认的阻塞同步天性让HTML网页的性能与视觉渲染的感知性能有显著的影响。比如，你如果在HTML的头部加入了大量的JavaScript代码，那么在JavaScript执行完毕之前，你的页面将会是一片空白！再比如，如果你在HTML头部需要获取一个元素会得到<code>null</code>，如果直接输出它的属性则会错误，因为DOM结构已经被该JS代码阻塞了。</p>
+</li>
+<li><p>使用defer<strong>推迟外部脚本</strong>的下载和执行，直到浏览器完成解析并关闭标签，注意只能是外部脚本，对内联JS是无效的。【按规范，设置了defer的外部js应该以在文档中的顺序去执行】</p>
+</li>
+<li><p>使用async异步下载并执行外部JavaScript文件,async属性可以覆盖script元素在web浏览器构造DOM时默认的顺序、阻塞加载的天性。通过使用这个属性，告诉浏览器不要阻塞页面的构建（包括DOM解析，下载其他图片、样式等资源）并且放弃顺序加载。【使用async属性，js文件是会被加载的也会被执行，只不过不会阻塞页面渲染，一边下载并执行js一遍渲染页面。js文件哪个先下载完就先执行】（async &gt; defer）</p>
+</li>
+<li><p>动态script元素强制异步加载并解析外部JavaScript，其实就是动态创建script元素，并且添加src。</p>
+</li>
+<li><p>script元素支持一个加载时间处理程序，onload，可以在js加载并执行完成的时候写一个回调函数。</p>
+</li>
+<li><p>获取DOM的script列表。文档对象上可用document.scripts属性，返回一个当前DOM中所有脚本的列表。(包含内联js、外部js)，使用src属性可以获得js的url。</p>
+</li>
+</ol>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
+<li><p>事件，就是用户和页面进行交互的某些情景，比如UI状态、页面加载完毕、XHR请求完成。</p>
+</li>
+<li><p>对DOM添加事件的三种方法：<strong>HTML内联属性书剑处理程序，属性事件处理程序，addEventListener().</strong>[注意，属性事件处理程序只能给事件一个处理程序，而add可以无数个。]</p>
 </li>
 <li></li>
 </ol>
