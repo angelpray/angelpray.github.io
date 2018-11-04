@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-04T09:15:39.318Z">
+<meta property="og:updated_time" content="2018-11-04T16:02:24.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生JavaScript DOM编程技术">
 <meta name="twitter:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
@@ -223,7 +223,30 @@
 <h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
 <li><p>事件，就是用户和页面进行交互的某些情景，比如UI状态、页面加载完毕、XHR请求完成。</p>
 </li>
-<li><p>对DOM添加事件的三种方法：<strong>HTML内联属性书剑处理程序，属性事件处理程序，addEventListener().</strong>[注意，属性事件处理程序只能给事件一个处理程序，而add可以无数个。]</p>
+<li><p>对DOM添加事件的三种方法：<strong>HTML内联属性事件处理程序，属性事件处理程序，addEventListener().</strong>[注意，属性事件处理程序只能给事件一个处理程序，而add可以无数个。]</p>
+</li>
+<li><p>DOM事件类型:<br>用户界面事件（resize、scroll、context menu）、<br>聚焦事件（blur，focus，focusin，focusout）、<br>表单事件（change、reset、submit、select）、<br>鼠标事件（click、dbclick、mousedown、mouseenter【不冒泡类似mouseover】、mouseleave【不冒泡类似mouseout】、mouseout、mousemove、mouseup、mouseover）<br>滚轮事件（mousewheel）<br>键盘事件（keydown、keypress、keyup）<br>触控事件（touchstar、touchend、touchmove、touchenter、touchleave、touchcancel）<br>文档相关事件（readystatechange）<br>拖拽事件（drag、dragstart、dragend、dragenter、dragleave、dragover、drop）</p>
+</li>
+<li><p>事件流程，当某个事件发生时，事件在DOM中流动和传播，在其他节点上也会触发相同的事件，这个事件流程可以被编写为捕捉阶段（从DOM树主干到分支，也就是从事件目标父元素到事件目标元素）还是冒泡阶段（从DOM树分支到主干，跟上相反）。一般而言，都假定事件是在冒泡阶段触发的。浏览器也能支持捕捉阶段。</p>
+</li>
+<li><p><code>addEventListener(event,handler,boolean)</code>,其中布尔值代表是捕捉事件还是冒泡事件，默认或者省略是flase，冒泡事件。true则是捕捉事件。</p>
+</li>
+<li><p>移除事件监听函数，使用<code>removeEventListener(event,handler,boolean)</code>，注意，这里的handler函数必须是使用函数引用方式绑定的，否则是不能移除。因为使用匿名函数会导致两个不同的函数。</p>
+</li>
+<li><p>使用<code>addEventListener</code>时的监听函数this指向事件监听函数所绑定的元素。【注意！这里的this总是引用事件处理附加到的元素，也就是event.currentTarget,而不是事件发生的元素，也就是event.target】</p>
+</li>
+<li><p>使用<code>preventDefault()</code>来撤销浏览器默认事件，比如点击链接会跳转，但可以使用这个方法来取消这个跳转。事件监听函数体末尾提供<code>return false;</code>有同样的效果。</p>
+</li>
+<li><p>使用<code>stopPropagation()</code>来终止事件传播。无论是捕捉事件还是冒泡事件都可以终止事件的传播。</p>
+</li>
+<li><p>使用<code>stopImmediatePropagation()</code>终止事件传播和相同目标上的相同其他事件。</p>
+</li>
+<li><p>自定义事件：<code>CustomEvent(name,{}) addEventListener</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aElm.addEventListener(<span class="string">"janro"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">"你成功地自定义事件！~"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> CustomEvent(<span class="string">"janro"</span>, &#123;</span><br><span class="line">    bubbles: <span class="literal">true</span>,</span><br><span class="line">    cancelable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line">aElm.dispatchEvent(event);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟/触发鼠标事件。略。</p>
+</li>
+<li><p>事件委托：利用事件流程的编程方法，利用单个事件监听处理多个事件目标,好处，减少暑假能处理程序，减少DOM操作。减少函数对象。提升性能。参考文章：<a href="https://www.cnblogs.com/liugang-vip/p/5616484.html" target="_blank" rel="noopener">事件委托或代理</a>;</p>
 </li>
 <li></li>
 </ol>
