@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-03T15:30:32.936Z">
+<meta property="og:updated_time" content="2018-11-04T05:04:58.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生JavaScript DOM编程技术">
 <meta name="twitter:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
@@ -141,7 +141,7 @@
 </li>
 <li><p><code>clientHeight、clientWidth</code>可以获得元素不包含边框的尺寸。</p>
 </li>
-<li><p><code>elementFromPoint</code>获取市区中某一特定点上最顶层(覆盖层)的元素。（z-index）</p>
+<li><p><code>elementFromPoint(px,px)</code>获取视口中某一特定点上最顶层(覆盖层)的元素。（z-index）</p>
 </li>
 <li><p><code>scrollHeight</code>和<code>scrollWidth</code>获取滚动元素的尺寸大小，指的就是那些可以有滚动条元素的尺寸大小</p>
 </li>
@@ -150,7 +150,14 @@
 <li><p><code>scrollIntoView()</code>滚动元素到视口。也就是类似超链接，点击就能到达元素的位置。</p>
 </li>
 </ol>
-<h2 id="元素节点内联样式"><a href="#元素节点内联样式" class="headerlink" title="元素节点内联样式"></a>元素节点内联样式</h2>
+<h2 id="元素节点内联样式"><a href="#元素节点内联样式" class="headerlink" title="元素节点内联样式"></a>元素节点内联样式</h2><ol>
+<li><p>每个HTML元素都有一个style属性，可以用来出入针对该元素的内联CSS属性。</p>
+</li>
+<li><p>通过操作style对象的属性（也就是css样式属性），可以设置、获取、以及移除单个内联CSS属性。<br>【style对象中的属性名不含CSS属性中常见的横线。而是使用了驼峰体，比如font-size=》fontSize，如果css属性名刚好是JavaScript关键字，那么JavaScript css属性名需要加css前缀，比如：float=cssFloat】</p>
+</li>
+<li></li>
+</ol>
+
             </div>
           
 
