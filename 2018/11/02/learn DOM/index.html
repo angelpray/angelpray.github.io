@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/11/02/learn DOM/"/>
 
 
-<meta name="description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
+<meta name="description" content="节点概览 DOM其实就是一个由JavaScript节点对象组成的层次结构/树。  节点对象类型ELEMENT_NODE(元素节点)ATTRIBUTE_NODE(属性节点)TEXT_NODE(文本节点，空白符和换行符也属于文本节点)DOCUMENT_NODE(window.document)DOCUMENT_TYPE_NODE(文档类型节点，&amp;lt;!DOCTYPE html&amp;gt;)DOCUMEN">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原生JavaScript DOM编程技术">
 <meta property="og:url" content="https://angelpray.github.io/2018/11/02/learn DOM/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
+<meta property="og:description" content="节点概览 DOM其实就是一个由JavaScript节点对象组成的层次结构/树。  节点对象类型ELEMENT_NODE(元素节点)ATTRIBUTE_NODE(属性节点)TEXT_NODE(文本节点，空白符和换行符也属于文本节点)DOCUMENT_NODE(window.document)DOCUMENT_TYPE_NODE(文档类型节点，&amp;lt;!DOCTYPE html&amp;gt;)DOCUMEN">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-04T16:02:24.250Z">
+<meta property="og:updated_time" content="2018-11-05T07:20:11.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生JavaScript DOM编程技术">
-<meta name="twitter:description" content="元素几点几何量和滚动几何量 offsetLeft,offsetTop,分别对应左，上的相对距离。  offsetParent，是offsetLeft,offsetTop作为相对距离的对象。  getBoundingClientRect()，获取元素相对于视区的top，right，bottom及left边沿偏移量以及通过获取元素的尺寸width、height(或者offsetWidth\offset">
+<meta name="twitter:description" content="节点概览 DOM其实就是一个由JavaScript节点对象组成的层次结构/树。  节点对象类型ELEMENT_NODE(元素节点)ATTRIBUTE_NODE(属性节点)TEXT_NODE(文本节点，空白符和换行符也属于文本节点)DOCUMENT_NODE(window.document)DOCUMENT_TYPE_NODE(文档类型节点，&amp;lt;!DOCTYPE html&amp;gt;)DOCUMEN">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -132,7 +132,82 @@
 
     
             <div class="post-content">
-            <h2 id="元素几点几何量和滚动几何量"><a href="#元素几点几何量和滚动几何量" class="headerlink" title="元素几点几何量和滚动几何量"></a>元素几点几何量和滚动几何量</h2><ol>
+            <h2 id="节点概览"><a href="#节点概览" class="headerlink" title="节点概览"></a>节点概览</h2><ol>
+<li><p>DOM其实就是一个由JavaScript节点对象组成的层次结构/树。</p>
+</li>
+<li><p>节点对象类型<br><code>ELEMENT_NODE</code>(元素节点)<br><code>ATTRIBUTE_NODE</code>(属性节点)<br><code>TEXT_NODE</code>(文本节点，空白符和换行符也属于文本节点)<br><code>DOCUMENT_NODE</code>(window.document)<br><code>DOCUMENT_TYPE_NODE</code>(文档类型节点，&lt;!DOCTYPE html&gt;)<br><code>DOCUMENT_FRAGMENT_NODE</code>（HTML片段节点）<br>在浏览器中，这些常量都是NODE对象的属性，他们的值是数值，这些数值是映射到某一个特定的节点的。</p>
+</li>
+<li><p>节点对象类型数值映射<br>E A T，1 2 3，D D D，9 10 11</p>
+</li>
+<li><p>特定的节点类型是由特定的JavaScript结口/构造函数构造出来的。</p>
+</li>
+<li><p>节点对象的继承，DOM中每个节点对象都从NODE继承属性和方法。<br>如： Object &gt; Node &gt; Elment &gt; HTMLElement</p>
+</li>
+<li><p>识别节点的类型和名称，使用nodeType和nodeName，注意nodeType返回的数值映射，nodeName返回节点的大写标记名称。</p>
+</li>
+<li><p>使用 <code>nodeValue</code> 获取Text和Comment节点实际文本字符串。</p>
+</li>
+<li><p>使用JavaScript方法来创建元素节点和文本节点：<code>createElement(nodename) createTextNode(&quot;str&quot;)</code></p>
+</li>
+<li><p>使用以下属性来创建文本节点和元素节点并添加到DOM（获取同理）：<br><code>innerHTML outerHTML（会把选取的元素也一起修改掉）</code><br><code>textContent(标准) innerText(已经是标准) outerText(已经是标准，会把选取的元素也一起修改掉)</code></p>
+</li>
+<li><p>使用<code>appendChild(Node) insertBefore(newNode,oldNode)</code>来想DOM中插入节点对象</p>
+</li>
+<li><p>使用<code>parentNode.removeChild(Node) parentNode.replaceChild(newNode,oldNode)</code>来移除与替换节点。</p>
+</li>
+<li><p>使用cloneNode(Deep?)复制节点，默认是false，浅克隆。浅克隆只会赋值当前节点而不会复制所有子节点。true，深克隆则会复制所有子节点。</p>
+</li>
+<li><p>节点集合：NodeList和HTMLCollection，这种集合都是类数组对象，可以是实时的，也可以是静态的。有length可以表明这个集合有多少个节点。</p>
+</li>
+<li><p>将节点集合转换为JS数组的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> linkList = <span class="built_in">document</span>.querySelectAll(<span class="string">"a"</span>);</span><br><span class="line"><span class="comment">// 只要是能返回一个新的数组的原型方法都可以，使用call</span></span><br><span class="line"><span class="keyword">var</span> linkArray = <span class="built_in">Array</span>.prototype.slice.call(linkList);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历DOM的节点，用以下属性能遍历DOM来获取其他节点引用。<br><code>parentNode firstChild lastChild nextSibling previousSibling childNodes</code></p>
+</li>
+<li><p>以上的属性不仅仅是遍历元素节点，还会遍历文本和注释节点。但是我们大多时候都是只需要元素节点，那么可以通过以下属性来只获取元素节点，同时忽略文本和注释节点。<br><code>firstElementChild lastELementChild nextElementChild previousElementChild children parentElement</code> </p>
+</li>
+<li><p>使用<code>contains(Node)</code>验证节点在DOM中的位置。</p>
+</li>
+<li><p>使用<code>isEqualNode()</code>判断两个节点是否相等，使用<code>===</code>判断两个节点是否相同。 </p>
+</li>
+</ol>
+<h2 id="文档节点"><a href="#文档节点" class="headerlink" title="文档节点"></a>文档节点</h2><ol>
+<li><p>文档节点就是<code>window.document</code>,表示当前的文档，是HTMLDocument，<code>DOCUMENT_NODE</code>,9。</p>
+</li>
+<li><p>获取HTML DOCUMENT的通用信息：<br><code>document.title document.URL[当前的连接] document.referrer[也就是上一个的连接] document.lastModified document.compatMode[CSS1Compat是标准模式，BackCompat是怪异模式]</code></p>
+</li>
+<li><p>快速访问属性：<code>document.doctype[&lt;!DOCTYPE&gt;] document.docmentElement[&lt;html&gt;] docuemnt.head[&lt;head&gt;] document.body[&lt;body&gt;]</code></p>
+</li>
+<li><p>获取文档当前聚焦/激活节点的引用 <code>document.activeElement</code></p>
+</li>
+<li><p><code>document.defaultView</code> 是个全局对象的引用，在浏览器环境中就是window</p>
+</li>
+</ol>
+<h2 id="元素节点"><a href="#元素节点" class="headerlink" title="元素节点"></a>元素节点</h2><ol>
+<li><p>获取元素的标签名<code>nodeName\tagName</code>返回的都是大写的标签名。</p>
+</li>
+<li><p>获取元素的属性集合：<code>attributes</code></p>
+</li>
+<li><p>获取、设置、移除元素的属性值 <code>getAttribute() setAttribute() removeAttribute()</code></p>
+</li>
+<li><p>验证元素是否有某一特定属性：<code>hasAttibute()</code></p>
+</li>
+<li><p>获取类属性值列表：<code>classList</code></p>
+</li>
+<li><p>添加和移除以及变换类属性中的部分值：(不要使用className了)<br><code>classList.add() classList.remove() classList.toggle()[有这类则删除，没有则添加的意思]</code></p>
+</li>
+<li><p>获取与设置data-<em>的属性：<code>dataset</code>【注意：获取到的data-\</em>属性时驼峰命名的。】</p>
+</li>
+</ol>
+<h2 id="元素节点选取"><a href="#元素节点选取" class="headerlink" title="元素节点选取"></a>元素节点选取</h2><ol>
+<li><p>最常用的方法：<code>querySelector(css选择器) getElementbyId()</code></p>
+</li>
+<li><p>选取一个元素节点集合列表：<code>querySelectorAll() getElementByTagName() queryElementsByClassName() children</code></p>
+</li>
+<li><p>预定义的元素节点选取<br><code>document.all document.forms document.images document.link document.scripts document.styleSheets</code></p>
+</li>
+</ol>
+<h2 id="元素几点几何量和滚动几何量"><a href="#元素几点几何量和滚动几何量" class="headerlink" title="元素几点几何量和滚动几何量"></a>元素几点几何量和滚动几何量</h2><ol>
 <li><p><code>offsetLeft,offsetTop</code>,分别对应左，上的相对距离。</p>
 </li>
 <li><p><code>offsetParent</code>，是<code>offsetLeft,offsetTop</code>作为相对距离的对象。</p>
@@ -248,7 +323,6 @@
 </li>
 <li><p>事件委托：利用事件流程的编程方法，利用单个事件监听处理多个事件目标,好处，减少暑假能处理程序，减少DOM操作。减少函数对象。提升性能。参考文章：<a href="https://www.cnblogs.com/liugang-vip/p/5616484.html" target="_blank" rel="noopener">事件委托或代理</a>;</p>
 </li>
-<li></li>
 </ol>
 
             </div>
