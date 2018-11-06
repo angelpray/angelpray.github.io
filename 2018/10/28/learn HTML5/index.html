@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="HTML5新增加的属性 构建页面的语义元素：article, aside【附注】, figcaption【图题】, figure【插图】, footer, header, nav【导航链接】, section【内容块】, details【】, summary，main【主要内容】  表示文本的语义元素：mark【引人注意重要内容，黄色背景】, time【标注日期和时间，YYYY-MM-DD HH:">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-28T15:28:09.890Z">
+<meta property="og:updated_time" content="2018-11-06T06:18:48.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5编程">
 <meta name="twitter:description" content="HTML5新增加的属性 构建页面的语义元素：article, aside【附注】, figcaption【图题】, figure【插图】, footer, header, nav【导航链接】, section【内容块】, details【】, summary，main【主要内容】  表示文本的语义元素：mark【引人注意重要内容，黄色背景】, time【标注日期和时间，YYYY-MM-DD HH:">
@@ -210,6 +210,38 @@
 <li><p>使用哔哩哔哩的HTML5播放器。</p>
 </li>
 </ol>
+<h2 id="Canvas绘图"><a href="#Canvas绘图" class="headerlink" title="Canvas绘图"></a>Canvas绘图</h2><ol>
+<li><p>与其他元素相比，canvas独特的地方是需要JavaScript操作。</p>
+</li>
+<li><p>一个最简单的canvas的三个属性：width、height、id。</p>
+</li>
+<li><p>canvas中有坐标系的概念，跟其他元素一样都是左上角为原点0，0。</p>
+</li>
+<li><p>画一条直线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"mycanvas"</span>);</span><br><span class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">context.moveTo(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">context.lineTo(<span class="number">400</span>,<span class="number">40</span>);</span><br><span class="line">context.lineWidth = <span class="number">10</span>;</span><br><span class="line">context.strokeStyle = <span class="string">"indigo"</span>;</span><br><span class="line">context.lineCap = <span class="string">"round"</span>;</span><br><span class="line">context.stroke();</span><br><span class="line"></span><br><span class="line">context.beginPath();</span><br><span class="line">context.moveTo(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">context.lineTo(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">context.stroke();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>beginPath()</code>通过清空子路径列表开始一个新路径的方法。 当你想创建一个新的路径时，调用此方法。<code>closePath()</code>会自动在最后一个绘制点和绘制起点间绘制一条线。</p>
+</li>
+<li><p>绘制一个三角形</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"mycanvas"</span>);</span><br><span class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line"></span><br><span class="line">context.moveTo(<span class="number">250</span>, <span class="number">50</span>);</span><br><span class="line">context.lineTo(<span class="number">50</span>, <span class="number">250</span>);</span><br><span class="line">context.lineTo(<span class="number">450</span>,<span class="number">250</span>);</span><br><span class="line">context.closePath();</span><br><span class="line">context.fillStyle = <span class="string">"indigo"</span>;</span><br><span class="line">context.fill();</span><br><span class="line">        </span><br><span class="line">context.lineWidth = <span class="number">10</span>;</span><br><span class="line">context.strokeStyle = <span class="string">"indigo"</span>;</span><br><span class="line">context.lineCap = <span class="string">"round"</span>;</span><br><span class="line">context.stroke();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩形框以及矩形填充:<code>strokeRect(x, y, width, height) fillRect()</code> </p>
+</li>
+<li><p>绘制曲线：<code>arc()[圆弧] artTo()[] bezierCurveTo()[贝塞尔曲线] quadraticCurveTo()[二次元方程式曲线]</code></p>
+</li>
+<li><p>画一条圆弧</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"mycanvas"</span>);</span><br><span class="line">        <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">        context.lineWidth = <span class="number">10</span>;</span><br><span class="line">        context.strokeStyle = <span class="string">"indigo"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> centerX = <span class="number">150</span>;</span><br><span class="line">        <span class="keyword">var</span> centerY = <span class="number">300</span>;</span><br><span class="line">        <span class="keyword">var</span> radius = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">var</span> startingAngle = <span class="number">0.75</span> * <span class="built_in">Math</span>.PI;</span><br><span class="line">        <span class="keyword">var</span> endingAngle = <span class="number">1.75</span> * <span class="built_in">Math</span>.PI;</span><br><span class="line"></span><br><span class="line">        context.arc(centerX, centerY, radius, startingAngle,endingAngle);</span><br><span class="line">        context.closePath();</span><br><span class="line">        context.stroke();</span><br><span class="line">        </span><br><span class="line">        context.beginPath();</span><br><span class="line">        context.arc(centerX, centerY, radius, <span class="number">0</span>*<span class="built_in">Math</span>.PI,<span class="number">2</span>*<span class="built_in">Math</span>.PI);</span><br><span class="line">        context.stroke();</span><br><span class="line">&#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变换：<code>translate(x,y) scale() rotate() matrix()</code></p>
+</li>
+<li><p>透明度：<code>rgba context.globalAlpha = 0.5</code></p>
+</li>
+<li><p>合成：告诉canvas怎么显示两个重叠的图形。<code>globalCompositeOperation: xor</code></p>
+</li>
+<li><p>canvas先告一段落，先继续学习其他内容吧。</p>
+</li>
+</ol>
+<p># </p>
 
             </div>
           
