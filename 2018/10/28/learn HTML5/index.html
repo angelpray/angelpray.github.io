@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="HTML5新增加的属性 构建页面的语义元素：article, aside【附注】, figcaption【图题】, figure【插图】, footer, header, nav【导航链接】, section【内容块】, details【】, summary，main【主要内容】  表示文本的语义元素：mark【引人注意重要内容，黄色背景】, time【标注日期和时间，YYYY-MM-DD HH:">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-06T06:18:48.206Z">
+<meta property="og:updated_time" content="2018-11-07T02:53:37.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5编程">
 <meta name="twitter:description" content="HTML5新增加的属性 构建页面的语义元素：article, aside【附注】, figcaption【图题】, figure【插图】, footer, header, nav【导航链接】, section【内容块】, details【】, summary，main【主要内容】  表示文本的语义元素：mark【引人注意重要内容，黄色背景】, time【标注日期和时间，YYYY-MM-DD HH:">
@@ -187,7 +187,9 @@
 </li>
 <li><p>progress（任务进度,value,max，不设置value则一直在动），meter(已知范围的一个值，比如身高体重等，low，height，max，min)，不能从用户那里收集信息。</p>
 </li>
-<li><p>HTML编辑器：contenteditable,designMode(未测试，不知道，不用)</p>
+<li><p>HTML编辑器：contenteditable,designMode(未测试，不知道，不用).</p>
+</li>
+<li><p><code>enctype</code>有三个值：<code>application/x-www-form-urlencoded[默认值] multipart/form-data[type属性设置为file时需要用到的] text-plain[纯文本]</code></p>
 </li>
 </ol>
 <h2 id="视频和音频"><a href="#视频和音频" class="headerlink" title="视频和音频"></a>视频和音频</h2><ol>
@@ -241,7 +243,22 @@
 <li><p>canvas先告一段落，先继续学习其他内容吧。</p>
 </li>
 </ol>
-<p># </p>
+<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><ol>
+<li><p>数据存储可以在两个地方保存：服务器和客户端。web服务器适合保存敏感信息，还有那些你不希望被别人篡改的数据，比如说消费记录。而客户端则使用保存那些不太重要的信息，比如说网页的显示主题和应用状态等。</p>
+</li>
+<li><p>HTML5以前，在客户端使用COOKIE来保存信息，但cookie有缺点，必须处理过期的数据，<strong>还要跟着每一次的请求来来回回的发送和接收这些没用的数据。</strong>HTML5新增的本地存储功能能无限期的保存在用户计算机中，不会发送到服务器中（除非手动发送）。这个存储叫<strong>Web存储，Web Storage。</strong></p>
+</li>
+<li><p>HTML5还新增了2个标准：<code>File API</code>,支持这个标准的浏览器能从计算机硬盘的其他文件中读取数据；<code>IndexDB</code>,支持这个标准的浏览器内含一个完整的、微型的数据库引擎。</p>
+</li>
+<li><p>Web存储分为两种：<code>本地存储，对应localStorage对象</code>，用于长期保存网站的数据，且站内任何页面都可以访问该数据。<code>会话存储，对应sessionStorage对象</code>，用于临时保存针对一个窗口的数据。在访客关闭窗口或标签页之前，这些数据是存在的，而关闭之后就立刻删除。注意，<strong>无论是本地存储还是会话存储，都是与网站所在的域联系一起，也就是不能跨域。</strong></p>
+</li>
+<li><p>HTML5没规定存储空间的大小。但大多数浏览器都是限制为5MB。如果需要更大，就需要另一个数据库标准<code>IndexedDB</code></p>
+</li>
+<li><p>存储数据：<br>本地存储：<code>localStorage.setItem(key,value) .getItem(key)</code><br>会话存储：<code>sessionStroage.setItem(key,value) .getItem(key)</code></p>
+</li>
+<li><p>删除数据项：<code>localStorage.removeItem(key)</code></p>
+</li>
+</ol>
 
             </div>
           
