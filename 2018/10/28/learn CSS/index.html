@@ -37,20 +37,20 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn CSS/"/>
 
 
-<meta name="description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta name="description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path) format(),url(path) format()...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS样式语言编程">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn CSS/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta property="og:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path) format(),url(path) format()...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-08-22-16-29-22.png">
 <meta property="og:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-10-25-23-16-35.png">
-<meta property="og:updated_time" content="2018-11-01T06:10:59.526Z">
+<meta property="og:updated_time" content="2018-11-08T21:46:14.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS样式语言编程">
-<meta name="twitter:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path),url(path)...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6+, Firefox 3.6+, I">
+<meta name="twitter:description" content="我的CSS APICSS字体api @font-face{}:包括font-family: name src: url(path) format(),url(path) format()...; 12345@font-face &amp;#123;  font-family: &apos;MyWebFont&apos;;  src: url(&apos;myfont.woff&apos;) format(&apos;woff&apos;), /* Chrome 6">
 <meta name="twitter:image" content="http://p9h1w9ht8.bkt.clouddn.com/2018-08-22-16-29-22.png">
 
 
@@ -136,7 +136,7 @@
     
             <div class="post-content">
             <h1 id="我的CSS-API"><a href="#我的CSS-API" class="headerlink" title="我的CSS API"></a>我的CSS API</h1><h2 id="CSS字体api"><a href="#CSS字体api" class="headerlink" title="CSS字体api"></a>CSS字体api</h2><ol>
-<li><p><code>@font-face{}</code>:包括<code>font-family: name</code> <code>src: url(path),url(path)...;</code></p>
+<li><p><code>@font-face{}</code>:包括<code>font-family: name</code> <code>src: url(path) format(),url(path) format()...;</code></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'MyWebFont'</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'myfont.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>), <span class="comment">/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */</span></span><br><span class="line">       <span class="built_in">url</span>(<span class="string">'myfont.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>); <span class="comment">/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
