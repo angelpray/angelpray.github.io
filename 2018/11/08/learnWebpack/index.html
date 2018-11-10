@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-11-09T06:43:28.118Z">
+<meta property="og:updated_time" content="2018-11-10T00:54:56.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握webpack定制前端开发环境">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -209,6 +209,15 @@
 <p>如果我们更改了我们的一个入口起点的名称，甚至添加了一个新的名称，会发生什么？生成的包将被重命名在一个构建中，但是我们的index.html文件仍然会引用旧的名字。我们用 <code>HtmlWebpackPlugin</code> 来解决这个问题。就像图片一样。<br><code>npm install --save-dev html-webpack-plugin</code></p>
 <h2 id="清理-dist文件夹"><a href="#清理-dist文件夹" class="headerlink" title="清理/dist文件夹"></a>清理/dist文件夹</h2><p>由于过去的指南和代码示例遗留下来，导致我们的 /dist 文件夹相当杂乱。webpack 会生成文件，然后将这些文件放置在 /dist 文件夹中，但是 webpack 无法追踪到哪些文件是实际在项目中用到的。通常，在每次构建前清理 /dist 文件夹，是比较推荐的做法，因此只会生成用到的文件。</p>
 <p>webpack及其插件似乎“知道”应该哪些文件生成。答案是，通过 manifest，webpack 能够对「你的模块映射到输出 bundle 的过程」保持追踪。</p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>为了更容易地追踪错误和警告，JavaScript 提供了 <code>source map</code> 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 b.js，source map 就会明确的告诉你。</p>
+<p>每次要编译代码时，手动运行 npm run build 就会变得很麻烦。</p>
+<p>webpack 中有几个不同的选项，可以帮助你在代码发生变化后自动编译代码：<br>webpack’s Watch Mode<br>webpack-dev-server<br>webpack-dev-middleware</p>
+<h3 id="观察模式"><a href="#观察模式" class="headerlink" title="观察模式"></a>观察模式</h3><p>你可以指示 webpack “watch” 依赖图中的所有文件以进行更改。如果其中一个文件被更新，代码将被重新编译，所以你不必手动运行整个构建。</p>
+<p>唯一的缺点是，为了看到修改后的实际效果，你需要刷新浏览器。如果能够自动刷新浏览器就更好了，可以尝试使用 webpack-dev-server，恰好可以实现我们想要的功能。【能对./dist目录编译生成】</p>
+<h3 id="使用web-dev-server"><a href="#使用web-dev-server" class="headerlink" title="使用web-dev-server"></a>使用web-dev-server</h3><p>webpack-dev-server 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading).如果现在修改和保存任意源文件，web 服务器就会自动重新加载编译后的代码。【不会生成./dist，只有build才会生成】</p>
+<h2 id="模块热替换"><a href="#模块热替换" class="headerlink" title="模块热替换"></a>模块热替换</h2><ol>
+<li>它允许在运行时更新各种模块，而无需进行完全刷新。仅仅使用watch或者devServer是LiveReload（重新实时加载）。实际就是更新web-dev-server的配置，比如使用webpack内置的HMR插件以及使用hot模式。</li>
+</ol>
 
             </div>
           
