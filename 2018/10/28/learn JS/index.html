@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-10-28T15:28:27.092Z">
+<meta property="og:updated_time" content="2018-11-13T15:33:31.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript编程">
 <meta name="twitter:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
@@ -176,30 +176,33 @@
 </ol>
 <h2 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h2><p>3中方法枚举属性</p>
 <ol>
-<li>for/in循环：for(key in obj) {obj[key]}</li>
+<li>for/in循环：for(key in obj) {obj[key]}返回的是所有能够通过对象访问的、可枚举的（enumerated）属性，其中<br>既包括存在于实例中的属性，也包括存在于原型中的属性.</li>
 <li>Object.keys(obj)：返回对象中可枚举并且是自有属性的数组</li>
 <li>Object.getOwnPropertyNames(obj):返回对象中所有的自有属性，而不仅仅是可枚举属性</li>
 </ol>
 <h2 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h2><p>getter和setter定义的属性称为“存取器属性”，同时具有setter方法和getter方法，则具有读/写属性，否则只具备其中之一。<br>getter：当尝试查询get属性时，将调用get函数。<br>setter：当尝试设置set属性时，将调用set函数。</p>
 <h2 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h2><h3 id="存取器属性"><a href="#存取器属性" class="headerlink" title="存取器属性"></a>存取器属性</h3><ol>
-<li>get,set,configurable,enumerable</li>
+<li>get,set,configurable,enumerable<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edition: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意这里是year而不是_year</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book, <span class="string">"year"</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (newValue &gt; <span class="number">2004</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edition); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><ol>
-<li>value, writable, configurable, enumerable</li>
-</ol>
-<h3 id="读取特性"><a href="#读取特性" class="headerlink" title="读取特性"></a>读取特性</h3><ol>
-<li>Object.getOwnPropertyDescriptor(obj, prop)</li>
+<li><p>[[value]], [[writable]], [[configurable]], [[enumerable]]<br>默认情况，直接创建的对象，除了value是undefined，全都是true<br>使用Object.defineProperty方法创建的属性都是false，undefined</p>
+<h3 id="读取特性"><a href="#读取特性" class="headerlink" title="读取特性"></a>读取特性</h3></li>
+<li><p>Object.getOwnPropertyDescriptor(obj, prop)</p>
+</li>
 <li>Object.getOwnPropertyDescriptors(obj)</li>
 </ol>
 <h3 id="设置特性"><a href="#设置特性" class="headerlink" title="设置特性"></a>设置特性</h3><ol>
-<li>Object.definePropery(obj, prop, {attrib})</li>
-<li>Object.defineProperty(obj, {prop: {attrib},})</li>
+<li>Object.defineProperty(obj, prop, {attrib})</li>
+<li>Object.defineProperties(obj, {prop: {attrib},})</li>
 </ol>
 <h2 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h2><h3 id="原型属性"><a href="#原型属性" class="headerlink" title="原型属性"></a>原型属性</h3><ol>
-<li>Object.getPrototypeOf(obj)：查询原型属性</li>
+<li>Object.getPrototypeOf(obj)：返回obj的原型对象</li>
 <li>isPrototype(obj): 检测一个对象是否是另一个对象的原型（类似instanceof元素符<em>运算符不用驼峰写法，而方法则需要</em>）</li>
+<li>o.constructor返回创建实例对象的Object的构造函数</li>
+<li>使用instanceof来进行对象类型检测<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3></li>
 </ol>
-<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>表示对象的类型信息。略。</p>
+<p>表示对象的类型信息。略。</p>
 <h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>表示是否可以给对象添加新属性。默认都是显式可扩展的。</p>
 <ol>
 <li>Object.isExtensible():判断该对象是否可扩展。</li>
@@ -213,16 +216,17 @@
 <li>JSON.stringify():序列化</li>
 <li>JSON.parse():还原</li>
 </ol>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="Function-prototype-apply-thisArg-argsArray"><a href="#Function-prototype-apply-thisArg-argsArray" class="headerlink" title="Function.prototype.apply(thisArg, argsArray)"></a>Function.prototype.apply(thisArg, argsArray)</h3><p><em>apply()方法调用一个函数，其具有一个指定的this值和一个数组(或者类数组对象)作为的参数。</em><br><strong>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。</strong><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
-<h3 id="Function-prototype-call-thisArg-arg1-arg2…"><a href="#Function-prototype-call-thisArg-arg1-arg2…" class="headerlink" title="Function.prototype.call(thisArg, arg1, arg2…)"></a>Function.prototype.call(thisArg, arg1, arg2…)</h3><p><em>call()方法调用一个函数，其具有一个指定的this值和分别提供的参数(参数列表)。</em><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="Function-prototype-apply-thisArg-argsArray"><a href="#Function-prototype-apply-thisArg-argsArray" class="headerlink" title="Function.prototype.apply(thisArg, argsArray)"></a>Function.prototype.apply(thisArg, argsArray)</h2><p><em>apply()方法调用一个函数，其具有一个指定的this值和一个数组(或者类数组对象)作为的参数。</em><br><strong>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。</strong><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
+<h2 id="Function-prototype-call-thisArg-arg1-arg2…"><a href="#Function-prototype-call-thisArg-arg1-arg2…" class="headerlink" title="Function.prototype.call(thisArg, arg1, arg2…)"></a>Function.prototype.call(thisArg, arg1, arg2…)</h2><p><em>call()方法调用一个函数，其具有一个指定的this值和分别提供的参数(参数列表)。</em><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
 <h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p><em>bind()方法创建一个新的函数，这个新函数被调用时，新函数的this设置为提供的值，新函数的参数列表前几项设置为提供的参数列表。</em><br>返回由指定的this值和初始化参数改造的原函数拷贝。<br>**区别apply，call，返回原函数拷贝而不是原函数的返回值。</p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ol>
+<h2 id="arguments-callee"><a href="#arguments-callee" class="headerlink" title="arguments.callee"></a>arguments.callee</h2><p>表示包含当前正在执行的函数</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ol>
 <li><p>简单讲，闭包就是指有权访问另一个函数作用域中的变量的函数。</p>
 </li>
 <li><p>当闭包被返回或者被调用的时候，一定要注意this的值，这个值一般都是指向window的。</p>
 </li>
 </ol>
-
+<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1>
             </div>
           
 

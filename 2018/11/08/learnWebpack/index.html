@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-11-10T00:54:56.436Z">
+<meta property="og:updated_time" content="2018-11-13T09:24:22.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握webpack定制前端开发环境">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -218,6 +218,23 @@
 <h2 id="模块热替换"><a href="#模块热替换" class="headerlink" title="模块热替换"></a>模块热替换</h2><ol>
 <li>它允许在运行时更新各种模块，而无需进行完全刷新。仅仅使用watch或者devServer是LiveReload（重新实时加载）。实际就是更新web-dev-server的配置，比如使用webpack内置的HMR插件以及使用hot模式。</li>
 </ol>
+<h2 id="tree-shaking"><a href="#tree-shaking" class="headerlink" title="tree shaking"></a>tree shaking</h2><p>tree shaking 是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码(dead-code)。它依赖于 ES2015 模块系统中的静态结构特性，例如 import 和 export。</p>
+<p>你需要设置开发模式(development mode)，来确保 bundle 是压缩过的(minified)：</p>
+<p>「副作用」的定义是，在导入时会执行特殊行为的代码，而不是仅仅暴露一个 export 或多个 export。举例说明，例如 polyfill，它影响全局作用域，并且通常不提供 export。</p>
+<p>将文件标记为无副作用(side-effect-free),如果所有代码都不包含副作用，我们就可以简单地将该属性标记为 false，来告知 webpack，它可以安全地删除未用到的 export 导出。任何导入的文件都会受到 tree shaking 的影响。这意味着，如果在项目中使用类似 css-loader 并导入 CSS 文件，则需要将其添加到 side effect 列表中，以免在生产模式中无意中将它删除：</p>
+<p>找出那些需要删除的“未使用代码(dead code)”，然而，我们不只是要找出，还需要在 bundle 中删除它们.通过 “mode” 配置选项轻松切换到压缩输出，只需设置为 “production”。</p>
+<p>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</p>
+<p>为了学会使用 tree shaking，你必须……</p>
+<p>使用 ES2015 模块语法（即 import 和 export）。<br>在项目 package.json 文件中，添加一个 “sideEffects” 属性。<br>引入一个能够删除未引用代码(dead code)的压缩工具(minifier)（例如 UglifyJSPlugin）。</p>
+<h2 id="生产环境构建"><a href="#生产环境构建" class="headerlink" title="生产环境构建"></a>生产环境构建</h2><p>在开发环境中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置。【common，dev，prod以及重新设置npm scripts】</p>
+<p>默认的代码压缩是uglifyJSPlugin</p>
+<h3 id="source-map"><a href="#source-map" class="headerlink" title="source map"></a>source map</h3><p>source map：对调试源码(debug)和运行基准测试(benchmark tests)有帮助。<br>我们鼓励你在生产环境中启用 source map，因为它们对调试源码(debug)和运行基准测试(benchmark tests)很有帮助。虽然有如此强大的功能，然而还是应该针对生成环境用途，选择一个构建快速的推荐配置（具体细节请查看 devtool）。对于本指南，我们将在生产环境中使用 source-map 选项，而不是我们在开发环境中用到的 inline-source-map</p>
+<h3 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h3><p>当使用 process.env.NODE_ENV === ‘production’ 时，一些 library 可能针对具体用户的环境进行代码优化，从而删除或添加一些重要代码。</p>
+<h3 id="压缩CSS"><a href="#压缩CSS" class="headerlink" title="压缩CSS"></a>压缩CSS</h3><p>将生产环境下的css进行压缩非常重要。</p>
+<h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><p>代码分离是 webpack 中最引人注目的特性之一。此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。</p>
+<p>有三种常用的代码分离方法：</p>
+<p>入口起点：使用 entry 配置手动地分离代码。这种方式手动配置较多，并有一些陷阱，我们将会解决这些问题<br>防止重复：使用 SplitChunks 去重和分离 chunk。The SplitChunks 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。<br>动态导入：通过模块的内联函数调用来分离代码。</p>
+<h2 id="webpack、gulp、grunt"><a href="#webpack、gulp、grunt" class="headerlink" title="webpack、gulp、grunt"></a>webpack、gulp、grunt</h2><p>首先我们要消除一个常见的误解。webpack 是一个模块打包器(module bundler)（例如，Browserify 或 Brunch）。它不是一个任务执行器(task runner)（例如，Make, Grunt 或者 Gulp ）。任务执行器就是用来自动化处理常见的开发任务，例如项目的检查(lint)、构建(build)、测试(test)。相对于打包器(bundler)，任务执行器则聚焦在偏重上层的问题上面。你可以得益于，使用上层的工具，而将打包部分的问题留给 webpack。</p>
 
             </div>
           
