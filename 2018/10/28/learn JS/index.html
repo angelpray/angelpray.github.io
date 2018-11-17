@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-13T15:33:31.209Z">
+<meta property="og:updated_time" content="2018-11-14T11:13:25.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript编程">
 <meta name="twitter:description" content="对象类型转换数字到字符串 toString(radix)：进制转换，十进制转其他进制。 toFixed(n)：小数点后指定位数。 toExponential(n):使用指数计数法,小数点前只有一位，指定小数点后的位数。 toPrecision(n)：指定有效位数，如果有效数字的位数少于整数部分，会转换成指数计数。(以上方法都会进行四舍五入或填充0)  字符串到数字 Number(n)：转换成整数或">
@@ -148,12 +148,6 @@
 <li>对象转换成字符串：首先toString(),没有则使用valueOf()，否则错误。</li>
 <li>对象转换成数字：先valueOf(),没有则使用toString()，否则错误。</li>
 </ol>
-<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>每个对象都和另一个对象关联，另一个对象就是“原型”，每个对象都从原型中继承属性。</p>
-<h2 id="创建对象的三个方法"><a href="#创建对象的三个方法" class="headerlink" title="创建对象的三个方法"></a>创建对象的三个方法</h2><ol>
-<li>对象直接量： <code>var o = {x:1};</code></li>
-<li>关键字new： <code>var o = new Object();</code></li>
-<li><code>Object.create()</code>:<code>var o = Object.create(prototype, [)</code></li>
-</ol>
 <h2 id="属性查询和设置"><a href="#属性查询和设置" class="headerlink" title="属性查询和设置"></a>属性查询和设置</h2><ol>
 <li><p>使用.或方括号来获取属性值。.右侧是一个简单标识符，[]内必须是一个计算结果为字符串的表达式。</p>
 </li>
@@ -180,8 +174,8 @@
 <li>Object.keys(obj)：返回对象中可枚举并且是自有属性的数组</li>
 <li>Object.getOwnPropertyNames(obj):返回对象中所有的自有属性，而不仅仅是可枚举属性</li>
 </ol>
-<h2 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h2><p>getter和setter定义的属性称为“存取器属性”，同时具有setter方法和getter方法，则具有读/写属性，否则只具备其中之一。<br>getter：当尝试查询get属性时，将调用get函数。<br>setter：当尝试设置set属性时，将调用set函数。</p>
-<h2 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h2><h3 id="存取器属性"><a href="#存取器属性" class="headerlink" title="存取器属性"></a>存取器属性</h3><ol>
+<h2 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h2><h3 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h3><p>getter和setter定义的属性称为“存取器属性”，同时具有setter方法和getter方法，则具有读/写属性，否则只具备其中之一。<br>getter：当尝试查询get属性时，将调用get函数。<br>setter：当尝试设置set属性时，将调用set函数。</p>
+<h3 id="存取器属性"><a href="#存取器属性" class="headerlink" title="存取器属性"></a>存取器属性</h3><ol>
 <li>get,set,configurable,enumerable<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edition: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意这里是year而不是_year</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book, <span class="string">"year"</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (newValue &gt; <span class="number">2004</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edition); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -214,9 +208,9 @@
 <h2 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h2><p>对象序列化（serialization）指将对象的状态转换为字符串，也可以字符串还原为对象。</p>
 <ol>
 <li>JSON.stringify():序列化</li>
-<li>JSON.parse():还原</li>
+<li>JSON.parse():还原<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1></li>
 </ol>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="Function-prototype-apply-thisArg-argsArray"><a href="#Function-prototype-apply-thisArg-argsArray" class="headerlink" title="Function.prototype.apply(thisArg, argsArray)"></a>Function.prototype.apply(thisArg, argsArray)</h2><p><em>apply()方法调用一个函数，其具有一个指定的this值和一个数组(或者类数组对象)作为的参数。</em><br><strong>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。</strong><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
+<h2 id="Function-prototype-apply-thisArg-argsArray"><a href="#Function-prototype-apply-thisArg-argsArray" class="headerlink" title="Function.prototype.apply(thisArg, argsArray)"></a>Function.prototype.apply(thisArg, argsArray)</h2><p><em>apply()方法调用一个函数，其具有一个指定的this值和一个数组(或者类数组对象)作为的参数。</em><br><strong>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。</strong><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
 <h2 id="Function-prototype-call-thisArg-arg1-arg2…"><a href="#Function-prototype-call-thisArg-arg1-arg2…" class="headerlink" title="Function.prototype.call(thisArg, arg1, arg2…)"></a>Function.prototype.call(thisArg, arg1, arg2…)</h2><p><em>call()方法调用一个函数，其具有一个指定的this值和分别提供的参数(参数列表)。</em><br>返回值是你调用的方法的返回值，若该方法没有返回值，则返回undefined。</p>
 <h2 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h2><p><em>bind()方法创建一个新的函数，这个新函数被调用时，新函数的this设置为提供的值，新函数的参数列表前几项设置为提供的参数列表。</em><br>返回由指定的this值和初始化参数改造的原函数拷贝。<br>**区别apply，call，返回原函数拷贝而不是原函数的返回值。</p>
 <h2 id="arguments-callee"><a href="#arguments-callee" class="headerlink" title="arguments.callee"></a>arguments.callee</h2><p>表示包含当前正在执行的函数</p>
@@ -226,7 +220,64 @@
 <li><p>当闭包被返回或者被调用的时候，一定要注意this的值，这个值一般都是指向window的。</p>
 </li>
 </ol>
-<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1>
+<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><h2 id="对象以及原型"><a href="#对象以及原型" class="headerlink" title="对象以及原型"></a>对象以及原型</h2><ol>
+<li><p>通过类可以创建任意多个具有相同属性和方法的对象，ECMAScript 中没有类的概念，因此它的对象也与基于类的语言中的对象有所不同。</p>
+</li>
+<li><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”</p>
+</li>
+<li><p>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生的，比如Array，Date等，也可以是开发人员自定义的类型。</p>
+</li>
+<li><p>我们创建的每个函数都有一个prototype原型属性，这个属性是一个指针，指向一个对象。<strong>prototype就是通过调用构造函数而创建的对象实例的原型对象。这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法</strong>。</p>
+</li>
+<li><p>无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。</p>
+</li>
+<li><p>原型对象获得一个constructor指向构造函数。</p>
+</li>
+<li><p>当调用构造函数创建一个实例后，该实例的内部有一个指针，指向构造函数的原型对象。</p>
+</li>
+<li><p>每当代码读取某个对象的某个属性，都会执行一次搜索，先从对象实例开始，再到原型对象。</p>
+</li>
+<li><p>当为对象实例添加一个属性时，这个属性就会屏蔽原型对象中保存的同名属性。（基本值而言，引用类型则会改变）</p>
+</li>
+</ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
+<li><p>许多OO 语言都支持两种继承方式：接口继承和实现继承。接口继承只继承方法签名，而实现继承则继承实际的方法。</p>
+</li>
+<li><p>由于函数没有签名，在ECMAScript 中无法实现接口继承。ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。</p>
+</li>
+<li><p>构造函数、原型和实例的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。</p>
+</li>
+<li><p>我们让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针。</p>
+</li>
+<li><p>原型链：：1）搜索实例；2）搜索SubType.prototype；3）搜索SuperType.prototype，最后一步才会找到该方法。在找不到属性或方法的情况下，搜索过程总是要一环一环地前行到原型链末端才会停下来。</p>
+</li>
+<li><p>所有函数的默认原型都是Object 的实例，因此默认原型都会包含一个内部指针，指向Object.prototype。这也正是所有自定义类型都会继承toString()、valueOf()等默认方法的根本原因</p>
+</li>
+<li><p>确定原型和实例的关系<br>第一种方式是使用instanceof 操作符，只要用这个操作符来测试实例与原型链中出现过的构造函数，结果就会返回true。<br>第二种方式是使用isPrototypeOf()方法。同样，只要是原型链中出现过的原型，都可以说是该原型链所派生的实例的原型，因此isPrototypeOf()方法也会返回true。</p>
+</li>
+<li><p>给原型添加方法的代码一定要放在替换原型的语句之后</p>
+</li>
+<li><p>在通过原型链实现继承时，不能使用对象字面量创建原型方法。因为这样做就会重写原型链。</p>
+</li>
+<li><p>原型链的问题：最主要的问题来自包含引用类型值的原型。原先的实例属性也就顺理成章地变成了现在的原型属性了。<br>原型链的第二个问题：在创建子类型的实例时，不能向超类型的构造函数中传递参数。</p>
+</li>
+<li><p>借用构造函数</p>
+</li>
+</ol>
+<h1 id="Array-API"><a href="#Array-API" class="headerlink" title="Array API"></a>Array API</h1><ol>
+<li>创建数组的方式：Array构造函数、数组字面量<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// constructor</span></span><br><span class="line"><span class="keyword">var</span> color = <span class="keyword">new</span> <span class="built_in">Array</span>(length); <span class="comment">// legnth表示长度，可给定一个数字</span></span><br><span class="line"><span class="keyword">var</span> color = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>, <span class="string">"blue"</span>); <span class="comment">//这样可以直接创建数组元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// []</span></span><br><span class="line"><span class="keyword">var</span> color = [<span class="string">"red"</span>, <span class="string">"blue"</span>];</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.数组的项数保存在其length 属性中，这个属性始终会返回0 或更大的值。数组的length 属性很有特点——它不是只读的。通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> color = [<span class="string">"red"</span>, <span class="string">"blue"</span>];</span><br><span class="line">color.length = <span class="number">1</span>;</span><br><span class="line">color[<span class="number">1</span>]; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">color[color.length] = <span class="string">"green"</span>;</span><br><span class="line">color[color.length<span class="number">-1</span>]; <span class="comment">//green</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><p><code>Array.isArray(array);</code></p>
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><p>数组转字符串：<code>toString()</code>，返回由每个值的字符串拼接成以逗号分隔的字符串。<br>数组转字符串：<code>join(分隔符)</code>,可以使用不同的分隔符来构建这个字符串。<br>注意：如果数组中的某一项的值是null 或者undefined，那么该值在join()、toLocaleString()、toString()和valueOf()方法返回的结果中以空字符串表示。</p>
+<h2 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h2><p>栈是一种LIFO（Last-In-First-Out，后进先出）的数据结构，也就是最新添加的项最早被移除。<br>插入：push(str1,str2,)，插入若干项，返回修改后数组的长度。<br>移除：pop(),移除最后一项，返回移除项</p>
+<h2 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h2><p>队列数据结构的访问规则是FIFO（First-In-First-Out，先进先出）。<br>插入：push<br>移除：shift(),移除数组中第一项并返回该项，同时将数组长度减1。</p>
+<h2 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h2><p>反序排列：reverse();返回排序之后的数组<br>灵活排序：sort(fn(a, b)),默认按什序排列数组，将元素转为字符串再进行比较，即使是数值也比较的是字符串。为了更灵活的比较，可以使用比较函数，比较函数接收两个参数，比较函数通过大于0，小于0，等于0来排序。返回的是排序之后的数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 什序 asc</span></span><br><span class="line"><span class="keyword">let</span> compare = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(a &gt; b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 降序 desc ，只要把前面两个return调换即可</span></span><br><span class="line"><span class="comment">// 对于会返回数字的比较函数，记忆：a-b就是a~b，什序，b-a就是b~a，降序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><p>数组副本连接：concat([ele1,[arr1),不传递参数，只是一个副本，传递参数，在副本末尾添加元素。<br>数组副本截断：slice(star, end),返回从开始到结束位置之间的项<br>数组删除、插入、替换：<strong>始终返回的是被删除项的数组</strong>。<br>删除:splice(开始的位置, 删除的项数)<br>插入:splice(开始的位置, 0, 元素1,元素2),跟删除一样，只是删除的项数是0，不删除直接添加。<br>替换:splice(开始的位置，删除项数，元素1，元素2)，跟删除一样，只是删除后再添加。</p>
+<h2 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h2><p>查找索引: indexOf(要找的元素，[起点位置),返回查找项在数组中的位置，找不到则返回-1。<br>lastIndexOf,从数组末尾开始向前找。</p>
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>5个迭代方法：都接收两个参数，(fn(数组元素，元素位置，数组本身), [函数的作用域对象)<br>every():对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则<strong>返回true</strong>。<br>filter():对数组中的每一项运行给定函数，<strong>返回该函数会返回true 的项组成的数组</strong>。<br>forEach():对数组中的每一项运行给定函数，没有返回值<br>map():对数组中的每一项运行给定函数，<strong>返回每次函数调用的结果组成的数组。</strong><br>some():对数组中的每一项运行给定函数，<strong>如果该函数对任一项返回true，则返回true。</strong></p>
+<h2 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h2>
             </div>
           
 
