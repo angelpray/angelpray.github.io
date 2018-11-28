@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="掌握webpack定制前端开发环境"/>
+
+
+
+
+  <meta name="keywords" content="Webpack," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2018/11/08/learn Webpack/"/>
+
+
+<meta name="keywords" content="Webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="掌握webpack定制前端开发环境">
+<meta property="og:url" content="https://angelpray.github.io/2018/11/08/learn Webpack/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-11-28T06:28:08.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="掌握webpack定制前端开发环境">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 掌握webpack定制前端开发环境 - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          掌握webpack定制前端开发环境
+        
+      </h1>
+
+      <time class="post-time">
+          11月 08 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p><img src="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="FE"></p>
+<a id="more"></a>
+<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><h1 id="前端的发展"><a href="#前端的发展" class="headerlink" title="前端的发展"></a>前端的发展</h1><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>把一个复杂的系统分解到多个模块以方便编码</p>
+<h2 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h2><ol>
+<li><p>CommonJS 是一种使用广泛的 JavaScript 模块化规范，核心思想是通过 require 方法来同步地加载依赖的其他模块，通过 module.exports 导出需要暴露的接口.</p>
+</li>
+<li><p>CommonJS 的缺点在于这样的代码无法直接运行在浏览器环境下</p>
+</li>
+</ol>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><ol>
+<li><p>AMD 也是一种 JavaScript 模块化规范，与 CommonJS 最大的不同在于它采用异步的方式去加载依赖的模块。 AMD 规范主要是为了解决针对浏览器环境的模块化问题，最具代表性的实现是 requirejs。</p>
+</li>
+<li><p>AMD 的缺点在于JavaScript 运行环境没有原生支持 AMD，需要先导入实现了 AMD 的库后才能正常使用</p>
+</li>
+</ol>
+<h2 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a>ES6模块化</h2><ol>
+<li><p>它在语言的层面上实现了模块化。浏览器厂商和 Node.js 都宣布要原生支持该规范。它将逐渐取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。</p>
+</li>
+<li><p>ES6模块虽然是终极模块化方案，但它的缺点在于目前无法直接运行在大部分 JavaScript 运行环境下，必须通过工具转换成标准的 ES5 后才能正常运行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="comment">// 导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="样式文件中的模块"><a href="#样式文件中的模块" class="headerlink" title="样式文件中的模块"></a>样式文件中的模块</h2><ol>
+<li>除了 JavaScript 开始模块化改造，前端开发里的样式文件也支持模块化。 以 SCSS 为例，把一些常用的样式片段放进一个通用的文件里，再在另一个文件里通过 @import 语句去导入和使用这些样式片段。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// util.scss 文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义样式片段</span></span><br><span class="line">    @mixin center &#123;</span><br><span class="line">        <span class="comment">// 水平竖直居中</span></span><br><span class="line">        position: absolute;</span><br><span class="line">        left: <span class="number">50</span>%;</span><br><span class="line">        top: <span class="number">50</span>%;</span><br><span class="line">        transform: translate(<span class="number">-50</span>%,<span class="number">-50</span>%);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// main.scss 文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导入和使用 util.scss 中定义的样式片段</span></span><br><span class="line">    @<span class="keyword">import</span> <span class="string">"util"</span>;</span><br><span class="line">    #box&#123;</span><br><span class="line">    @include center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ol>
+<li>Vue 框架把一个组件相关的 HTML 模版、JavaScript 逻辑代码、CSS 样式代码都写在一个文件里，这非常直观。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--HTML 模版--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"example"</span>&gt;&#123;&#123; msg &#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--JavaScript 组件逻辑--&gt; </span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">    msg: <span class="string">'Hello world!'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;!--CSS 样式--&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">.example &#123;</span></span><br><span class="line"><span class="regexp">font-weight: bold;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><ol>
+<li>是JavaScript的一个超集，支持ES6所有功能，还提供静态类型检查。需要编译才能转换成JavaScript。相对于JS，语法更严格，啰嗦。</li>
+</ol>
+<h2 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h2><ol>
+<li>一种CSS预处理器，写完后需要编译成正常的CSS文件。Sass是老语法，SCSS是新语法，本质上时相同的。</li>
+</ol>
+<h2 id="常见的构建工具以及对比"><a href="#常见的构建工具以及对比" class="headerlink" title="常见的构建工具以及对比"></a>常见的构建工具以及对比</h2><ol>
+<li><p>以上的技术点都有一个共同点：<strong>源代码无法直接运行，必须通过转换才可以正常运行。</strong></p>
+</li>
+<li><p>构建就是做这件事情，把源代码转换成发布到线上的可执行 JavaScrip、CSS、HTML 代码：<br><code>代码转换</code>：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等。<br><code>文件优化</code>：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等。<br><code>代码分割</code>：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载。<br><code>模块合并</code>：在采用模块化的项目里会有很多个模块和文件，需要构建功能把模块分类合并成一个文件。<br><code>自动刷新</code>：监听本地源代码的变化，自动重新构建、刷新浏览器。<br><code>代码校验</code>：在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。<br><code>自动发布</code>：更新完代码后，自动构建出线上发布代码并传输给发布系统。</p>
+</li>
+<li><p>构建工具：<br><code>npm script</code>:Npm Script 则是 Npm 内置的一个功能，允许在 package.json 文件里面使用 scripts 字段定义任务<br><code>Grunt</code>:Grunt 相当于进化版的 Npm Script，它的诞生其实是为了弥补 Npm Script 的不足。<br><code>Gulp</code>:Gulp 是一个基于流的自动化构建工具。 除了可以管理和执行任务，还支持监听文件、读写文件。可以将Gulp 看作 Grunt 的加强版。相对于 Grunt，Gulp增加了监听文件、读写文件、流式处理的功能。<br><code>Fis3</code>:相对于 Grunt、Gulp 这些只提供基本功能的工具，Fis3 集成了 Web 开发中的常用构建功能。不再更新。<br><code>Webpack</code>:Webpack 是一个打包模块化 JavaScript 的工具，在 Webpack 里一切文件皆模块，通过 Loader 转换文件，通过 Plugin 注入钩子，最后输出由多个模块组合成的文件。Webpack 专注于构建模块化项目。Webpack 具有很大的灵活性，能配置如何处理文件。</p>
+</li>
+<li><p>Webpack的优点是：<br>专注于处理模块化的项目，能做到开箱即用一步到位；<br>通过 Plugin 扩展，完整好用又不失灵活；<br>使用场景不仅限于 Web 开发；<br>社区庞大活跃，经常引入紧跟时代发展的新特性，能为大多数场景找到已有的开源扩展；<br>良好的开发体验。<br>Webpack的缺点是只能用于采用模块化开发的项目。</p>
+</li>
+<li><p>Webpack 已经成为构建工具中的首选，这是有原因的：<br>大多数团队在开发新项目时会采用紧跟时代的技术，这些技术几乎都会采用“模块化+新语言+新架”，Webpack 可以为这些新项目提供一站式的解决方案；<br>Webpack 有良好的生态链和维护团队，能提供良好的开发体验和保证质量；<br>Webpack 被全世界的大量 Web 开发者使用和验证，能找到各个层面所需的教程和经验分享。</p>
+</li>
+</ol>
+<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><h2 id="安装-Webpack"><a href="#安装-Webpack" class="headerlink" title="安装 Webpack"></a>安装 Webpack</h2><p>npm install –save-dev webpack-cli webpack<br>对于大多数项目，我们建议本地安装。这可以使我们在引入破坏式变更(breaking change)的依赖时，更容易分别升级项目。<br>通常，webpack 通过运行一个或多个 npm scripts，会在本地 node_modules 目录中查找安装的 webpack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;webpack --config webpack.config.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用注意的问题"><a href="#使用注意的问题" class="headerlink" title="使用注意的问题"></a>使用注意的问题</h2><p>使用这种方式去管理 JavaScript 项目会有一些问题：<br>无法立即体现，脚本的执行依赖于外部扩展库(external library)。<br>如果依赖不存在，或者引入顺序错误，应用程序将无法正常运行。<br>如果依赖被引入但是并没有使用，浏览器将被迫下载无用代码。</p>
+<p>将“源”代码(/src)从我们的“分发”代码(/dist)中分离出来。“源”代码是用于书写和编辑的代码。“分发”代码是构建过程产生的代码最小化和优化后的“输出”目录，最终将在浏览器中加载。</p>
+<p>在安装一个要打包到生产环境的安装包时，你应该使用 npm install –save，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用 npm install –save-dev。</p>
+<p>通过声明模块所需的依赖，webpack 能够利用这些信息去构建依赖图，然后使用图生成一个优化过的，会以正确顺序执行的 bundle。</p>
+<p>可以这样说，执行 npx webpack，会将我们的脚本 src/index.js 作为 入口起点，也会生成 dist/main.js 作为 输出。Node 8.2/npm 5.2.0 以上版本提供的 npx 命令，可以运行在初始安装的 webpack 包(package)的 webpack 二进制文件（./node_modules/.bin/webpack）</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始，webpack 会找出有哪些模块和 library 是入口起点（直接和间接）依赖的。默认值是 ./src/index.js，然而，可以通过在 webpack 配置中配置 entry 属性，来指定一个不同的入口起点（或者也可以指定多个入口起点）。</p>
+<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，主输出文件默认为 ./dist/main.js，其他生成文件的默认输出目录是 ./dist。<br>你可以通过在配置中指定一个 output 字段，来配置这些处理过程。</p>
+<h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>作为开箱即用的自带特性，webpack 自身只支持 JavaScript。而 loader 能够让 webpack 处理那些非 JavaScript 文件，并且先将它们转换为有效 模块，然后添加到依赖图中，这样就可以提供给应用程序使用。注意，loader 能够 import 导入任何类型的模块（例如 .css 文件），这是 webpack 特有的功能。<br>在更高层面，在 webpack 的配置中 loader 有两个特征：</p>
+<p>test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。<br>use 属性，表示进行转换时，应该使用哪个 loader。</p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务，插件的范围包括：打包优化、资源管理和注入环境变量。</p>
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><p>通过将 mode 参数设置为 development, production 或 none，可以启用对应环境下 webpack 内置的优化。默认值为 production。</p>
+<h3 id="兼容浏览器"><a href="#兼容浏览器" class="headerlink" title="兼容浏览器"></a>兼容浏览器</h3><p>webpack 支持所有 ES5 兼容（IE8 及以下不提供支持）的浏览器。webpack 的 import() 和 require.ensure() 需要环境中有 Promise</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>注意，webpack 不会转移代码中除 import 和 export 语句以外的部分。如果你在使用其它 ES2015 特性，请确保你在 webpack 的 loader 系统中使用了一个像是 Babel 或 Bublé 的转译器。</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>在 webpack 4 中，可以无须任何配置使用，然而大多数项目会需要很复杂的设置，这就是为什么 webpack 仍然要支持 配置文件。这比在终端(terminal)中手动输入大量命令要高效的多，所以让我们创建一个取代以上使用 CLI 选项方式的配置文件.<br>如果 webpack.config.js 存在，则 webpack 命令将默认选择使用它。我们在这里使用 –config 选项只是向你表明，可以传递任何名称的配置文件。这对于需要拆分成多个文件的复杂配置是非常有用。<br><code>npx webpack --config webpack.config.js</code></p>
+<h1 id="管理资源"><a href="#管理资源" class="headerlink" title="管理资源"></a>管理资源</h1><p>在 webpack 出现之前，前端开发人员会使用 grunt 和 gulp 等工具来处理资源，并将它们从 /src 文件夹移动到 /dist 或 /build 目录中。同样方式也被用于 JavaScript 模块，但是，像 webpack 这样的工具，将动态打包(dynamically bundle)所有依赖项（创建所谓的依赖图(dependency graph)）。这是极好的创举，因为现在每个模块都可以_明确表述它自身的依赖，我们将避免打包未使用的模块。</p>
+<p>webpack 最出色的功能之一就是，除了 JavaScript，还可以通过 loader 引入任何其他类型的文件。也就是说，以上列出的那些 JavaScript 的优点（例如显式依赖），同样可以用来构建网站或 web 应用程序中的所有非 JavaScript 内容。让我们从 CSS 开始起步，或许你可能已经熟悉了这个设置过程。</p>
+<h2 id="加载CSS"><a href="#加载CSS" class="headerlink" title="加载CSS"></a>加载CSS</h2><p>为了从 JavaScript 模块中 import 一个 CSS 文件，你需要在 module 配置中 安装并添加 style-loader 和 css-loader：<br><code>npm install --save-dev style-loader css-loader</code></p>
+<p>在这种情况下，以 .css 结尾的全部文件，都将被提供给 style-loader 和 css-loader。查看页面的 head 标签。它应该包含我们在 index.js 中导入的 style 块元素。注意，src中的css文件是不会放到dist中的。只会在head的style标签中出现。</p>
+<p><strong>最重要的是，现有的 loader 可以支持任何你可以想到的 CSS 处理器风格 - postcss, sass 和 less 等。</strong></p>
+<h2 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h2><p>使用 file-loader，我们可以轻松地将这些内容混合到 CSS 中。<br><code>npm install --save-dev file-loader</code><br>合乎逻辑下一步是，压缩和优化你的图像。可以看到dist目录中的图片名字以及style中的src属性都一并改变了。查看 image-webpack-loader 和 url-loader，以了解更多关于如果增强加载处理图片功能。</p>
+<h2 id="加载字体"><a href="#加载字体" class="headerlink" title="加载字体"></a>加载字体</h2><p>file-loader 和 url-loader 可以接收并加载任何文件，然后将其输出到构建目录。这就是说，我们可以将它们用于任何类型的文件，包括字体。跟加载图片类似。</p>
+<h2 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h2><p>此外，可以加载的有用资源还有数据，如 JSON 文件，CSV、TSV 和 XML。类似于 NodeJS，JSON 支持实际上是内置的，也就是说 import Data from ‘./data.json’ 默认将正常运行。要导入 CSV、TSV 和 XML，你可以使用 csv-loader 和 xml-loader。<br><code>npm install --save-dev csv-loader xml-loader</code></p>
+<p>所导入的 Data 变量将包含可直接使用的已解析 JSON.</p>
+<h2 id="全局资源"><a href="#全局资源" class="headerlink" title="全局资源"></a>全局资源</h2><p>上述所有内容中最出色之处是，以这种方式加载资源，你可以以更直观的方式将模块和资源组合在一起。无需依赖于含有全部资源的 /assets 目录，而是将资源与代码组合在一起。例如，类似这样的结构会非常有用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|- <span class="regexp">/assets</span></span><br><span class="line"><span class="regexp">|– /</span>components</span><br><span class="line">|  |– /my-component</span><br><span class="line">|  |  |– index.jsx</span><br><span class="line">|  |  |– index.css</span><br><span class="line">|  |  |– icon.svg</span><br><span class="line">|  |  |– img.png</span><br></pre></td></tr></table></figure></p>
+<p><strong>这种配置方式会使你的代码更具备可移植性，因为现有的统一放置的方式会造成所有资源紧密耦合在一起。</strong>假如你想在另一个项目中使用 /my-component，只需将其复制或移动到 /components 目录下。只要你已经安装了任何扩展依赖(external dependencies)，并且你已经在配置中定义过相同的 loader，那么项目应该能够良好运行。</p>
+<h1 id="管理输出"><a href="#管理输出" class="headerlink" title="管理输出"></a>管理输出</h1><p>到目前为止，我们在 index.html 文件中手动引入所有资源，然而随着应用程序增长，并且一旦开始对文件名使用哈希(hash)]并输出多个 bundle，手动地对 index.html 文件进行管理，一切就会变得困难起来。然而，可以通过一些插件，会使这个过程更容易操控。</p>
+<p>如果我们更改了我们的一个入口起点的名称，甚至添加了一个新的名称，会发生什么？生成的包将被重命名在一个构建中，但是我们的index.html文件仍然会引用旧的名字。我们用 <code>HtmlWebpackPlugin</code> 来解决这个问题。就像图片一样。<br><code>npm install --save-dev html-webpack-plugin</code></p>
+<h2 id="清理-dist文件夹"><a href="#清理-dist文件夹" class="headerlink" title="清理/dist文件夹"></a>清理/dist文件夹</h2><p>由于过去的指南和代码示例遗留下来，导致我们的 /dist 文件夹相当杂乱。webpack 会生成文件，然后将这些文件放置在 /dist 文件夹中，但是 webpack 无法追踪到哪些文件是实际在项目中用到的。通常，在每次构建前清理 /dist 文件夹，是比较推荐的做法，因此只会生成用到的文件。</p>
+<p>webpack及其插件似乎“知道”应该哪些文件生成。答案是，通过 manifest，webpack 能够对「你的模块映射到输出 bundle 的过程」保持追踪。</p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>为了更容易地追踪错误和警告，JavaScript 提供了 <code>source map</code> 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 b.js，source map 就会明确的告诉你。</p>
+<p>每次要编译代码时，手动运行 npm run build 就会变得很麻烦。</p>
+<p>webpack 中有几个不同的选项，可以帮助你在代码发生变化后自动编译代码：<br>webpack’s Watch Mode<br>webpack-dev-server<br>webpack-dev-middleware</p>
+<h3 id="观察模式"><a href="#观察模式" class="headerlink" title="观察模式"></a>观察模式</h3><p>你可以指示 webpack “watch” 依赖图中的所有文件以进行更改。如果其中一个文件被更新，代码将被重新编译，所以你不必手动运行整个构建。</p>
+<p>唯一的缺点是，为了看到修改后的实际效果，你需要刷新浏览器。如果能够自动刷新浏览器就更好了，可以尝试使用 webpack-dev-server，恰好可以实现我们想要的功能。【能对./dist目录编译生成】</p>
+<h3 id="使用web-dev-server"><a href="#使用web-dev-server" class="headerlink" title="使用web-dev-server"></a>使用web-dev-server</h3><p>webpack-dev-server 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading).如果现在修改和保存任意源文件，web 服务器就会自动重新加载编译后的代码。【不会生成./dist，只有build才会生成】</p>
+<h2 id="模块热替换"><a href="#模块热替换" class="headerlink" title="模块热替换"></a>模块热替换</h2><ol>
+<li>它允许在运行时更新各种模块，而无需进行完全刷新。仅仅使用watch或者devServer是LiveReload（重新实时加载）。实际就是更新web-dev-server的配置，比如使用webpack内置的HMR插件以及使用hot模式。</li>
+</ol>
+<h2 id="tree-shaking"><a href="#tree-shaking" class="headerlink" title="tree shaking"></a>tree shaking</h2><p>tree shaking 是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码(dead-code)。它依赖于 ES2015 模块系统中的静态结构特性，例如 import 和 export。</p>
+<p>你需要设置开发模式(development mode)，来确保 bundle 是压缩过的(minified)：</p>
+<p>「副作用」的定义是，在导入时会执行特殊行为的代码，而不是仅仅暴露一个 export 或多个 export。举例说明，例如 polyfill，它影响全局作用域，并且通常不提供 export。</p>
+<p>将文件标记为无副作用(side-effect-free),如果所有代码都不包含副作用，我们就可以简单地将该属性标记为 false，来告知 webpack，它可以安全地删除未用到的 export 导出。任何导入的文件都会受到 tree shaking 的影响。这意味着，如果在项目中使用类似 css-loader 并导入 CSS 文件，则需要将其添加到 side effect 列表中，以免在生产模式中无意中将它删除：</p>
+<p>找出那些需要删除的“未使用代码(dead code)”，然而，我们不只是要找出，还需要在 bundle 中删除它们.通过 “mode” 配置选项轻松切换到压缩输出，只需设置为 “production”。</p>
+<p>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</p>
+<p>为了学会使用 tree shaking，你必须……</p>
+<p>使用 ES2015 模块语法（即 import 和 export）。<br>在项目 package.json 文件中，添加一个 “sideEffects” 属性。<br>引入一个能够删除未引用代码(dead code)的压缩工具(minifier)（例如 UglifyJSPlugin）。</p>
+<h2 id="生产环境构建"><a href="#生产环境构建" class="headerlink" title="生产环境构建"></a>生产环境构建</h2><p>在开发环境中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置。【common，dev，prod以及重新设置npm scripts】</p>
+<p>默认的代码压缩是uglifyJSPlugin</p>
+<h3 id="source-map"><a href="#source-map" class="headerlink" title="source map"></a>source map</h3><p>source map：对调试源码(debug)和运行基准测试(benchmark tests)有帮助。<br>我们鼓励你在生产环境中启用 source map，因为它们对调试源码(debug)和运行基准测试(benchmark tests)很有帮助。虽然有如此强大的功能，然而还是应该针对生成环境用途，选择一个构建快速的推荐配置（具体细节请查看 devtool）。对于本指南，我们将在生产环境中使用 source-map 选项，而不是我们在开发环境中用到的 inline-source-map</p>
+<h3 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h3><p>当使用 process.env.NODE_ENV === ‘production’ 时，一些 library 可能针对具体用户的环境进行代码优化，从而删除或添加一些重要代码。</p>
+<h3 id="压缩CSS"><a href="#压缩CSS" class="headerlink" title="压缩CSS"></a>压缩CSS</h3><p>将生产环境下的css进行压缩非常重要。</p>
+<h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><p>代码分离是 webpack 中最引人注目的特性之一。此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。</p>
+<p>有三种常用的代码分离方法：</p>
+<p>入口起点：使用 entry 配置手动地分离代码。这种方式手动配置较多，并有一些陷阱，我们将会解决这些问题<br>防止重复：使用 SplitChunks 去重和分离 chunk。The SplitChunks 插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。<br>动态导入：通过模块的内联函数调用来分离代码。</p>
+<h2 id="webpack、gulp、grunt"><a href="#webpack、gulp、grunt" class="headerlink" title="webpack、gulp、grunt"></a>webpack、gulp、grunt</h2><p>首先我们要消除一个常见的误解。webpack 是一个模块打包器(module bundler)（例如，Browserify 或 Brunch）。它不是一个任务执行器(task runner)（例如，Make, Grunt 或者 Gulp ）。任务执行器就是用来自动化处理常见的开发任务，例如项目的检查(lint)、构建(build)、测试(test)。相对于打包器(bundler)，任务执行器则聚焦在偏重上层的问题上面。你可以得益于，使用上层的工具，而将打包部分的问题留给 webpack。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  标签: 
+		  
+			<a href="/tags/Webpack/">Webpack</a>
+		  
+		</div>
+		
+		
+		<div class="post-categories">
+		  分类: 
+		  
+			<a href="/categories/前端/">前端</a>
+		  
+		</div>
+				
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/11/02/learn DOM/">
+        <span class="next-text nav-default">原生JavaScript DOM编程技术</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2018
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

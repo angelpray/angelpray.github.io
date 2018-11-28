@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="http://picf6pcrc.bkt.clouddn.com/2018-11-17-23-25-36.png">
-<meta property="og:updated_time" content="2018-11-19T07:14:34.671Z">
+<meta property="og:updated_time" content="2018-11-28T07:04:58.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript编程">
 <meta name="twitter:image" content="http://picf6pcrc.bkt.clouddn.com/2018-11-17-23-25-36.png">
@@ -227,7 +227,7 @@
 </li>
 <li><p>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生的，比如Array，Date等，也可以是开发人员自定义的类型。</p>
 </li>
-<li><p>我们创建的每个函数都有一个prototype原型属性，这个属性是一个指针，指向一个对象。<strong>prototype就是通过调用构造函数而创建的对象实例的原型对象。这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法</strong>。</p>
+<li><p>我们创建的每个函数都有一个prototype原型属性，这个属性是一个指针，指向一个对象。<strong>prototype就是通过调用构造函数而创建的对象实例的原型对象。包含特定类型的实例共享的属性和方法</strong>。</p>
 </li>
 <li><p>无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。</p>
 </li>
@@ -289,11 +289,112 @@
 </li>
 <li><p>为了简化上述的毫秒，ES提供两个方法对日期进行计算，<code>Date.parse()</code>,<code>Date.UTC()</code>.</p>
 </li>
-<li><p><code>Date.parse()</code>，可用的时间格式：<br>“月/日/年”<br>“英文月 日，年”<br>“ISO 8601 YYYY-MM-DDTHH:mm:ss”<br>例如：<br><code>var someDate = new Date(Date.parse(&quot;2018-11-19T15:12:55&quot;))</code><br>直接将表示日期的字符串传递个构造函数也会默认调用parse方法</p>
+<li><p><code>Date.parse()</code>，可用的时间格式：<br>“月/日/年”<br>“英文月 日，年”<br>“ISO 8601 YYYY-MM-DDTHH:mm:ss”<br>例如：<br><code>var someDate = new Date(Date.parse(&quot;2018-11-19T15:12:55&quot;))</code><br><code>var loveDay = new Date(&quot;11/18/2018&quot;);</code><br>直接将表示日期的字符串传递个构造函数也会默认调用parse方法</p>
 </li>
-<li><p><code>Date.UTC(年，月，日，小时，分钟，秒)</code>，只有年月是必须的，其他如果省略则默认是0。</p>
+<li><p><code>Date.UTC(年，月，日，小时，分钟，秒)</code>，只有年月是必须的，其他如果省略则默认是0。尽管你给定了一个时间值，编译器会自动采用本地时区。所以少用吧。了解就好。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> love = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2018</span>, <span class="number">10</span>, <span class="number">18</span>, <span class="number">8</span>, <span class="number">0</span>,<span class="number">0</span>));</span><br><span class="line"><span class="comment">//Sun Nov 18 2018 16:00:00 GMT+0800 (中国标准时间)</span></span><br></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li><p>日期的get和set</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> love = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2018-11-27T17:30:01"</span>);</span><br><span class="line"><span class="comment">// get 获取年月日不需要复数，时间需要复数</span></span><br><span class="line">love.getFullYear(); <span class="comment">// 2018 都是number类型</span></span><br><span class="line">love.getMonth(); <span class="comment">// 10 对月份是从0开始算起</span></span><br><span class="line">love.getDate(); <span class="comment">// 27 表示这个月的第几天</span></span><br><span class="line">love.getHours(); <span class="comment">// 17</span></span><br><span class="line">love.getMinutes(); <span class="comment">// 30</span></span><br><span class="line">love.getSeconds(); <span class="comment">// 1</span></span><br><span class="line"><span class="comment">// set 只是将前缀换成set，并赋值</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h1><ol>
+<li><p>创建一个正则表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /pattern/flags</span></span><br><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/love [ui]/g</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>元字符:在正则表达式中有特殊用途，如果要使用这些字符就要进行转义<br><code>( [ { \ ^ $ | ) ? * + .]}</code></p>
+</li>
+<li><p>RegExp实例属性<br><code>global</code>：boolean, if set flags of g<br><code>ignoreCase</code>: boolean, if set flags of i<br><code>lastIndex</code>: number, the next items’ index of start，from zero to run.<br><code>source</code>: the RegExp’s string.</p>
+</li>
+<li><p>RegExp实例方法<br><code>exec(string)</code>，design for the capture group and the string is applying the pattern.It returns a Array and contains two attrib:index and input.index表示第一个匹配项出现在字符串的位置。input则表示string。当出现两个以上则没有这两个属性。<br>在数组中，第一项是与整个模式匹配的字符串，其他项则是捕获组匹配到的字符串。如果没有捕获组，则数组只包含一项。在全局匹配模式下，lastIndex 的值在每次调用exec()后都会增加，而在非全局模式下则始终保持不变。也就是说设置了g，则每一次调用exec都会在字符串中继续查找新匹配项。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"mom and dad and baby"</span>;</span><br><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/mom( and dad( and baby)?)?/gi</span>;</span><br><span class="line"><span class="keyword">var</span> matches = pattern.exec(text);</span><br><span class="line">alert(matches.index); <span class="comment">// 0</span></span><br><span class="line">alert(matches.input); <span class="comment">// "mom and dad and baby"</span></span><br><span class="line">alert(matches[<span class="number">0</span>]); <span class="comment">// "mom and dad and baby"</span></span><br><span class="line">alert(matches[<span class="number">1</span>]); <span class="comment">// " and dad and baby"</span></span><br><span class="line">aler t(matches[<span class="number">2</span>]); <span class="comment">// " and baby"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>test(string)</code>,返回boolean，表示是否与模式与字符串匹配。经常用于if语句中，用于验证用户输入。</p>
+<h1 id="Function类型"><a href="#Function类型" class="headerlink" title="Function类型"></a>Function类型</h1><ol>
+<li><p>函数名实际上是一个指向函数对象的指针，不会与某个函数绑定。这就是JS函数没有重载的原因。</p>
+</li>
+<li><p>声明函数的方式有三种：<br>通常用函数声明语法：<code>function sum(a, b) {return a + b;}</code><br>也常用函数表达式定义函数：<code>var sum = function(a, b) {return b}</code><br>虽然可以，但不要用Function构造函数<code>var sum = new Function(a, b)</code>。这其实也说明了，函数就是对象。</p>
+</li>
+<li><p>没有重载，因为是函数名指针，函数名相同，则表示同一个指针，后者覆盖前者。</p>
+</li>
+<li><p>函数声明和函数表达式区别：<strong>函数声明有一个<em>函数声明提升的过程（类似变量提升）</em>，而函数表达式没有这个过程</strong>。这个重要的区别，让函数声明可以在调用后才进行初始化，而函数表达式不行。</p>
+</li>
+<li><p>函数内部属性：arguments和this。arguments就是参数的意思，是一个类数组对象。this引用的是函数执行的环境对象。</p>
+</li>
+<li><p>函数属性和方法</p>
+</li>
+<li>属性：length和prototype，length表示函数希望接收的参数个数，prototype上文解释。</li>
+<li>方法：apply(参数数组)和call(参数列表),bind(obj),返回一个函数实例。参考上文解释。</li>
+</ol>
+<h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><ol>
+<li><p>3个特殊的引用类型：Boolean、Number 和String。</p>
+</li>
+<li><p>每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
+</li>
+<li><p>原理：为了让我们实现这种直观的操作，后台已经自动完成了一系列的处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</span><br><span class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</span><br><span class="line">s1 = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h2><ol>
+<li><p>Number类型上文有提到，Boolean很简单不必写。重点在String。因为我们常常需要对字符串进行操作。</p>
+</li>
+<li><p><code>charAt(n)</code>n位置的字符（简单方式：像数组一样使用[]访问）,<code>charCodeAt(n)</code>n位置的字符的编码。</p>
+</li>
+<li><p>字符串操作方法<br><code>concat(str1, str2...)</code>拼接多个字符串，返回新的字符串。(应该更多的使用+)<br><code>slice(start，end)</code>截断字符串，返回新的子字符串。<br><code>substr(start, length)</code>，同样是截断字符串，跟slice的区别在于，第二个参数是指长度，返回新的子字符串。</p>
+</li>
+<li><p>字符串位置方法<br><code>indexOf(str),lastIndexOf(str)</code>，返回子字符串的索引。</p>
+</li>
+<li><p>删除空格<br><code>trim(),trimLeft(),trimRight()。</code>返回去掉空格后的新字符串。</p>
+</li>
+<li><p>大小写转化<br><code>toLowerCase(), toUppercase()</code></p>
+</li>
+<li><p>字符串的模式匹配<br><code>match(pattern)</code>,在字符串上调用这个方法与在正则表达式中调用exec方法基本是一样的。返回的是一个数组。区别在于，exec每次只是返回一项，而match返回所有项。<br><code>search(pattern)</code>,返回第一个匹配项的索引。</p>
+</li>
+<li><p>替换字符串<br><code>replace(pattern|oldString, newString|fn)</code><br>如果第一个参数是一个字符串，则只会替换第一个字符串。提供正则+g则可以替换所有子字符串。</p>
+</li>
+<li><p>分隔字符串<br><code>split(str|pattern)</code>,基于指定的分隔符将一个字符串分割成子字符串，返回一个数组。跟join相反。</p>
+</li>
+<li><p>编译字符编码：String.fromCharCode(code)</p>
+</li>
+<li><p>本地字符串大小比较：localeCompare(str); 字符串排在参数前则-1；等于则0；排在参数后则1；</p>
+</li>
+</ol>
+<h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><ol>
+<li>由ECMA实现的，不依赖宿主环境的对象那个，在程序执行之前就存在了。</li>
+</ol>
+<h2 id="Global对象"><a href="#Global对象" class="headerlink" title="Global对象"></a>Global对象</h2><ol>
+<li><p>所有在全局作用域中定义的属性和函数，都是Global对象的属性。很多可以直接使用的函数实际上就是Global对象的方法，比如：isNaN(),parseInt()。</p>
+</li>
+<li><p>URI编码方法：<code>encodeURI() encodeURIComponent()</code>区别在于，前者不会对本身属于URI的特殊字符进行编码，比如冒号和斜杠。而后者会对它发现的任何标准字符进行编码。<br>var uri = “<a href="http://www.wrox.com/illegal" target="_blank" rel="noopener">http://www.wrox.com/illegal</a> value.htm#start”;<br>//“<a href="http://www.wrox.com/illegal%20value.htm#start" target="_blank" rel="noopener">http://www.wrox.com/illegal%20value.htm#start</a>“<br>alert(encodeURI(uri));<br>//“http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start”<br>alert(encodeURIComponent(uri));</p>
+</li>
+<li><p>URI解码方法：<code>decodeURI() decodeURIComponent()</code>分别对应解码上述两者的编码。</p>
+</li>
+<li><p>eval(执行的代码的字符串),就相当于一个解释器，解析后执行。但很危险，有被代码注入的危险。</p>
+</li>
+<li><p>在浏览器中，实际上window就是全局对象。</p>
+</li>
+</ol>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><ol>
+<li><p>最大最小值,<code>max() min()</code>,寻找数组的最大最小值<code>Math.max.apply(Math, [1, 2, 5, 8])</code></p>
+</li>
+<li><p>舍入方法，<code>ceil() floor() round()</code> 向上取整，向下取整 四舍五入</p>
+</li>
+<li><p>随机数，random()返回大于等于0小于1的随机数。<br>获取某个范围内的整数。Math.floor(random()*可能值的总数 + 第一个可能的值)</p>
+</li>
+<li><p>其他数学操作：<code>abs(num) pow(num,power) sqrt(num)</code></p>
+</li>
+</ol>
+<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><ol>
+<li><p>闭包的概念：有权访问另一个函数作用域中的变量的函数。闭包即函数。不要把这个概念复杂化了，闭包就是一个可访问另一个函数中的变量的函数。</p>
+</li>
+<li><p>闭包和变量：<strong>闭包所保存的是整个变量对象，而不是特殊的变量。</strong>想象中，应该是每个函数都返回不同的i，但实际上都返回10.因为每个函数的作用域链中保存着相同的createFunctions()函数的活动对象，所以它们引用的是同一个变量i。当createFunction函数返回后，i的值是10.此时每个函数都引用着保存变量i的同一个变量对象，所以每个函数都返回10.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">    result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>解决方案：没有直接把闭包赋值给数组，而是定义了一个匿名函数，并将立即执行该匿名函数的结果赋给数组由于函数参数是按值传递的，所以就会将变量i 的当前值复制给参数num.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;(i);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>关于this对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">    name: <span class="string">"My Object"</span>,</span><br><span class="line">    getNameFunc: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">alert(object.getNameFunc()()); <span class="comment">//"The Window"（在非严格模式下）</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
