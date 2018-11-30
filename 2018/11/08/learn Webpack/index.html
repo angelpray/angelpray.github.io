@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-11-28T06:28:08.152Z">
+<meta property="og:updated_time" content="2018-11-29T03:59:16.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="掌握webpack定制前端开发环境">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -179,7 +179,7 @@
 <li><p>Webpack 已经成为构建工具中的首选，这是有原因的：<br>大多数团队在开发新项目时会采用紧跟时代的技术，这些技术几乎都会采用“模块化+新语言+新架”，Webpack 可以为这些新项目提供一站式的解决方案；<br>Webpack 有良好的生态链和维护团队，能提供良好的开发体验和保证质量；<br>Webpack 被全世界的大量 Web 开发者使用和验证，能找到各个层面所需的教程和经验分享。</p>
 </li>
 </ol>
-<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><h2 id="安装-Webpack"><a href="#安装-Webpack" class="headerlink" title="安装 Webpack"></a>安装 Webpack</h2><p>npm install –save-dev webpack-cli webpack<br>对于大多数项目，我们建议本地安装。这可以使我们在引入破坏式变更(breaking change)的依赖时，更容易分别升级项目。<br>通常，webpack 通过运行一个或多个 npm scripts，会在本地 node_modules 目录中查找安装的 webpack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;webpack --config webpack.config.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h1><h2 id="安装-Webpack"><a href="#安装-Webpack" class="headerlink" title="安装 Webpack"></a>安装 Webpack</h2><p><code>npm install --save-dev webpack-cli webpack</code><br>对于大多数项目，我们建议本地安装。这可以使我们在引入破坏式变更(breaking change)的依赖时，更容易分别升级项目。</p>
 <h2 id="使用注意的问题"><a href="#使用注意的问题" class="headerlink" title="使用注意的问题"></a>使用注意的问题</h2><p>使用这种方式去管理 JavaScript 项目会有一些问题：<br>无法立即体现，脚本的执行依赖于外部扩展库(external library)。<br>如果依赖不存在，或者引入顺序错误，应用程序将无法正常运行。<br>如果依赖被引入但是并没有使用，浏览器将被迫下载无用代码。</p>
 <p>将“源”代码(/src)从我们的“分发”代码(/dist)中分离出来。“源”代码是用于书写和编辑的代码。“分发”代码是构建过程产生的代码最小化和优化后的“输出”目录，最终将在浏览器中加载。</p>
 <p>在安装一个要打包到生产环境的安装包时，你应该使用 npm install –save，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用 npm install –save-dev。</p>
