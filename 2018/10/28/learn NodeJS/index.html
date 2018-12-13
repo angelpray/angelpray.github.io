@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn NodeJS/"/>
 
 
-<meta name="description" content="Mysql在数据库中的使用实践 连接数据库:mysql.createConnetction({}); 12345678910// 1.连接需要字段5个：user,host,database,password,port,可以这样记：uhdpp（你的高清屁股）const mysql = require(&apos;mysql&apos;);var db = mysql.createConnection(&amp;#123;">
+<meta name="description" content="This is JC&apos;s blog">
 <meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js语言编程">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn NodeJS/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="Mysql在数据库中的使用实践 连接数据库:mysql.createConnetction({}); 12345678910// 1.连接需要字段5个：user,host,database,password,port,可以这样记：uhdpp（你的高清屁股）const mysql = require(&apos;mysql&apos;);var db = mysql.createConnection(&amp;#123;">
+<meta property="og:description" content="This is JC&apos;s blog">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-07T06:06:45.213Z">
+<meta property="og:updated_time" content="2018-12-10T07:12:35.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js语言编程">
-<meta name="twitter:description" content="Mysql在数据库中的使用实践 连接数据库:mysql.createConnetction({}); 12345678910// 1.连接需要字段5个：user,host,database,password,port,可以这样记：uhdpp（你的高清屁股）const mysql = require(&apos;mysql&apos;);var db = mysql.createConnection(&amp;#123;">
+<meta name="twitter:description" content="This is JC&apos;s blog">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -132,14 +132,7 @@
 
     
             <div class="post-content">
-            <h2 id="Mysql在数据库中的使用实践"><a href="#Mysql在数据库中的使用实践" class="headerlink" title="Mysql在数据库中的使用实践"></a>Mysql在数据库中的使用实践</h2><ol>
-<li><p>连接数据库:<code>mysql.createConnetction({});</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.连接需要字段5个：user,host,database,password,port,可以这样记：uhdpp（你的高清屁股）</span></span><br><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> db = mysql.createConnection(&#123;</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    user: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'113647'</span>,</span><br><span class="line">    database: <span class="string">'firstdata'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查询：<code>db.query(sql,function)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.query(<span class="string">"SELECT * FROM `user_table`;"</span>, (err, data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'err'</span>, err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+            
             </div>
           
 
