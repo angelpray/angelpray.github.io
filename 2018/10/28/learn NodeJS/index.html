@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn NodeJS/"/>
 
 
-<meta name="description" content="This is JC&apos;s blog">
+<meta name="description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
 <meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js语言编程">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn NodeJS/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="This is JC&apos;s blog">
+<meta property="og:description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-10T07:12:35.076Z">
+<meta property="og:updated_time" content="2018-12-16T16:02:49.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js语言编程">
-<meta name="twitter:description" content="This is JC&apos;s blog">
+<meta name="twitter:description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -132,7 +132,21 @@
 
     
             <div class="post-content">
-            
+            <h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><h2 id="NODE-JS基础知识"><a href="#NODE-JS基础知识" class="headerlink" title="NODE.JS基础知识"></a>NODE.JS基础知识</h2><ol>
+<li><p>node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。</p>
+</li>
+<li><p>node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。</p>
+</li>
+<li><p><strong>非阻塞IO</strong>：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个回调函数来处理这个操作的结果。</p>
+</li>
+<li><p>npm要求每个node项目目录下都有一个package.json文件，创建package.json最简单的命令是<code>npm init -y</code>,这样就会生成简单的JSON格式的项目描述信息。用带参数<code>npm install --save</code>来安装包就会自动更新package.json文件。</p>
+</li>
+<li><p>node自带了很多实用的库，统称为核心模块。也就是相当于其他语言的标准库，是编写服务端JS所需的工具。</p>
+</li>
+<li><p>node中核心库主要有：文件系统库（fs、path），TCP客户端和服务端库（net），HTTP库（HTTP和HTTPS）、</p>
+</li>
+</ol>
+
             </div>
           
 
