@@ -37,18 +37,18 @@
 <link rel="canonical" href="https://angelpray.github.io/2018/10/28/learn NodeJS/"/>
 
 
-<meta name="description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
+<meta name="description" content="第一部分  介绍NODE.JS  介绍JS和NODE的特性  介绍基本的NODE.JS编程概念  完整演示如何从头开始待见一个Web程序 第二部分  介绍用node进行web开发  前端构建系统webpack，gulp  node中的服务器框架  Connect和Express  模板语言  数据库  测试  部署、云部署 第三部分  介绍node开发的其他方面  介绍node搭建命令行  Ele">
 <meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js语言编程">
 <meta property="og:url" content="https://angelpray.github.io/2018/10/28/learn NodeJS/index.html">
 <meta property="og:site_name" content="Janro-Cheung">
-<meta property="og:description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
+<meta property="og:description" content="第一部分  介绍NODE.JS  介绍JS和NODE的特性  介绍基本的NODE.JS编程概念  完整演示如何从头开始待见一个Web程序 第二部分  介绍用node进行web开发  前端构建系统webpack，gulp  node中的服务器框架  Connect和Express  模板语言  数据库  测试  部署、云部署 第三部分  介绍node开发的其他方面  介绍node搭建命令行  Ele">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-16T16:02:49.911Z">
+<meta property="og:updated_time" content="2018-12-25T08:04:45.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js语言编程">
-<meta name="twitter:description" content="第一部分NODE.JS基础知识 node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。  node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。  非阻塞IO：程序执行过程中，I/O操作不会阻塞程序的执行，也就是在I/O操作的同时，继续执行其他代码，当I/O操作完成时运行一个">
+<meta name="twitter:description" content="第一部分  介绍NODE.JS  介绍JS和NODE的特性  介绍基本的NODE.JS编程概念  完整演示如何从头开始待见一个Web程序 第二部分  介绍用node进行web开发  前端构建系统webpack，gulp  node中的服务器框架  Connect和Express  模板语言  数据库  测试  部署、云部署 第三部分  介绍node开发的其他方面  介绍node搭建命令行  Ele">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
@@ -132,7 +132,10 @@
 
     
             <div class="post-content">
-            <h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><h2 id="NODE-JS基础知识"><a href="#NODE-JS基础知识" class="headerlink" title="NODE.JS基础知识"></a>NODE.JS基础知识</h2><ol>
+            <p>第一部分  介绍NODE.JS<br>  介绍JS和NODE的特性<br>  介绍基本的NODE.JS编程概念<br>  完整演示如何从头开始待见一个Web程序</p>
+<p>第二部分  介绍用node进行web开发<br>  前端构建系统webpack，gulp<br>  node中的服务器框架<br>  Connect和Express<br>  模板语言<br>  数据库<br>  测试<br>  部署、云部署</p>
+<p>第三部分  介绍node开发的其他方面<br>  介绍node搭建命令行<br>  Electron开发</p>
+<h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><h2 id="NODE-JS基础知识"><a href="#NODE-JS基础知识" class="headerlink" title="NODE.JS基础知识"></a>NODE.JS基础知识</h2><ol>
 <li><p>node.js是一个JavaScript运行平台，它的显著特征是它的异步和事件驱动机制，以及小巧精悍的标准库。目前有两个版本LST以及当前版。</p>
 </li>
 <li><p>node.js和JavaScript的优势之一就是单线程编程模型。多线程一般会引入bug。</p>
@@ -143,8 +146,48 @@
 </li>
 <li><p>node自带了很多实用的库，统称为核心模块。也就是相当于其他语言的标准库，是编写服务端JS所需的工具。</p>
 </li>
-<li><p>node中核心库主要有：文件系统库（fs、path），TCP客户端和服务端库（net），HTTP库（HTTP和HTTPS）、</p>
+<li><p>node中核心库主要有：文件系统库（fs、path），TCP客户端和服务端库（net），HTTP库（HTTP和HTTPS）、域名解析库（DNS）、还有一个用来写测试的断言库（assert）、以及一个用于查询平台信息的操作糸统库（os）。</p>
 </li>
+<li><p>调试器：node自带了调试器，只需要带着<code>--debug</code>参数去运行程序就可以开启调试器。</p>
+</li>
+<li><p>三种主流的node程序：web app，命令行工具，后台程序、桌面程序。</p>
+</li>
+</ol>
+<h2 id="node编程基础"><a href="#node编程基础" class="headerlink" title="node编程基础"></a>node编程基础</h2><ol>
+<li><p>node项目分组传统的方式是按照逻辑相关性，将包含大量代码的单个文件分解成多个文件。</p>
+</li>
+<li><p>在node中，模块打包代码是为了重用，但他们不会改变全局作用域。</p>
+</li>
+<li><p>node模块允许从被引用文件中选择要暴露给程序的函数和变量。如果模块返回的函数或变量不止一个，那可以通过设定<code>exports对象</code>的属性来指明它们。但如果模块只是返回一个函数或变量，则可以设定module.exports属性。</p>
+</li>
+<li><p>node的模块系统避免了对全局作用域的污染，从而避免了命名冲突，简化了代码的重用。</p>
+</li>
+</ol>
+<h2 id="NODE-WEB-程序"><a href="#NODE-WEB-程序" class="headerlink" title="NODE WEB 程序"></a>NODE WEB 程序</h2><ol>
+<li>组成部分：<br>package.json：一个包含依赖项列表和运行这个程序的命令的文件<br>public：静态资源文件夹，CSS和客户端JS都放在这里<br>node_modules：项目的依赖项<br>方程序代码的一个或多个JS文件</li>
+</ol>
+<p>程序代码分为几块<br>app.js或者index.js，设置程序的代码<br>models,数据库模型<br>views，用来渲染页面的模板<br>controllers或routes，HTTP请求处理器<br>middleware，中间组件</p>
+<p>项目：later</p>
+<ol>
+<li>npm init -fy</li>
+<li>使用http模块需要做很多套路化的开发工作，我们使用便捷的Express。<code>cnpm install --save express</code></li>
+<li>卸载express<code>npm rm express -save</code></li>
+<li>npm脚本：就是以scripts的字段的npm命令，可以代替<code>node index.js</code>这样的命令。</li>
+<li>PHP程序是页面，NODE程序是服务器。</li>
+<li>添加RESTful路由，所谓的RESTful路由就是帮我们确定程序的API，以及需要哪些数据库模型。</li>
+<li>设计RESTful服务时，要想好需要哪些操作，并将它们映射到EXPRESS里的路由上。我们这里需要实现的有：保存文章、获取文章、获取包含所有文章的列表和删除不再需要的文章，总共四个功能：对应以下的路由：<br>POST /article 创建新文章, RESTful路由示例不能创建文章，因为POST请求需要消息体解析器。<br>GET /article/:id 获取指定文章<br>GET /articles 获取所有文章<br>DELETE /articles/:id 删除指定文章</li>
+<li>在考虑数据库和web界面等问题之前，我们先重点解决如何用EXPRESS创建RESTful资源的问题。可以使用CURL向示例程序发起请求，然后再逐步实现数据存储等更加复杂的操作，让程序编程一个真正的web程序。</li>
+<li>使用express程序实现上面的路由，但现在使用JS数组来存储文章。<a href="example">RESTful路有示例</a><br>10.使用cURL向程序发起请求：<br>获取一篇文章:<code>curl localhost:3000/articles/0</code><br>获取所有文章:<code>curl localhost:3000/articles</code><br>删除一篇文章:<code>curl -x DELETE localhost:3000/articles/0</code></li>
+<li>消息体解析器知道如何接受MIME-encoded(多用途互联网邮件扩展)POST请求消息的主题部分，并将其转换成代码可用的数据。一般来说它给出的是易于处理的JSON数据。<code>cnpm install --save body-parser</code></li>
+<li>到此已经是完成了RESTful的路由，还需要做两件事：将数据永久保存在数据库中，第二个任务是为找到的文章生成一个可读版本。</li>
+<li>添加数据库：为node程序添加数据库没有必须的规定，但一般都涉及几个步骤：<br>1.决定要用的数据库系统 =》<br>2.在NPM上找那些实现了数据库驱动或对象-关系映射（ORM）的热门模块 =》<br>3.用npm –save将模块添加到项目中 =》<br>4.<strong>创建模型，封装数据库访问API =》</strong><br>5.把这些模型添加到Express路由中</li>
+<li>使用SQLite，它是一个进程内数据库，不需要在系统中安装一个后台运行的数据库，添加的所有数据都会写到一个文件里，程序停止后数据还在。</li>
+<li>制作自己的数据库模型API:文章应该能被创建、获取、删除<br>Article.all(cb) 返回所有文章<br>Article.find(id, cb) 给定ID找对应文章<br>Article.create({title, content}, cb) 创建一篇有标题和内容的文章<br>Article.delete(id, cb)  根据ID 删除文章</li>
+<li>RESTful API搭建好了，数据也可以持久化到数据库中，接下来就是需要写代码把网页转换成简化版的“阅读视图”了。</li>
+<li>现在我们的程序已经可以保存文章了，也可以获取他们，为了能够阅读这些文章，我们需要添加WEB界面。给EXPRESS项目添加界面需要做几件事：首先需要使用模板引擎。程序眼需要服务静态文件，比如CSS。如何在必要时让前面的例子中的路由处理器同时支持JSON和HTML响应。</li>
+<li>支持多种格式：同时支持HTML和JSON格式，使用Express的res.fromat方法，可以根据请求发送响应的响应。</li>
+<li>渲染模板，使用ESJ模板。</li>
+<li>响应静态文件请求，EXPRESS有一个express.static的中间件，可以给浏览器发送JS、图片和CSS文件。只要将它指向包含这些文件的目录，浏览器就能访问这些文件。</li>
 </ol>
 
             </div>
