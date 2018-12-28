@@ -46,7 +46,7 @@
 <meta property="og:description" content="第一部分  介绍NODE.JS  介绍JS和NODE的特性  介绍基本的NODE.JS编程概念  完整演示如何从头开始待见一个Web程序 第二部分  介绍用node进行web开发  前端构建系统webpack，gulp  node中的服务器框架  Connect和Express  模板语言  数据库  测试  部署、云部署 第三部分  介绍node开发的其他方面  介绍node搭建命令行  Ele">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://segmentfault.com/img/bVblGGR">
-<meta property="og:updated_time" content="2018-12-26T08:22:15.918Z">
+<meta property="og:updated_time" content="2018-12-28T02:34:57.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js语言编程">
 <meta name="twitter:description" content="第一部分  介绍NODE.JS  介绍JS和NODE的特性  介绍基本的NODE.JS编程概念  完整演示如何从头开始待见一个Web程序 第二部分  介绍用node进行web开发  前端构建系统webpack，gulp  node中的服务器框架  Connect和Express  模板语言  数据库  测试  部署、云部署 第三部分  介绍node开发的其他方面  介绍node搭建命令行  Ele">
@@ -177,7 +177,7 @@
 <li>npm脚本：就是以scripts的字段的npm命令，可以代替<code>node index.js</code>这样的命令。</li>
 <li>PHP程序是页面，NODE程序是服务器。</li>
 <li>添加RESTful路由，所谓的RESTful路由就是帮我们确定程序的API，以及需要哪些数据库模型。</li>
-<li>RESTful API就是REST风格的网络接口，REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计。</li>
+<li><strong>RESTful API</strong>就是REST风格的网络接口，REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计。</li>
 <li>设计RESTful服务时，要想好需要哪些操作，并将它们映射到EXPRESS里的路由上。我们这里需要实现的有：保存文章、获取文章、获取包含所有文章的列表和删除不再需要的文章，总共四个功能：对应以下的路由：<br>POST /article 创建新文章, RESTful路由示例不能创建文章，因为POST请求需要消息体解析器。<br>GET /article/:id 获取指定文章<br>GET /articles 获取所有文章<br>DELETE /articles/:id 删除指定文章</li>
 <li>在考虑数据库和web界面等问题之前，我们先重点解决如何用EXPRESS创建RESTful资源的问题。可以使用CURL向示例程序发起请求，然后再逐步实现数据存储等更加复杂的操作，让程序编程一个真正的web程序。</li>
 <li>使用express程序实现上面的路由，但现在使用JS数组来存储文章。<a href="example">RESTful路有示例</a><br>10.使用cURL向程序发起请求：<br>获取一篇文章:<code>curl localhost:3000/articles/0</code><br>获取所有文章:<code>curl localhost:3000/articles</code><br>删除一篇文章:<code>curl -x DELETE localhost:3000/articles/0</code></li>
@@ -204,9 +204,13 @@
 <li><p>创建可配置的中间件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 设置逻辑</span></span><br><span class="line">　 ←---- 在这里做中间件的初始化</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 中间件逻辑</span></span><br><span class="line">　 ←---- 即使被外部函数返回了，仍然可以访问options</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>错误处理<br>错误处理中间件函数必须有四个参数：err 、req 、res 和next<br>当Connect遇到错误时，它会切换，只去调用错误处理中间件<br><img src="https://segmentfault.com/img/bVblGGR" alt="error"></p>
+<li><p>错误处理<br>connect有默认处理器，也可以自行处理。</p>
 </li>
 </ol>
+<p>错误处理中间件函数必须有四个参数：err 、req 、res 和next(常规的中间件只有req,res和next三个参数。) 当Connect遇到错误时，它会切换，<strong>只去调用错误处理中间件</strong><br><img src="https://segmentfault.com/img/bVblGGR" alt="error"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connect()</span><br><span class="line">.use(router(<span class="built_in">require</span>(<span class="string">'./routes/user'</span>))) <span class="comment">//发生错误</span></span><br><span class="line">.use(router(<span class="built_in">require</span>(<span class="string">'./routes/blog'</span>))) <span class="comment">// 跳过</span></span><br><span class="line">.use(router(<span class="built_in">require</span>(<span class="string">'./routes/admin'</span>))) <span class="comment">// 跳过</span></span><br><span class="line">.use(errorHandler);</span><br></pre></td></tr></table></figure>
+<p>例子：在开发中用简单快捷的错误报告，比如JSON格式发送错误；在生产环境中不把敏感信息（比如栈跟踪、文件名）暴露给攻击者，只发送一个简单的服务器错误响应。</p>
+<p>用NODE_ENV（process.env.NODE_ENV）设定程序的模式,用这个属性切换不同服务器环境。</p>
 
             </div>
           
