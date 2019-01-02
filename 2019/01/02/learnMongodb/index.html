@@ -42,7 +42,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-01-02T07:15:54.104Z">
+<meta property="og:updated_time" content="2019-01-02T08:32:52.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Janro-Cheung">
 <meta name="twitter:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
@@ -209,7 +209,18 @@
 <li><p>mongodb在保留json键值对特性的基础上添加了其他数据类型。<br>null，表示空值或不存在。<br>布尔型，true，false<br>数值，shell默认使用64位浮点型数值。对于整数型可以使用<code>NumberInt类（4字节带符号）\NumberLong(8字节带符号整数)</code><br>字符串，UTF-8字符串都可以表示为字符串类型<br>日期，**日期被存储为自新纪元以来经过的毫秒数，不存储时区。<br>正则表达式，<br>……</p>
 </li>
 </ol>
-<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3>
+<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><p>创建日期对象，应该使用new Date(),而非Date()。</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组是一组值，可以作为有序对象（列表，栈或者队列），也能作为无序对象来操作。</p>
+<h3 id="内嵌文档"><a href="#内嵌文档" class="headerlink" title="内嵌文档"></a>内嵌文档</h3><p>文档可以作为键的值，这样的文档就是内嵌文档，使用内嵌文档，可以使数据组织方式更加自然。</p>
+<h3 id="id和objectID"><a href="#id和objectID" class="headerlink" title="_id和objectID"></a>_id和objectID</h3><ol>
+<li><p>在集合里面，每一个文档都有唯一的<code>_id</code>，确保集合里面每个文档都能被唯一标示。</p>
+</li>
+<li><p>ObjectId是_id的默认类型</p>
+</li>
+<li><p>自动生成_id，如果插入文档时没有_id键，则系统会自动创建一个。</p>
+</li>
+</ol>
+<h2 id="使用mongoDB-shell"><a href="#使用mongoDB-shell" class="headerlink" title="使用mongoDB shell"></a>使用mongoDB shell</h2>
             </div>
           
 
