@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="This is JC's blog"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2019/01/02/learnMongodb/"/>
+
+
+<meta name="description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Janro-Cheung">
+<meta property="og:url" content="https://angelpray.github.io/2019/01/02/learnMongodb/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-01-02T07:15:54.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Janro-Cheung">
+<meta name="twitter:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title>  - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          
+        
+      </h1>
+
+      <time class="post-time">
+          1月 02 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="mongoDB"><a href="#mongoDB" class="headerlink" title="mongoDB"></a>mongoDB</h1><ul>
+<li><p>shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。</p>
+</li>
+<li><p>mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。</p>
+</li>
+<li><p>没有预定义模式（predefined schema）；文档的键key和值value不再是固定的类型和大小。</p>
+</li>
+<li><p>扩展数据库：纵向扩展scale up和横向扩展scale out。前者是用更好的服务器。后者是将数据分散到更多机器上。mongodb使用横向扩展。</p>
+</li>
+</ul>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li><p><code>文档</code>是mongodb中数据的基本单元，类似于关系数据库管理找那个的行。</p>
+</li>
+<li><p>集合collection可以看做是一个拥有动态模式dynamic schema的表。</p>
+</li>
+<li><p>mongodb的一个实例可以拥有多个相互独立的数据库，每个数据库都拥有自己的集合。</p>
+</li>
+<li><p>每个文档都有一个特殊的键“_id”，这个键在文档所属的集合是唯一的。</p>
+</li>
+<li><p>mongodb自带了一个简单但功能强大的JavaScript shell，用于管理mongodb的实例或数据操作。</p>
+</li>
+</ul>
+<p>##文档</p>
+<ul>
+<li><p><strong>文档就是键值对的一个有序集</strong>。大多数编程语言都有相同的数据结构。映射map、散列hash、字典dictionnary。</p>
+</li>
+<li><p><strong>文档的键是字符串</strong>。除了少数例外情况，键可以使用任意UTF-8字符。键不能包含\0（空字符），这个字符用于表示键的结尾。.和$具有特殊意义。</p>
+</li>
+<li><p>mongodb区分类型和大小写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型</span></span><br><span class="line">&#123;<span class="string">"foo"</span>: <span class="number">3</span>&#125;</span><br><span class="line">&#123;<span class="string">"foo"</span>: <span class="string">"3"</span>&#125;</span><br><span class="line"><span class="comment">// 大小写</span></span><br><span class="line">&#123;<span class="string">"foo"</span>: <span class="number">3</span>&#125;</span><br><span class="line">&#123;<span class="string">"Foo"</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mongodb文档中不能有重复的键。</p>
+</li>
+<li><p>文档中的键值对是有序的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 键值对顺序</span></span><br><span class="line">&#123;<span class="string">"x"</span>: <span class="number">1</span>, <span class="string">"y"</span>: <span class="number">2</span>&#125;</span><br><span class="line">&#123;<span class="string">"y"</span>: <span class="number">2</span>, <span class="string">"x"</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p><strong>集合就是一组文档</strong>，文档可以比喻成行，集合则相当于一张表。</p>
+<h3 id="动态模式"><a href="#动态模式" class="headerlink" title="动态模式"></a>动态模式</h3><p><strong>集合是动态模式的</strong>，也就是说集合中的文档可以是各式各样的，可以防止任何文档。为了提高维护性和高效，需要把相关类型的文档组织在一起，尽管mongodb对此没有强制要求。</p>
+<h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><p><strong>集合使用名称进行标识。</strong>集合可以是任意utf-8字符串。除了某些例外情况。</p>
+<p>组织集合的一种惯例是使用”.”分隔不同命名空间的子集合。</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><p><strong>在mongodb中，多个文档组成集合，多个集合组成数据库。多个数据库组成mongodb实例。</strong></p>
+</li>
+<li><p>数据库也通过名称来标识，满足条件的utf-8字符串。类似集合。</p>
+</li>
+<li><p><strong>数据库最终会变成文件系统里的文件，而数据库名就是响应的文件名，这是数据库名有限制的原因</strong></p>
+</li>
+<li><p>把数据库名添加到集合名前得到集合的完全限定名，即明明空间namespace。例如，要使用cms数据库中blog.posts集合，这个集合的命名空间就是cms.blog.posts</p>
+</li>
+</ul>
+<h2 id="启动mongodb"><a href="#启动mongodb" class="headerlink" title="启动mongodb"></a>启动mongodb</h2><ol>
+<li>mongod –dbpath “dir”</li>
+</ol>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><ol>
+<li><p>mongodb自带JavaScript shell，可以在shell中使用命令行和mongodb实例交互。启动shell <code>mongo</code></p>
+</li>
+<li><p>shell是一个功能完备的js解释器，可以运行任意JavaScript程序。</p>
+</li>
+<li><p>shell会连接到mongodb服务器的test数据库，并将数据库连接赋值给全局变量db，这个变量是通过shell访问mongodb的主要入口点。</p>
+</li>
+<li><p>查看当前指向哪个数据库，使用db命令：<code>db</code></p>
+</li>
+<li><p>通过db变量可以 访问其中的集合。如db.blog返回当前数据库的blog集合。</p>
+</li>
+<li><p>shell还包含一些非js语法的扩展。</p>
+<h2 id="shell-中的基本操作"><a href="#shell-中的基本操作" class="headerlink" title="shell 中的基本操作"></a>shell 中的基本操作</h2></li>
+<li><p>4个基本操作：创建、读取、更新、删除（CRUD操作）</p>
+</li>
+</ol>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p>创建：<code>insert(doc)</code>函数将一个文档添加到集合中。</p>
+<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><p><code>find(),findOne()</code>方法可以用于查询集合里的文档。后者只查看一个文档。接收一个查询文档作为限定条件，这样就可以查询符合一定条件的文档。</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>使用<code>update</code>修改，update介绍至少两个参数：限定条件（匹配待更新的文档），第二个是新的文档。比如，我们需要为文章添加一个评论功能，就增加一个新的键，用于保存评论数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">post.comments = [];</span><br><span class="line">db.blog.update(&#123;<span class="string">"title"</span>: <span class="string">"my blog post"</span>&#125;, post);</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>使用<code>remove</code>方法可将文档从数据库中永久删除。如果没有使用任何参数，它会将集合内的所有文档全部删除。它可以接受一个作为限定条件的文档作为参数。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.remove(&#123;<span class="string">"title"</span>: <span class="string">"my blog post"</span>&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><ol>
+<li><p>mongoDB的文档与js对象相近，可以认为它类似于json。但json只支持null、boolean，number，string，array，object类型，表达能力有一定缺陷。</p>
+</li>
+<li><p>mongodb在保留json键值对特性的基础上添加了其他数据类型。<br>null，表示空值或不存在。<br>布尔型，true，false<br>数值，shell默认使用64位浮点型数值。对于整数型可以使用<code>NumberInt类（4字节带符号）\NumberLong(8字节带符号整数)</code><br>字符串，UTF-8字符串都可以表示为字符串类型<br>日期，**日期被存储为自新纪元以来经过的毫秒数，不存储时区。<br>正则表达式，<br>……</p>
+</li>
+</ol>
+<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+				
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/12/31/learnRedis/">
+        <span class="next-text nav-default"></span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2019
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
