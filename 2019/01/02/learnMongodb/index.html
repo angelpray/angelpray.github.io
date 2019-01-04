@@ -42,7 +42,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-01-02T08:32:52.476Z">
+<meta property="og:updated_time" content="2019-01-04T08:06:41.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Janro-Cheung">
 <meta name="twitter:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
@@ -195,6 +195,8 @@
 <li><p>通过db变量可以 访问其中的集合。如db.blog返回当前数据库的blog集合。</p>
 </li>
 <li><p>shell还包含一些非js语法的扩展。</p>
+</li>
+<li><p>切换数据库 : <code>use database</code></p>
 <h2 id="shell-中的基本操作"><a href="#shell-中的基本操作" class="headerlink" title="shell 中的基本操作"></a>shell 中的基本操作</h2></li>
 <li><p>4个基本操作：创建、读取、更新、删除（CRUD操作）</p>
 </li>
@@ -220,7 +222,97 @@
 <li><p>自动生成_id，如果插入文档时没有_id键，则系统会自动创建一个。</p>
 </li>
 </ol>
-<h2 id="使用mongoDB-shell"><a href="#使用mongoDB-shell" class="headerlink" title="使用mongoDB shell"></a>使用mongoDB shell</h2>
+<h2 id="使用mongoDB-shell"><a href="#使用mongoDB-shell" class="headerlink" title="使用mongoDB shell"></a>使用mongoDB shell</h2><ol>
+<li><p>可以将shell连接到任何mongoDB实例。在启动shell时指定机器名和端口名，就可以连接到一台不同的机器。<code>mongo some-host:30000/myDB</code></p>
+</li>
+<li><p>启动mongo shell 时不连接任何mongod，通过 <code>mongo --nodb</code>启动shell。启动之后可以在需要的时候运行命令得到想要的mongod</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conn = <span class="keyword">new</span> Mongo(<span class="string">"some-host:27017"</span>);</span><br><span class="line">db = conn.getDB(<span class="string">"myDB"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="shell-tips"><a href="#shell-tips" class="headerlink" title="shell tips"></a>shell tips</h3><ol>
+<li><p>mongo就是一个简化的JavaScript shell，用JavaScript语法即可得到解析。对于mongoDB特有的功能，shell内置了帮助文档，可以使用help命令查看。<code>help</code></p>
+</li>
+<li><p>如果想知道一个函数的源码可以直接在shell中输入函数名。<code>db.coll.method</code></p>
+</li>
+</ol>
+<h3 id="使用shell执行脚本"><a href="#使用shell执行脚本" class="headerlink" title="使用shell执行脚本"></a>使用shell执行脚本</h3><ol>
+<li><p><code>mongo file.js</code></p>
+</li>
+<li><p><code>load(file.js)</code>，相对路径，绝对路径【注意加载的js文件有些地方如果无法解析则会出错，比如console在mongo中是无法解析的】</p>
+</li>
+<li><p>在脚本中可以访问db变量，以及其他全局变量，但是shell辅助函数比如<code>use dbName</code>，不可以在文件中使用</p>
+</li>
+</ol>
+<h3 id="创建-mongorc-js"><a href="#创建-mongorc-js" class="headerlink" title="创建.mongorc.js"></a>创建.mongorc.js</h3><ol>
+<li><p><code>.mongorc.js文件</code>会在启动shell时自动运行。</p>
+</li>
+<li><p>这个文件最常用的是移除那些比较危险的shell辅助函数。</p>
+</li>
+<li><p>禁止加载 ‘.mongorc.js’</p>
+<h3 id="定制shell提示"><a href="#定制shell提示" class="headerlink" title="定制shell提示"></a>定制shell提示</h3></li>
+</ol>
+<h3 id="编辑复合变量"><a href="#编辑复合变量" class="headerlink" title="编辑复合变量"></a>编辑复合变量</h3><h3 id="集合命名注意事项"><a href="#集合命名注意事项" class="headerlink" title="集合命名注意事项"></a>集合命名注意事项</h3><ol>
+<li><p>使用db.collectionName获取一个集合的内容。</p>
+</li>
+<li><p>为了访问某些无效的JS属性名称，需要用<code>db.getCollection(&quot;version&quot;)</code>来访问响应的集合。</p>
+</li>
+<li><p>使用[]也可以访问无效属性名称的集合。</p>
+</li>
+</ol>
+<h2 id="创建、更新和删除文档"><a href="#创建、更新和删除文档" class="headerlink" title="创建、更新和删除文档"></a>创建、更新和删除文档</h2><h3 id="插入并保存文档"><a href="#插入并保存文档" class="headerlink" title="插入并保存文档"></a>插入并保存文档</h3><p>插入是向MongoDB中添加数据的基本方法。可以使用<code>insert</code>方法向目标集合插入一个文档。</p>
+<ol>
+<li><p>批量插入：使用<code>batchInsert</code>函数实现批量插入,它与insert函数非常像，只是它几首的是一个文档数组作为参数</p>
+</li>
+<li><p>执行批量插入的时候有一个文档插入失败，那么文档之前的所有文档都会成功插入到集合汇总，而这个文档以及之后的所有文档全部插入失败</p>
+</li>
+<li><p>插入检验：mongodb只对数据进行最基本的检查：检查文档的基本结构，如果没有”_id”字段，就自动增加一个。</p>
+</li>
+</ol>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ol>
+<li><p>要删除一些数据：<code>db.coll.remove({opt})</code>,删除数据是永久性的，无法撤销和恢复</p>
+</li>
+<li><p>删除速度：如果要清空整个集合，使用<code>drop()</code>直接删除集合会更快。</p>
+</li>
+</ol>
+<h2 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h2><ol>
+<li><p>使用update方法来更新数据。update有两个参数，一个是查询文档，也就是需要更新的目标文档，另一个是修改器文档，也就是要对找打的文档进行哪些修改。</p>
+</li>
+<li><p>文档替换：最简单的更新就是用一个新文档完全替换匹配的文档。【为了确保更新时具有相同的_id，最好还是用_id键来匹配】</p>
+</li>
+<li><p>使用修改器：通常文档只会有一部分要更新，可以使用原子性的更新修改器(update modifier),指定对文档中的某些字段进行更新。</p>
+</li>
+<li><p><code>&quot;$inc&quot; : {}</code></p>
+</li>
+<li><p><code>$set : {}</code></p>
+</li>
+<li><p>数组修改器</p>
+</li>
+<li><p>把数组当做数据集使用</p>
+</li>
+<li><p>修改器速度</p>
+</li>
+<li><p>upsert，是一种特殊的更新，要是没有找到符合更新条件的文档，就会以这个条件和更新文档为基础创建一个新的文档。只需要在update的参数中添加一个true。</p>
+</li>
+<li><p><code>save()</code>是一个shell 函数，如果文档不存在，自动创建文档，如果文档存在，就更新这个文档。</p>
+</li>
+<li><p>更新多个文档</p>
+</li>
+<li><p>返回被更新的文档</p>
+</li>
+<li><p>写入安全机制</p>
+</li>
+</ol>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><p>mongodb中使用find进行查询。查询就是返回一个集合中文档的自己，自己范围是0个文档到整个集合。**find()的第一个参数决定了要返回哪些文档，这个参数是一个文档，用于指定查询条件。默认是{}。<code>db.c.find()</code>,如此将批量返回集合c中的所有文档。</p>
+<h3 id="指定需要返回的键"><a href="#指定需要返回的键" class="headerlink" title="指定需要返回的键"></a>指定需要返回的键</h3><p>有时候并不需要将文档中所有键/值对都返回，遇到这种情况，可以通过第二个参数来指定想要的键。<br><code>db.daily.find({&quot;age&quot;:20}, {&quot;username&quot;: 1})</code><br>默认情况总是返回 _id键。1代表需要返回这个键，0则代表不需要返回这个键。</p>
+<h3 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h3><ol>
+<li>比较操作符：<code>$lt, $lte, $gt, $gte, $ne</code>分别 对应&lt;, &lt;=, &gt;, &gt;=, !=</li>
+</ol>
+<h3 id="OR查询"><a href="#OR查询" class="headerlink" title="OR查询"></a>OR查询</h3><ol>
+<li><p>有两种方式进行OR查询，<code>$in</code>可以用来查询一个键的多个值，<code>$or</code>更通用一些，可以在多个键中查询任意的给定值。</p>
+</li>
+<li></li>
+</ol>
+
             </div>
           
 
