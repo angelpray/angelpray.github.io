@@ -42,7 +42,7 @@
 <meta property="og:site_name" content="Janro-Cheung">
 <meta property="og:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-01-04T08:06:41.509Z">
+<meta property="og:updated_time" content="2019-01-04T13:51:05.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Janro-Cheung">
 <meta name="twitter:description" content="mongoDB shell就是可以接受用户输入命令的程序。将shell分为两类：命令行与图形界面。命令行壳层提供一个命令行界面（CLI）；而图形壳层提供一个图形用户界面（GUI）。  mongodb是一个面向文档（document-oriented）的数据库，而不是关系型数据库。不采用关系模型是为了获得更好的扩展性。  没有预定义模式（predefined schema）；文档的键key和值val">
@@ -305,12 +305,52 @@
 <h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><p>mongodb中使用find进行查询。查询就是返回一个集合中文档的自己，自己范围是0个文档到整个集合。**find()的第一个参数决定了要返回哪些文档，这个参数是一个文档，用于指定查询条件。默认是{}。<code>db.c.find()</code>,如此将批量返回集合c中的所有文档。</p>
 <h3 id="指定需要返回的键"><a href="#指定需要返回的键" class="headerlink" title="指定需要返回的键"></a>指定需要返回的键</h3><p>有时候并不需要将文档中所有键/值对都返回，遇到这种情况，可以通过第二个参数来指定想要的键。<br><code>db.daily.find({&quot;age&quot;:20}, {&quot;username&quot;: 1})</code><br>默认情况总是返回 _id键。1代表需要返回这个键，0则代表不需要返回这个键。</p>
 <h3 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h3><ol>
-<li>比较操作符：<code>$lt, $lte, $gt, $gte, $ne</code>分别 对应&lt;, &lt;=, &gt;, &gt;=, !=</li>
+<li>比较操作符：<code>$lt, $lte, $gt, $gte, $ne</code>分别 对应&lt;, &lt;=, &gt;, &gt;=, !=<br><code>db.users.find({&quot;age&quot;: {&quot;$gte&quot;: 18, &quot;$lte&quot;: 30}})</code></li>
 </ol>
 <h3 id="OR查询"><a href="#OR查询" class="headerlink" title="OR查询"></a>OR查询</h3><ol>
 <li><p>有两种方式进行OR查询，<code>$in</code>可以用来查询一个键的多个值，<code>$or</code>更通用一些，可以在多个键中查询任意的给定值。</p>
 </li>
-<li></li>
+<li><p>当一个键需要与多个值进行匹配的话，就需要用<code>$in</code>操作符，配合使用一个条件数组。<br><code>db.users.find({&quot;registered&quot;: {&quot;$in&quot;: [13, 30,46]}})</code></p>
+</li>
+<li><p><code>$nin</code>返回与数组所有条件都不匹配的文档。</p>
+</li>
+<li><p><code>$or</code>接收一个包含所有可能条件的数组作为参数。<br><code>db.user.find({&quot;$or&quot;: [{&quot;age&quot;:20}, {&quot;height&quot;: &quot;50kg&quot;}]})</code></p>
+</li>
+</ol>
+<h3 id="not"><a href="#not" class="headerlink" title="$not"></a>$not</h3><p><code>$not</code>是元条件句，可以用在任何其他条件之上。<br><code>db.users.find({&quot;id_num&quot;: {&quot;$not&quot;: {&quot;$mod&quot;: [5, 1]}}})</code></p>
+<h3 id="条件语义"><a href="#条件语义" class="headerlink" title="条件语义"></a>条件语义</h3><p>条件语句是内层文档的键，而修改器则是外层文档的键。</p>
+<h3 id="特定类型的查询"><a href="#特定类型的查询" class="headerlink" title="特定类型的查询"></a>特定类型的查询</h3><ol>
+<li><p>null，能匹配自身以及不包含这个键的文档</p>
+</li>
+<li><p>正则表达式：mongodb使用perl兼容的正则表达式PCRE库来匹配正则表达式。</p>
+</li>
+<li><p>查询数组元素和查询标量值是一样的。<br>有以下操作符：<br><code>$all</code><br><code>$size</code><br><code>$slice</code>:返回某个键匹配的数组元素的一个子集<code>{&quot;comments:&quot; {&quot;$slice&quot;: 10}}</code></p>
+</li>
+<li><p>查询内嵌文档：查询整个文档，或者只针对其键值对进行查询。</p>
+</li>
+</ol>
+<h3 id="where查询"><a href="#where查询" class="headerlink" title="$where查询"></a>$where查询</h3><p>在其他查询方法都走不通的时候，就要考虑<code>$where</code>子句。用它可以在查询中执行任意的JavaScript。最常见的应用就是比较文档中的两个键是否相等。只有迫不得已再用。</p>
+<h3 id="服务器脚本"><a href="#服务器脚本" class="headerlink" title="服务器脚本"></a>服务器脚本</h3><p>服务器端JS很容易受到注入攻击。可以指定在运行mongod时指定<code>--noscripting</code>，完全关闭JS的执行。</p>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3><p>数据库使用游标返回find的执行结果。客户端对游标的实现通常能够对最终结果进行有效的控制。可以限制结果的数量、略过部分结果……还有一些强大的操作。</p>
+<ol>
+<li><p>最常用的查询选项就是限制返回结果的数量、忽略一定数量的结果以及排序。<code>limit\skip\sort</code></p>
+</li>
+<li><p>比较顺序：mongoDB处理不同类型的数据是有一定顺序的。</p>
+</li>
+<li><p>避免使用skip略过大量结果</p>
+</li>
+<li><p>高级查询选项</p>
+</li>
+</ol>
+<h3 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h3><p>特殊的查询类型：数据库命令database command。文档的创建、更新、删除以及查询这些都是数据库命令的使用范畴。</p>
+<ol>
+<li><p>删除集合使用<code>drop</code>数据库命令完成<code>db.runCommand({&quot;drop&quot;: &quot;test&quot;})</code>,这就相当于使用shell辅助函数，<code>db.test.drop()</code></p>
+</li>
+<li><p>在shell中运行db.listCommands()可以看到所有的数据库命令</p>
+</li>
+</ol>
+<h3 id="数据库命令原理"><a href="#数据库命令原理" class="headerlink" title="数据库命令原理"></a>数据库命令原理</h3><ol>
+<li>数据库命令总会返回一个ok键的文档，如果ok键时true，则成功，否则就是失败，并且有一个额外的键“errmsg”。</li>
 </ol>
 
             </div>
