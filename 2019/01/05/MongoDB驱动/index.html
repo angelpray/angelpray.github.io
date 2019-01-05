@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="This is JC's blog"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Janro-Cheung">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://angelpray.github.io/2019/01/05/MongoDB驱动/"/>
+
+
+<meta name="description" content="mongoDB驱动js的官方MongoDB驱动程序。在mongodb-core之上提供一个面向最终用户的高级API。 连接mongoDB 创建一个数据库目录mongod --dbpath &amp;quot;/data&amp;quot;  插入文档 向app.js中添加以下函数，该函数使用insertMany方法向文档集合中添加三个文档。 12345678910111213141516// 插入一些文档cons">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Janro-Cheung">
+<meta property="og:url" content="https://angelpray.github.io/2019/01/05/MongoDB驱动/index.html">
+<meta property="og:site_name" content="Janro-Cheung">
+<meta property="og:description" content="mongoDB驱动js的官方MongoDB驱动程序。在mongodb-core之上提供一个面向最终用户的高级API。 连接mongoDB 创建一个数据库目录mongod --dbpath &amp;quot;/data&amp;quot;  插入文档 向app.js中添加以下函数，该函数使用insertMany方法向文档集合中添加三个文档。 12345678910111213141516// 插入一些文档cons">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-01-05T11:36:11.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Janro-Cheung">
+<meta name="twitter:description" content="mongoDB驱动js的官方MongoDB驱动程序。在mongodb-core之上提供一个面向最终用户的高级API。 连接mongoDB 创建一个数据库目录mongod --dbpath &amp;quot;/data&amp;quot;  插入文档 向app.js中添加以下函数，该函数使用insertMany方法向文档集合中添加三个文档。 12345678910111213141516// 插入一些文档cons">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title>  - Janro-Cheung </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Janro-Cheung</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                所有文章
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          
+        
+      </h1>
+
+      <time class="post-time">
+          1月 05 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="mongoDB驱动"><a href="#mongoDB驱动" class="headerlink" title="mongoDB驱动"></a>mongoDB驱动</h1><p>js的官方MongoDB驱动程序。在mongodb-core之上提供一个面向最终用户的高级API。</p>
+<h2 id="连接mongoDB"><a href="#连接mongoDB" class="headerlink" title="连接mongoDB"></a>连接mongoDB</h2><ol>
+<li>创建一个数据库目录<code>mongod --dbpath &quot;/data&quot;</code></li>
+</ol>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ol>
+<li><p>向app.js中添加以下函数，该函数使用insertMany方法向文档集合中添加三个文档。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入一些文档</span></span><br><span class="line"><span class="keyword">const</span> insertDocuments = <span class="function">(<span class="params">db, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 获得文档集合</span></span><br><span class="line">  <span class="keyword">const</span> collection = db.collection(<span class="string">'documents'</span>);</span><br><span class="line">  <span class="comment">// 插入一些文档</span></span><br><span class="line">  collection.insertMany([</span><br><span class="line">    &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">a</span>: <span class="number">2</span>&#125;, &#123;<span class="attr">a</span>: <span class="number">3</span>&#125;</span><br><span class="line">  ], (err, result) =&gt; &#123;</span><br><span class="line">    assert.equal(err, <span class="literal">null</span>);</span><br><span class="line">    assert.equal(<span class="number">3</span>, result.result.n);</span><br><span class="line">    assert.equal(<span class="number">3</span>, result.ops.length);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Inserted 3 documents into the collection"</span>);</span><br><span class="line">    callback(result);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// result包含来自MongoDB的结果文档</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用上面的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insertDocuments(db, () =&gt; &#123;</span><br><span class="line">  client.close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="找到所有文档"><a href="#找到所有文档" class="headerlink" title="找到所有文档"></a>找到所有文档</h2><ol>
+<li>添加一个返回所有文档的查询。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查询所有文档</span></span><br><span class="line"><span class="keyword">const</span> findDocuments = <span class="function">(<span class="params">db, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 获得文档集合</span></span><br><span class="line">  <span class="keyword">const</span> collection = db.collection(<span class="string">'documents'</span>);</span><br><span class="line">  <span class="comment">// 查询文档</span></span><br><span class="line">  collection.find(&#123;&#125;).toArray(<span class="function">(<span class="params">err, docs</span>) =&gt;</span> &#123;</span><br><span class="line">    assert.equal(err, <span class="literal">null</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Found the following recoeds"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(docs);</span><br><span class="line">    callback(docs);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="使用查询筛选器查找文档"><a href="#使用查询筛选器查找文档" class="headerlink" title="使用查询筛选器查找文档"></a>使用查询筛选器查找文档</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> updateDocument = <span class="function"><span class="keyword">function</span>(<span class="params">db, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Get the documents collection</span></span><br><span class="line">  <span class="keyword">const</span> collection = db.collection(<span class="string">'documents'</span>);</span><br><span class="line">  <span class="comment">// Update document where a is 2, set b equal to 1</span></span><br><span class="line">  collection.updateOne(&#123; <span class="attr">a</span> : <span class="number">2</span> &#125;</span><br><span class="line">    , &#123; <span class="attr">$set</span>: &#123; <span class="attr">b</span> : <span class="number">1</span> &#125; &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">    assert.equal(err, <span class="literal">null</span>);</span><br><span class="line">    assert.equal(<span class="number">1</span>, result.result.n);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Updated the document with the field a equal to 2"</span>);</span><br><span class="line">    callback(result);</span><br><span class="line">  &#125;);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+				
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/01/02/learnMongodb/">
+        <span class="next-text nav-default"></span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+		<div id="comment"></div>
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+		<script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#comment',
+			notify:false, 
+			verify:false, 
+			appId: 'jzIDVrftjWXBnBBQ69gkvxur-gzGzoHsz',
+			appKey: 'xJDA1U3tIhTEhtKd1QY5w6Cd',
+			notify: true, // 邮件提醒!!!
+			verify: true, // 验证码			
+			placeholder: '说出你的想法！如果你想尽快得到回复的话，请在上方填写你的邮箱和昵称~ヾﾉ≧∀≦)o',
+			path:window.location.pathname, 
+			avatar:'mm' 
+		});
+	</script>
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2019
+    <span class="footer-author">Janro-Cheung.</span>
+    <span class="power-by">
+        Use <a class="hexo-link" href="https://hexo.io/">Hexo</a> By<a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear"> polarbear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">回到顶部
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
