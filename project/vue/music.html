@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <style lang="">
+    ul {
+      list-style: none;
+    }
+    ul li {
+      padding: 10px;
+      margin: 20px;
+      cursor: pointer;
+    }
+    ul li:hover {
+      background: orange;
+    }
+    .currentPlaying {
+      background: seagreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <audio :src="getCurrentSongSrc" autoplay></audio>
+    <ul>
+      <li v-for="(item, index) in imgData" @click='play(index)' :class="{currentPlaying: isActive(index)}">
+        <h3>{{index}}. {{item.author}}-{{item.name}}</h3>
+      </li>
+    </ul>
+  </div>
+  <script>
+    let imgData = [
+      {id: 1, name: 'Endeavors', author:'Mitis' ,songSrc:'https://m801.music.126.net/20190510145247/e08e3808e7afad0a4f6e325d94d6b103/jdyyaac/025d/5353/545d/57c6bc4911d969ae5751c77f776c146c.m4a'},
+      {id: 2, name: 'Ascension', author:'Mitis' ,songSrc:'https://m801.music.126.net/20190510145026/25f44d4a6adb04f565d384182a038fe2/jdyyaac/040b/0659/0358/3a1d49687a1334faaf52424ff4a0ae2f.m4a'},
+      {id: 3, name: 'open Window', author:'Mitis' ,songSrc:'https://m801.music.126.net/20190510145228/59a1edb3fae228c115eb7d95235d3232/jdyyaac/0e0c/065c/0208/9f21227d3e16b31b731b5ba5c56cbaef.m4a'}
+    ]
+    new Vue({
+      el: "#app",
+      template: ``,
+      data() {
+        return {
+          imgData,
+          currentIndex: 0
+        }
+      },
+      computed: {
+        getCurrentSongSrc() {
+          return this.imgData[this.currentIndex].songSrc;
+        }
+      },
+      methods: {
+        play(index) {
+          this.currentIndex = index;
+        },
+        isActive(index) {
+          return this.currentIndex === index;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
