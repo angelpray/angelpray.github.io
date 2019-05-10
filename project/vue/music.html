@@ -25,7 +25,7 @@
 </head>
 <body>
   <div id="app">
-    <audio :src="getCurrentSongSrc" autoplay></audio>
+    <audio :src="getCurrentSongSrc" autoplay controls></audio>
     <ul>
       <li v-for="(item, index) in imgData" @click='play(index)' :class="{currentPlaying: isActive(index)}">
         <h3>{{index}}. {{item.author}}-{{item.name}}</h3>
