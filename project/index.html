@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex响应式导航栏</title>
+  <style>
+    /* 大屏幕下 */
+    .parent {
+      display: flex;
+      flex-flow: row wrap;
+      background-color: pink;
+      justify-content: flex-end;
+    }
+    /* 中等屏幕下 */
+    @media all and (max-width: 800px) {
+      .parent {
+        justify-content: space-around;
+      }
+    }
+    @media all and (max-width: 500px) {
+      .parent {
+        flex-direction: column;
+      }
+    }
+    .child {
+      color: #fff;
+      margin: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">
+      Home
+    </div>
+    <div class="child">
+      About
+    </div>
+    <div class="child">
+      Products
+    </div>
+    <div class="child">
+      Contact
+    </div>
+  </div>
+</body>
+</html>
