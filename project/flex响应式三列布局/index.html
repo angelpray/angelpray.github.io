@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex三列布局，移动优先，与源码顺序无关</title>
+  <style>
+    .wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      text-align: center;
+    }
+    /* 移动优先设计 */
+    .wrapper > * {
+      flex: 1 100%;
+      padding: 10px;
+    }
+    .header {
+      background: red;
+    }
+    .main {
+      background: blueviolet;
+      text-align: left;
+    }
+    .aside-1 {
+      background: yellow;
+    }
+    .aside-2 {
+      background: pink;
+    }
+    .footer {
+      background: green;
+    }
+    /* 中等屏幕下 */
+    @media all and (min-width: 600px) {
+      .aside {
+        flex: 1 0 0;
+      }
+    }
+    /* 大屏幕下 */
+    @media all and (min-width: 800px) {
+      .aside-1 {
+        order: 1;
+      }
+      .main {
+        flex: 3 0px;
+        order: 2;
+      }
+      .aside-2 {
+        order: 3;
+      }
+      .footer {
+        order: 4;
+      }
+    }
+    body {
+      padding: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">Header</header>
+    <article class="main">
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
+        quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+        ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </article>
+    <aside class="aside aside-1">Aside 1</aside>
+    <aside class="aside aside-2">Aside 2</aside>
+    <footer class="footer">Footer</footer>
+  </div>
+</body>
+
+</html>
