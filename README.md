@@ -24,4 +24,4 @@
 
 ## persistence
 
-## goodJob
+## YAMAMOTO FIRST DAY
