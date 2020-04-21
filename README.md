@@ -25,3 +25,5 @@
 ## persistence
 
 ## YAMAMOTO FIRST DAY
+
+## YAMAMOTO SECOND DAY
