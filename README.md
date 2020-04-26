@@ -35,3 +35,5 @@
 ## YAMAMOTO 5th DAY
 
 ## YAMAMOTO 6th DAY
+
+## YAMAMOTO 7th DAY
