@@ -107,4 +107,4 @@
 # TAlk less do more
 # body important
 # NODE
-# DOYOURSELF
+# DOYOURSELF AND JUST DO IT
