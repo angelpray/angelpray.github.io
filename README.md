@@ -1,1 +1,1 @@
-
+# TALK LESS，THINK MORE.
