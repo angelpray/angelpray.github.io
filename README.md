@@ -1,1 +1,1 @@
-# JUST INSIST ON CODING AND REMEMBER YOU ARE A GEEK.
+# alaways confidence and never regret of your choice!
