@@ -9,3 +9,5 @@ Before you die, live.
 You need 3 hobbies, one to keep you creative, one to keep you in shape, one to make you money.
 
 # An Unfinished Life😪
+
+1. head first JavaScript
