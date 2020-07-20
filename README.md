@@ -11,3 +11,5 @@ You need 3 hobbies, one to keep you creative, one to keep you in shape, one to m
 # An Unfinished Life😪
 
 1. head first JavaScript
+
+2. 
